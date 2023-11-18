@@ -1,0 +1,21 @@
+.judul {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 18px;
+  color: saddlebrown;
+}
+#h2 {
+  text-align: center;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 16px;
+}
+#h1 {
+  width: 100px;
+  height: 100px;
+
+  margin: 4px 4px 5px 5px;
+  margin-inline: auto;
+}
+.desain {
+  border: 0cm;
+  margin: 4px 5px 3px 3px;
+}

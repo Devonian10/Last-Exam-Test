@@ -1,0 +1,52 @@
+* {
+    box-sizing: border-box;
+}
+body{
+    font-family:'Times New Roman', Times, serif;
+    margin: 0;
+    background:white;
+}
+.containerku{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 6px;
+
+}
+.login-box {
+    margin-top: 150px;
+    flex-basis: 400px;
+    background: #fff;
+    padding: 20px;
+}
+.login-box h2{
+    border-bottom: 1px solid #ccc;
+    color:#555;
+    text-align: center;
+    padding-bottom: 20px;
+    margin: 0 0 20px;
+
+}
+input, select{
+    width: 100%;
+    padding: 15px 20px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+
+}
+input[type=submit]{
+    background-color: gray;
+    border: none;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+.containerku h2{
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    justify-content: center;
+    flex: content;
+}
+
+
