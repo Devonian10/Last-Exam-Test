@@ -24,11 +24,19 @@ Route::get('/about', function () {
     "Toraja Kawaa roastery adalah salah satu kopi yang nikmat dan ", "location" =>
     "", "phoneNumber" => 4456732123, ""]);
 });
+
 Route::get('/shop', function () {
-    return view('shop', $arabica=[
-        "title" => "Shopping", "Kopi_1" => "Arabica", "priceHarga" => 170000, "gambar" => "20230826_112807.jpg", "Kopi_2" => "Robusta", "priceHarga2" => 110000,
-        "gambar" => "20230826_113248.jpg"
-    ], $robusta=["gambar" => "20230826_113248.jpg"]);
+    $coffee = [["title" => "Arabica", "priceHarga" => 170000, "gambar" => "20230826_112807.jpg",], ["title" => "Robusta
+", "priceHarga" => 110000, "gambar" => "20230826_113248.jpg"]];
+    return view(
+        'shop',
+        ["Kopi" => $coffee]
+    );
+});
+
+Route::get('/admin', function () {
+
+    return view('admin');
 });
 // Route::get('/verification', function(){
 //     return view('shop', if ($user === ) {
