@@ -4,9 +4,9 @@
     <div class="beranda">Welcome Toraja Kawaa roastery</div>
       <div class="col">
         <ul class="">
-          <li><a href="#instagram"><img src="assets/gambar/Ellipse 9.jpg" alt="">instagram</a></li>
+          <li><a href="#instagram"><img src="gambar/{{ $gambar_instagram }}" alt="">instagram</a></li>
           <li><a href="#facebook">Facebook</a></li>
-          <li><a href="#whatsapp">Whatsapp</a></li>
+          <li><a href="#whatsapp"><img src="gambar/{{ $gambar_whatsapp }}" alt="">Whatsapp</a></li>
         </ul> 
         <div class="google-maps">
           <div class="text-bg-danger">location</div>

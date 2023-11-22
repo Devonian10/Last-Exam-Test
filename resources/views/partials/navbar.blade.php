@@ -6,7 +6,7 @@
         <a href="#">Order</a>
         <a href="#">History</a>
         <a href="/about">About Us</a>
-        <a href="" class="right">login</a>
-        <a href="" class="right">Signup</a>
+        <a href="/mainlogin" class="right">login</a>
+        <a href="/registration" class="right">Signup</a>
     </div>
 </nav>

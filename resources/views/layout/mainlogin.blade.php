@@ -14,7 +14,7 @@
         <div class="col-xs-1 center-block text-center">
             <section class="login-box">
                 <h2>login Toraja Kawaa roastery</h2>
-                <form id="loginform" method="post" action="">
+                <form id="loginform" method="post" action="{{  }}">
                     <label for="username" style="font-family: 'Times New Roman', Times, serif">Username</label>
                     <br />
                     <input type="text" placeholder="Username" name="username" />
@@ -29,10 +29,11 @@
                     <label for="confirmPassword" placeholder="Confirm Password" name="Confirm Password"></label>
                     <br>
                     <br />
+                    <a href="{{ url('login') }}"></a>
                     <button type="submit" class="btn btn-success" value="Login">
                         Login
                     </button>
-                    <a href="LOL1.html">
+                    <a href="{{ url('/registration') }}">
                         <button type="submit" class="btn btn-warning" value="Signup" style="right: 50%">
                             Sign up
                         </button></a>

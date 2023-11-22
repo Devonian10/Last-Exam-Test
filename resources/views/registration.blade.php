@@ -1,33 +1,35 @@
 @extends('layout.main')
 
-<body style="background-color: rgba(176, 82, 82, 1);">
-    
-
-
 @section('container')
-<h2 class="text-center">Registration</h2>
-<div></div>
-<div class="row g-3">
-    <div class="col">
-        <label for="Username" class="text-center">Username</label>
-        <input type="text" placeholder="Username" required>
-    </div>
-    <div class="col">
-        <label for="Email">Email</label>
-        <input type="text" placeholder="Email" required>
-    </div>
-    <div class="col">
-        <label for="PhoneNumber">PhoneNumber</label>
-        <input type="number" name="phonenumber" placeholder="PhoneNumber">
-    </div>
-</div>
-<div class="row g-3" >
-    <div class="col">
-        <label for="Password">Password</label>
-        <input type="password" name = "password"placeholder="Password">
-    </div>
-</div>
-<div class=""></div>
 
-</body>
+<div class="registration container mt-4" style="background-color: brown">
+    <h2 class="judul2 text-center">Registration</h2>
+    <div class="row g-3 ">
+    <div class="col text-center">
+            <label for="Username">Username</label>
+            <input type="text" class="form-control" placeholder="Username" required>
+        </div>
+        <div class="col">
+            <label for="Email">Email</label>
+            <input type="text" class="form-control" placeholder="Email" required>
+        </div>
+    </div>
+    <br>
+    <div class="row g-3" >
+        <div class="col">
+            <label for="Password">Password</label>
+            <input type="password" class="form-control"name = "password" placeholder="Password">
+        </div>
+        <div class="col">
+            <label for="Confirm Password">Confirm Password</label>
+            <input type="password" class="form-control"name ="Repeat Password" placeholder="Password">
+        </div>
+    </div>
+    <div class="text-center mt-5 button-registration">
+    <button type="button" class = "btn btn-primary align-items-center justify-content-center  mb-4 mx-5">back</button>
+    
+    <button type="button" class="btn btn-primary align-items-center justify-content-center mb-4 mx-5" style="text-align: justify;">register</button>
+</div>
+</div>
+
 @endsection

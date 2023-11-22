@@ -2,7 +2,9 @@
   background-color: rgba(233, 239, 157, 1);
   overflow: hidden;
 }
-
+.topnav img{
+  float: inline-start;
+}
 .topnav a {
   float: left;
   color: rgba(140, 122, 254, 1);
@@ -82,14 +84,28 @@ body {
   height: 150px;
   width: 240px;
   position: absolute;
-  margin: auto;
+  margin: 0;
+  top:0;
+  right: 150px;
 }
 .daftar-media {
   float: left;
 }
 
 .a gambar-instagram{
-  
+  height: 150px;
+  width : 250px;
 }
 
-
+label {
+  font-family: 'Abyssinica SIL', serif;
+  font-size: 15pt;
+}
+.btn {
+  font-family: 'Abyssinica SIL', serif;
+}
+.judul2 {
+  font-family:'Abyssinica SIL', serif;
+  color: #fff;
+}
+@import url('https://fonts.googleapis.com/css2?family=Abyssinica+SIL&family=Playpen+Sans:wght@300&display=swap');
