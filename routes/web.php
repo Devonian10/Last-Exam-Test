@@ -17,11 +17,11 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 //     });
 Route::get('/', function () {
-    $judulHome = ["title"=>"Beranda"];
-    return view('home', ["judul"=>$judulHome]);
+   
+    return view('home');
 });
 Route::get('/about', function () {
-    $judulAbout = ["title"=>"About"];
+    
     return view('about', ["name" => "Toraja Kawaa Roastery", "description" =>
     "Toraja Kawaa roastery adalah salah satu kopi yang nikmat dan ", "location" =>
     "Toraja Kawaa Roastery", "phoneNumber" => 4456732123, "gambar_instagram"=>"Ellipse 9.jpg", "gambar_whatsapp"=> "WhatsApp 1.jpg"]);

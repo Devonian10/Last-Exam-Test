@@ -14,7 +14,7 @@
         <div class="col-xs-1 center-block text-center">
             <section class="login-box">
                 <h2>login Toraja Kawaa roastery</h2>
-                <form id="loginform" method="post" action="{{  }}">
+                <form id="loginform" method="GET" action="">
                     <label for="username" style="font-family: 'Times New Roman', Times, serif">Username</label>
                     <br />
                     <input type="text" placeholder="Username" name="username" />

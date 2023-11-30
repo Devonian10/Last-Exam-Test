@@ -1,8 +1,8 @@
 @extends('layout.main')
-<title>Shopping cart</title>
+@section('title', 'Shopping Cart')
 @section("container")
 
-<div class="container content-row">
+<div class="container content-row-mt-4">
   @foreach ($Kopi as $kopiku)
     <div class="row row-cols-1 row-cols-md-3 g-4">
       <div class="col">

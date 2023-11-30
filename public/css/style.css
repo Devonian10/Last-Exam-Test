@@ -21,9 +21,13 @@
 }
 .registration {
     background-color: brown;
-    width: full;
+    width: auto;
+    height: fit-content;
 }
 .button-registration {
     margin-top: 32px !important;
 
+}
+.tabelku {
+    margin-top: 32px;
 }

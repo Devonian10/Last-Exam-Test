@@ -1,11 +1,11 @@
 @extends('layout.main')
-
+@section('title', 'Registration')
 @section('container')
 
 <div class="registration container mt-4" style="background-color: brown">
     <h2 class="judul2 text-center">Registration</h2>
     <div class="row g-3 ">
-    <div class="col text-center">
+    <div class="col text-center ">
             <label for="Username">Username</label>
             <input type="text" class="form-control" placeholder="Username" required>
         </div>
