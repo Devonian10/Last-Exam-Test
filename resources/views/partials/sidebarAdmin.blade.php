@@ -5,3 +5,23 @@
         
     </div>
 </nav>
+<nav>
+    <div class="row no-gutter mb-5">
+        <div class="col">
+        <ul class="nav flex-column bg-dark navbar-admin">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Dashboard</a><hr class="dark">
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">User</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Pesanan</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Produk</a>
+            </li>
+          </ul>
+        </div>
+    </div>
+</nav>
