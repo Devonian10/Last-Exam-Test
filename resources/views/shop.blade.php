@@ -6,7 +6,7 @@
   @foreach ($Kopi as $kopiku)
     <div class="row row-cols-1 row-cols-md-3 g-4">
       <div class="col">
-        <div class="card border-success h-100 text-center">
+        <div class="card card border-success h-100 ">
           <div class="card-header bg-transparent border-success" style="font-family: 'Times New Roman', Times, serif;text-align: center;font-size: 20px;" ><strong>{{ $kopiku["title"]; }}</strong></div>
           <img src="gambar/{{ $kopiku["gambar"]; }}" alt= "{{ $kopiku["title"]; }}"class="rounded-img">
           <div class="card-body">
@@ -21,8 +21,8 @@
         </div>
     </div>
     @endforeach
-    <div>
-      <button class="btn btn-primary text-lg-center" onclick="">keranjang</button>
+    <div class="text-center">
+      <button class="btn btn-primary text-lg-center" onclick=""><i class="fa-solid fa-cart-shopping"></i> keranjang</button>
     </div>
   </div>
 

@@ -1,25 +1,19 @@
 <nav>
-    <div class="topnav">
-        <img src="gambar/299385752_397934109147635_7327667729942218094_n 4.jpg" style="width:100px; height:60px;display:flex;"/>
-        <a href="" class="right">Admin</a>
-        
-    </div>
-</nav>
-<nav>
     <div class="row no-gutter mb-5">
         <div class="col">
+        {{-- <ul class="nav flex-column bg-dark navbar-admin"> --}}
         <ul class="nav flex-column bg-dark navbar-admin">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Dashboard</a><hr class="dark">
+              <a class="nav-link active" aria-current="page" href="user"><i class="fa-solid fa-dashboard"></i> Dashboard</a><hr class="dark">
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">User</a>
+              <a class="nav-link" href="{{ url('/userAdmin') }}"><i class="fa fa-users"></i> User</a><hr class="dark">
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Pesanan</a>
+              <a class="nav-link" href=""><i class="fa-solid fa-material"></i>Pesanan</a><hr class="dark">
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Produk</a>
+              <a class="nav-link" href="{{ url('/produk') }}"><i class="fa-solid fa-store"></i> Produk</a><hr class="dark">
             </li>
           </ul>
         </div>

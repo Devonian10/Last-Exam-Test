@@ -6,7 +6,10 @@
         <a href="/order">Order</a>
         <a href="/history">History</a>
         <a href="/about">About Us</a>
-        <a href="/mainlogin" class="right">login</a>
-        <a href="/registration" class="right">Signup</a>
+        @auth
+        <a href="/mainlogin" class="right"><img src="" alt=""><i class="fa-solid fa-user"></i></a>
+        
+        <a href="/registration" class="right">logout</a>
+        @endauth
     </div>
 </nav>

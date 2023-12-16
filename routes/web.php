@@ -37,14 +37,14 @@ Route::get('/shop', function () {
 });
 
 Route::get('/admin', function () {
-
-    return view('admin');
+    return view('admin/admin');
 });
+
 Route::get('/registration', function () {
     return view('registration');
 });
-Route::get('/user/{id}', function (string $id) {
-    return 'User' . $id;
+Route::get('/userAdmin', function () {
+    return view('admin/userAdmin');
 });
 Route::get('/mainlogin', function () {
     return view('layout/mainlogin');
@@ -61,7 +61,9 @@ Route::get('/order', function () {
 Route::get('history', function () {
     return view('history');
 });
-
+Route::get('produk', function(){
+    return view('admin/produk');
+});
 // Route::get('/verification', function(){
 //     return view('shop', if ($user === ) {
         

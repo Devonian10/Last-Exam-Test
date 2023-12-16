@@ -21,8 +21,7 @@
                     <br />
                     <label for="password" style="
                 text-align: justify;
-                font-family: 'Times New Roman', Times, serif;
-              ">Password</label>
+                font-family: 'Times New Roman', Times, serif;">Password</label>
                     <br />
                     <input type="text" placeholder="Password" name="password" />
                     <br />
@@ -33,7 +32,7 @@
                     <button type="submit" class="btn btn-success" value="Login">
                         Login
                     </button>
-                    <a href="{{ url('/registration') }}">
+                    <a href="{{ url('registration') }}">
                         <button type="submit" class="btn btn-warning" value="Signup" style="right: 50%">
                             Sign up
                         </button></a>
