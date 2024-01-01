@@ -64,6 +64,10 @@ Route::get('history', function () {
 Route::get('produk', function(){
     return view('admin/produk');
 });
+Route::get('orderAdmin', function(){
+    return view('admin/orderAdmin');
+});
+Route::Auth;
 // Route::get('/verification', function(){
 //     return view('shop', if ($user === ) {
         

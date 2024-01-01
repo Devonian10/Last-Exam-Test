@@ -1,3 +1,8 @@
+<?php 
+$date= "";
+$month= "";
+$year = "";
+?>
 @extends('layout.mainAdmin')
 
 @section('title', 'Pesanan')
@@ -11,6 +16,8 @@
                 <th>Nama</th>
                 <th>Jenis kopi</th>
                 <th>Total harga</th>
+                <th>tanggal</th>
+                <th>resi</th>
                 <th>Status</th>
                 <th>aksi</th>
             </tr>
@@ -18,6 +25,8 @@
                 <td></td>
                 <td></td>
                 <td></td>
+                <td></td>
+                <td><?php echo date(DATE_RFC2822)?></td>
                 <td></td>
                 <td></td>
                 <td></td>

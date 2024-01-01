@@ -16,7 +16,7 @@
         <th>Status</th>
         <th>Aksi</th>
     </tr>
-    <tr>
+    <tr> {{-- Ini untuk migrasi database --}}
         <td>1</td>
         <td>Lorem</td>
         <td>devonian09@gmail.com</td>

@@ -81,7 +81,7 @@ body {
 .google-maps iframe {
     height: auto;
     width: auto;
-    position: absolute;
+    position:relative;
     margin: 0;
     top: 0;
     right: 150px;

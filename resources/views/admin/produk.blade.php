@@ -9,7 +9,7 @@
                 <th>No</th>
                 <th>Nama Produk Kopi</th>
                 <th>Harga</th>
-                <th>Image</th>
+                <th>Gambar</th>
                 <th>Stock</th>
                 <th>Status</th>
                 <th>Aksi</th>

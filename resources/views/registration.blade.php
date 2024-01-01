@@ -25,9 +25,14 @@
             <input type="password" class="form-control"name ="Repeat Password" placeholder="Password">
         </div>
     </div>
+    <div class="row g-3 mt-2">
+        <div class="col">
+            <label for="Phone number">Phone Number</label>
+            <input type="text" class="form-control" name = "Phone Number" placeholder="Phone Number" style="width:536.5px">
+        </div>
+    </div>
     <div class="text-center mt-5 button-registration">
     <button type="button" class = "btn btn-primary align-items-center justify-content-center  mb-4 mx-5">back</button>
-    
     <button type="button" class="btn btn-primary align-items-center justify-content-center mb-4 mx-5" style="text-align: justify;">register</button>
 </div>
 </div>

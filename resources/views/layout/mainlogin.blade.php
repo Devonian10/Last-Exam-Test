@@ -11,9 +11,10 @@
 
 <body>
     <div class="row">
-        <div class="col-xs-1 center-block text-center">
+        <div class="col-xs-1 text-center">
             <section class="login-box">
-                <h2>login Toraja Kawaa roastery</h2>
+                <div class="card border-info justify-content-center" style="border-radius: 4rem; width:45rem; ">
+                <h2 style="font-family: cursive">login Toraja Kawaa roastery</h2>
                 <form id="loginform" method="GET" action="">
                     <label for="username" style="font-family: 'Times New Roman', Times, serif">Username</label>
                     <br />
@@ -28,11 +29,11 @@
                     <label for="confirmPassword" placeholder="Confirm Password" name="Confirm Password"></label>
                     <br>
                     <br />
-                    <a href="{{ url('login') }}"></a>
+                    <a href="{{ url('/login') }}"></a>
                     <button type="submit" class="btn btn-success" value="Login">
                         Login
                     </button>
-                    <a href="{{ url('registration') }}">
+                    <a href="{{ url('/registration') }}">
                         <button type="submit" class="btn btn-warning" value="Signup" style="right: 50%">
                             Sign up
                         </button></a>
@@ -40,6 +41,7 @@
             </section>
         </div>
     </div>
+</div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 </body>
 
