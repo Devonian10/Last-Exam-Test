@@ -9,6 +9,7 @@ $year = "";
     
 
 @section('Adminku')
+@section('columns')
     <div class="container rounded-lg shadow p-3 bg-primary mt-4">
         <table class="table table-info">
             <tr>
@@ -33,4 +34,5 @@ $year = "";
             </tr>
         </table>
     </div>
+    @endsection
 @endsection

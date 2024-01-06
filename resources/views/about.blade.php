@@ -12,7 +12,7 @@
           <td><img src="gambar/{{ $gambar_instagram }}" alt="" style="width: 100px"></td>
           
         </tr>
-        <tr><td><i class="fa-brands fa-instagram fa-2xl" style="color:pink"></i></td>
+        <tr><td></td>
           <td></td>
         </tr>
         

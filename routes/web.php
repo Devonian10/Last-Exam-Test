@@ -37,7 +37,7 @@ Route::get('/shop', function () {
 });
 
 Route::get('/admin', function () {
-    return view('admin/admin');
+    return view('admin/dashboard');
 });
 
 Route::get('/registration', function () {
@@ -67,7 +67,7 @@ Route::get('produk', function(){
 Route::get('orderAdmin', function(){
     return view('admin/orderAdmin');
 });
-Route::Auth;
+//Route::Auth;
 // Route::get('/verification', function(){
 //     return view('shop', if ($user === ) {
         

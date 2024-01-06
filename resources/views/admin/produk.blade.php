@@ -3,6 +3,7 @@
 @section('title', 'produk')
 
 @section('Adminku')
+@section('columns')
     <div class="container rounded-lg shadow p-4 bg-primary mt-4">
         <table class="table table-dark table-striped-columns">
             <tr>
@@ -32,4 +33,5 @@
                 <td><button class="btn btn-primary" onclick=""><i class="fa-solid fa-pen"></i></button><button class="btn btn-danger" onclick=""><i class="fa-solid fa-trash"></i></button></td>
         </table>
     </div>
+@endsection
 @endsection

@@ -2,8 +2,10 @@
 
 @section('title', 'userAdmin')
 @section('Adminku')
-
-<div class="container rounded-lg shadow p-3 bg-primary mt-3"></div>
+@section('columns')
+<h3>User</h3>
+<button class="btn btn-primary" onclick=""><i class="fa-solid fa-plus"></i> Tambah</button>
+<div class="container rounded-lg shadow p-3 bg-primary mt-3">
 <table class="table table-responsive table-dark table-striped-columns text-center ">
     {{-- @foreach
     @endforeach --}}
@@ -26,5 +28,6 @@
         <td><button type="submit"class="btn btn-primary"><i class="fa-solid fa-pen"></i ></button><button type="submit"class="btn btn-danger"><i class="fa-solid fa-xmark"></i></button></td>
     </tr>
 </table>
-
+</div>
+@endsection
 @endsection
