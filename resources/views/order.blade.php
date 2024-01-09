@@ -23,7 +23,9 @@
             <td></td>
             <td class="text-center">
                 <button type="submit" class="btn btn-primary" ><i class="fa-solid fa-pen"></i> Detail</button>
+                <div class="modal">
                 <button type="submit" class="btn btn-danger" ><i class="fa-solid fa-xmark"></i> Batal</button>
+            </div>
             </td>
         </tr>
         {{-- @foreach ($collection as $item)

@@ -1,7 +1,8 @@
 <?php
 
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
-
+use App\Models\Shop;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,14 +29,16 @@ Route::get('/about', function () {
 });
 
 Route::get('/shop', function () {
-    $coffee = [["title" => "Arabica", "priceHarga" => 170000, "gambar" => "20230826_112807.jpg",], ["title" => "Robusta
-", "priceHarga" => 110000, "gambar" => "20230826_113248.jpg"]];
+   // $coffee = //[["title" => "Arabica", "priceHarga" => 170000, "gambar" => "20230826_112807.jpg",], ["title" => "Robusta
+//", "priceHarga" => 110000, "gambar" => "20230826_113248.jpg"]];
     return view(
-        'shop',
-        ["Kopi" => $coffee, "judul" => "Belanja"]
+        'shop', ["title"=> "Kopi", "Shop"=> Product::all()]
+        //["Kopi" => $coffee, "judul" => "Belanja"]
     );
 });
-
+/* Route::get('/shop/{title}', function(){
+    return view('shop',["title"=> Shop::find()]);
+}); */
 Route::get('/admin', function () {
     return view('admin/dashboard');
 });

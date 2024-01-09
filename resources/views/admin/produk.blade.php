@@ -4,6 +4,8 @@
 
 @section('Adminku')
 @section('columns')
+<h3>Produk</h3>
+<button class="btn btn-primary mb-4" onclick=""><i class="fa-solid fa-plus mr-2"></i> Tambah</button>
     <div class="container rounded-lg shadow p-4 bg-primary mt-4">
         <table class="table table-dark table-striped-columns">
             <tr>
@@ -22,7 +24,8 @@
                 <td>Arabica</td>
                 <td></td>
                 <td></td>
-                <td><button class="btn btn-primary" onclick=""><i class="fa-solid fa-pen"></i></button><button class="btn btn-danger" onclick=""><i class="fa-solid fa-trash"></i></button></td>
+                <td><button class="btn btn-primary" onclick=""><i class="fa-solid fa-pen"></i></button>
+                    <button class="btn btn-danger" onclick=""><i class="fa-solid fa-trash"></i></button></td>
         </tr>
                 <td>2</td>
                 <td>Kopi Robusha</td>
