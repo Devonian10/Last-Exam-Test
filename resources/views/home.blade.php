@@ -6,9 +6,7 @@
     <div class="container content-row">
         <div class="container rounded-lg shadow p-3 bg-primary ">
             <h2>Toraja Kawaa Roastery</h2>
-            <p>Lorem ipsum dolor sit amet consectetur 
-                adipisicing elit. Mollitia, officia facilis molestiae 
-                ibero ex ullam assumenda eligendi alias odio error in doloribus optio rem placeat, aspernatur pariatur? Eos, aspernatur incidunt.</p>
+            <p c></p>
                 
         </div>
     </div>
