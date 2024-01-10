@@ -24,15 +24,17 @@ $year = "";
                 <th>Status</th>
                 <th>aksi</th>
             </tr>
+            @foreach($pesanan as $order)
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>{{ $order->id }}</td>
+                <td>{{ $order->user->username}}</td>
+                <td>{{ $order->product->nama_kopi }}</td>
+                <td>{{ $order->Total_harga }}</td>
                 <td><?php echo date(DATE_RFC2822)?></td>
-                <td></td>
-                <td class="text-center"><button class="btn btn-warning" ><i class="fa-solid fa-pen mr-2"><div class="modal"></div></i></button><button class="btn btn-primary"><i class="fa-solid fa-image mr-2"></i></button><button class="btn btn-danger"><i class="fa-solid fa-close"></i></button></td>
+                <td>{{ $order->status }}</td>
+                <td class="text-center"><button class="btn btn-warning" ><i class="fa-solid fa-pen mr-2"><div class="modal"></div></i></button><button class="btn btn-primary"><i class="fa-solid fa-image mr-2"></i></button><button class="btn btn-danger"><i class="fa-solid fa-close mr-2"></i></button></td>
             </tr>
+            @endforeach
         </table>
     </div>
     <div class="modal"></div>

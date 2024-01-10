@@ -1,8 +1,11 @@
 <?php
 
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use App\Models\Shop;
+use App\Models\User;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -47,7 +50,7 @@ Route::get('/registration', function () {
     return view('registration');
 });
 Route::get('/userAdmin', function () {
-    return view('admin/userAdmin');
+    return view('admin/userAdmin', ["title"=>"kopi", "users"=>User::all()]);
 });
 Route::get('/mainlogin', function () {
     return view('layout/mainlogin');
@@ -65,10 +68,10 @@ Route::get('history', function () {
     return view('history');
 });
 Route::get('produk', function(){
-    return view('admin/produk');
+    return view('admin/produk', ["title"=>"kopi", "produk"=>Product::all()]);
 });
 Route::get('orderAdmin', function(){
-    return view('admin/orderAdmin');
+    return view('admin/orderAdmin', ["title"=>"kopi", "pesanan"=>Order::all()]);
 });
 //Route::Auth;
 // Route::get('/verification', function(){

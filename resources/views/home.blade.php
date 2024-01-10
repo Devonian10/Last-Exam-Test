@@ -6,7 +6,7 @@
     <div class="container content-row">
         <div class="container rounded-lg shadow p-3 bg-primary ">
             <h2>Toraja Kawaa Roastery</h2>
-            <p c></p>
+            <p class="text-center"></p>
                 
         </div>
     </div>
