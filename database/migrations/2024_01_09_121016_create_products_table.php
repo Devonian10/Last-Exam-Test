@@ -17,7 +17,7 @@ return new class extends Migration
             $table->double("harga");
             $table->string("gambar");
             $table->integer("stock");
-            $table->enum("status", ["draft", "public"]);
+            $table->enum("status", ["draft", "public"])->default("draft");
             $table->timestamps();
             
             

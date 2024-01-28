@@ -14,13 +14,14 @@
             <th>Status</th>
             <th>Aksi</th>
         </tr>
+        @foreach ($pesanan as $order)
         <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>{{ $order->id }}</td>
+            <td>{{ $order->user->username }}</td>
+            <td>{{ $order->product->nama_kopi }}</td>
+            <td><?php echo date(DATE_RFC2822)?></td>
+            <td>Rp. {{ $order->Total_harga }}</td>
+            <td>{{ $order->status }}</td>
             <td class="text-center">
                 <button type="submit" class="btn btn-primary" ><i class="fa-solid fa-pen"></i> Detail</button>
                 <div class="modal">
@@ -28,6 +29,7 @@
             </div>
             </td>
         </tr>
+        @endforeach
         {{-- @foreach ($collection as $item)
             
         @endforeach --}}

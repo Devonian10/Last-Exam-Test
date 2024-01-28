@@ -4,7 +4,7 @@
 @section('Adminku')
 @section('columns')
 <h3>User</h3>
-<button class="btn btn-primary" onclick=""><i class="fa-solid fa-plus"></i> Tambah</button>
+<a class="btn btn-primary" onclick="" href="{{ url('/userAdmin/createUser') }}"><i class="fa-solid fa-plus"></i> Tambah</a>
 <div class="container rounded-lg shadow p-3 bg-primary mt-3">
 <table class="table table-responsive table-dark table-striped-columns text-center ">
     {{-- @foreach
@@ -27,7 +27,7 @@
         <td>{{ $user->password }}</td>
         <td>{{ $user->phoneNumber }}</td>
         <td>{{ $user->status }}</td>
-        <td><button type="submit"class="btn btn-primary"><i class="fa-solid fa-pen"></i></button><button type="submit"class="btn btn-danger"><i class="fa-solid fa-xmark"></i></button></td>
+        <td class="ml-2"><button type="submit"class="btn btn-primary"><i class="fa-solid fa-pen"></i></button><button type="submit"class="btn btn-danger"><i class="fa-solid fa-xmark"></i></button></td>
     </tr>
     @endforeach
 </table>

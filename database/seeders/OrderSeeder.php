@@ -21,5 +21,12 @@ class OrderSeeder extends Seeder
         "status"=>"success",
         "Alasan_cancel"=>null
        ]);
+       Order::create([
+        "users_id"=>3, 
+        "product_id"=> 1,
+        "Total_harga"=>180000,
+        "status"=>"success",
+        "Alasan_cancel"=>null
+       ]);
     }
 }

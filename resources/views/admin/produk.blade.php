@@ -5,7 +5,7 @@
 @section('Adminku')
 @section('columns')
 <h3>Produk</h3>
-<button class="btn btn-primary mb-4" onclick=""><i class="fa-solid fa-plus mr-2"></i> Tambah</button>
+<a href="{{ url('produk/tambah') }}" class="btn btn-primary" ><i class="fa-solid fa-plus mr-2"></i> Create Product</a>
     <div class="container rounded-lg shadow p-4 bg-primary mt-4">
         <table class="table table-dark table-striped-columns text-center">
             
@@ -18,7 +18,7 @@
                 <th>Status</th>
                 <th>Aksi</th>
             </tr>
-            @foreach($produk as $barang)
+        @foreach($produk as $barang)
             <tr>
                 <td>{{ $barang->id }}</td>
                 <td>{{ $barang->nama_kopi }}</td>
@@ -26,11 +26,16 @@
                 <td><img src={{ $barang->gambar }} alt="" width="100px" height="100px"></td>
                 <td>{{ $barang->stock }}</td>
                 <td>{{ $barang->status }}</td>
-                <td><button class="btn btn-primary" onclick=""><i class="fa-solid fa-pen mr-2"></i></button>
-                    <button class="btn btn-danger" onclick=""><i class="fa-solid fa-trash mr-2"></i></button></td>
-        </tr>
+                <td><button class="btn btn-primary" onclick="" alt="Edit Kopi" data-bs-toggle="modal" data-bs-target="modalEditKopi"><i class="fa-solid fa-pen mr-2"></i></button>
+                    <button class="btn btn-danger" onclick="" alt="Delete Kopi" data-bs-toggle="modal" data-bs-target="modalDeleteKopi"><i class="fa-solid fa-trash mr-2"></i></button></td>
+            </tr>
         @endforeach
-            </table>
-    </div>
+        </table>
+        <!-- Modal Edit Kopi --->
+        <div class="modal">
+            
+        </div>
+    
+
 @endsection
 @endsection
