@@ -2,7 +2,7 @@
     <div class="row no-gutters mt-1">
         <div class="col-md-2 bg-dark mt-2 pr-3 pt-4">
         {{-- <ul class="nav flex-column bg-dark navbar-admin"> --}}
-        <ul class="nav flex-column  navbar-admin ml-4 mb-5" style>
+        <ul class="nav flex-column navbar-admin ml-4 mb-5" style>
             <li class="nav-item">
               <a class="nav-link text-white" aria-current="page" href="{{ url('/admin') }}"><i class="fa-solid fa-dashboard mr-2"></i> Dashboard</a><hr class="bg-secondary">
             </li>

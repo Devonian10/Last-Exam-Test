@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
@@ -32,10 +33,11 @@ Route::get('/about', function () {
 });
 
 Route::get('/shop', function () {
-   // $coffee = //[["title" => "Arabica", "priceHarga" => 170000, "gambar" => "20230826_112807.jpg",], ["title" => "Robusta
-//", "priceHarga" => 110000, "gambar" => "20230826_113248.jpg"]];
+    // $coffee = //[["title" => "Arabica", "priceHarga" => 170000, "gambar" => "20230826_112807.jpg",], ["title" => "Robusta
+    //", "priceHarga" => 110000, "gambar" => "20230826_113248.jpg"]];
     return view(
-        'shop', ["title"=> "Kopi", "Shop"=> Product::all()]
+        'shop',
+        ["title" => "Kopi", "Shop" => Product::all()]
         //["Kopi" => $coffee, "judul" => "Belanja"]
     );
 });
@@ -50,11 +52,17 @@ Route::get('/registration', function () {
     return view('registration');
 });
 Route::get('/userAdmin', function () {
-    return view('admin/userAdmin', ["title"=>"kopi", "users"=>User::all()]);
+    return view('admin/userAdmin', ["title" => "kopi", "users" => User::all()]);
+});
+Route::get('/userAdmin/createUser', function(){
+    return view('admin/user/createUser', ['user'=>User::All()]);
 });
 Route::get('/mainlogin', function () {
     return view('layout/mainlogin');
 });
+// Route::get('/login', function() {
+//     return view('layout/mainlogin', [LoginController::class]);
+// });
 Route::post('/mainlogin/registration', function () {
     return self::find();
 });
@@ -62,16 +70,24 @@ Route::get('/admin/admin', function () {
     return view('admin/admin');
 });
 Route::get('/order', function () {
-    return view('order');
+    return view('order', ["title"=> "kopi","pesanan" => Order::All()]);
 });
 Route::get('history', function () {
     return view('history');
 });
-Route::get('produk', function(){
-    return view('admin/produk', ["title"=>"kopi", "produk"=>Product::all()]);
+Route::get('produk', function () {
+    return view('admin/produk', ["title" => "kopi", "produk" => Product::all(), "tambah" => Product::all()]);
 });
-Route::get('orderAdmin', function(){
-    return view('admin/orderAdmin', ["title"=>"kopi", "pesanan"=>Order::all()]);
+Route::get('produk/tambah', function () {
+    return view('admin/createProduk', ["produk" => Product::all()]);
+});
+
+Route::post('produk/tambah', [ProductController::class, 'store']);
+Route::get('orderAdmin', function () {
+    return view('admin/orderAdmin', ["title" => "kopi", "pesanan" => Order::all()]);
+});
+Route::get('resipembayaran', function () {
+    return view('resipembayaran'); //,'OrderController@resipembayaran' )->name('resipembayaran');
 });
 //Route::Auth;
 // Route::get('/verification', function(){

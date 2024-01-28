@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use Symfony\Contracts\Service\Attribute\Required;
 
 class ProductController extends Controller
 {
@@ -22,6 +23,8 @@ class ProductController extends Controller
     public function create()
     {
         //
+        return view('admin.produk.tambah');
+        
     }
 
     /**
@@ -29,7 +32,18 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        //
+        // 
+        $validatedData = $request->validate(
+            ["nama_kopi"=> "required|string|max:255",
+             "harga"=>"required|numeric|min:0",
+             "gambar"=>"required|string|max",
+             "stock"=>"required|numeric|min:0"
+        ]);
+        if($request->file('gambar')){
+            $validatedData['gambar'] = $request->file('gambar')->store('Product');
+            
+        }
+        return redirect('/produk/tambah')->with('success', 'Produk kopi has been added.');
     }
 
     /**
@@ -38,6 +52,7 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         //
+        
     }
 
     /**

@@ -28,5 +28,12 @@ class UsersSeeder extends Seeder
             "phoneNumber"=>"02988474753",
             "status"=> "admin",
         ]);
+       User::create([
+        "username"=>"fajri",
+        "email"=>"fajri1234@gmail.com",
+        "password"=>"user43210",
+        "phoneNumber"=>"0928374675856",
+        "status"=>"user"
+       ]);
     }
 }

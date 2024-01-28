@@ -23,7 +23,7 @@
               <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="modalDetailLabel" alt=>{{ $kopiku->nama_kopi }}</h1>
+                    <h1 class="modal-title fs-5" id="modalDetailLabel" alt="kopi">{{ $kopiku->nama_kopi }}</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
@@ -43,7 +43,8 @@
         </div>
     @endforeach
     <div class="text-center mt-4">
-      <button class="btn btn-primary text-lg-center" onclick=><i class="fa-solid fa-cart-plus" style="color: #FFFFFF "></i> Tambah keranjang</button>
+      @csrf
+      <a type="button"class="btn btn-primary text-lg-center" href="{{ url('/resipembayaran') }}"><i class="fa-solid fa-cart-plus" style="color: #FFFFFF "></i> Tambah keranjang</a>
     </div>
   </div>
 

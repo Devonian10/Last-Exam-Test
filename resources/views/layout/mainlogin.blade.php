@@ -1,3 +1,4 @@
+@section('title', 'Login')
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,7 +27,8 @@
             <section class="login-box">
                 <div class="card border-info justify-content-center" style="border-radius: 4rem; width:45rem; ">
                 <h2 style="font-family: cursive">login Toraja Kawaa roastery</h2>
-                <form id="loginform" method="GET" action="">
+                <form id="loginform" method="post" action="">
+                    @csrf
                     <label for="username" style="font-family: 'Times New Roman', Times, serif">Username</label>
                     <br />
                     <input type="text" placeholder="Username" name="username" />
