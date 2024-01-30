@@ -12,7 +12,7 @@ class Registration extends Controller
     //
     public function index()
     {
-        return view('registration');
+        return view('registration', ["title"=>"registration","active"=> 'register']);
     }
     /**
      * Show the form for creating a new resource.

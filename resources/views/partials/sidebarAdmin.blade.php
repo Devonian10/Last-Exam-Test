@@ -15,6 +15,9 @@
             <li class="nav-item">
               <a class="nav-link text-white" href="{{ url('/produk') }}"><i class="fa-solid fa-store mr-2"></i> Produk</a><hr class="bg-secondary">
             </li>
+            <li class="nav-item">
+              <a href="{{ url('/mainlogin') }}" class="nav-link text-white"><i class="fa-solid fa-arrow-right-from-bracket mr-2"></i> Logout</a> <hr class="bg-secondary">
+            </li>
           </ul>
         </div>
         <div class="col-md-10 p-5 pt-2">

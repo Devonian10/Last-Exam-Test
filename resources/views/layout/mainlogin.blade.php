@@ -1,4 +1,5 @@
 @section('title', 'Login')
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,12 +23,22 @@
 
 <body>
     @include('partials.navbar')
+    @if (session()->has('success'))
+        
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+      </div>
+        
+    @endif
+        
+    
     <div class="row justify-content-md-center">
         <div class="col-xs-1 text-center">
             <section class="login-box">
                 <div class="card border-info justify-content-center" style="border-radius: 4rem; width:45rem; ">
                 <h2 style="font-family: cursive">login Toraja Kawaa roastery</h2>
-                <form id="loginform" method="post" action="">
+                <form id="loginform" method="post" action="{{ url('/mainlogin') }}">
                     @csrf
                     <label for="username" style="font-family: 'Times New Roman', Times, serif">Username</label>
                     <br />

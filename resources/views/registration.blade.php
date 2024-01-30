@@ -3,6 +3,9 @@
 @section('container')
 <div class="registration container mt-4" style="background-color: brown">
     <h2 class="judul2 text-center">Registration</h2>
+    @if ('success')
+        <div></div>
+    @endif
     <form action="{{ url('/registration') }}" method="post">
         @csrf
     <div class="row g-3">
@@ -19,6 +22,11 @@
             <label for="Email" class="form-label">Email</label>
             <input type="text" class="form-control @error('email') is-invalid @enderror" placeholder="Email" id="email" name="email"required>
         </div>
+        @error('email')
+            <div id="email" class="invalid-feedback">
+                {{ $message }}
+            </div>
+        @enderror
     </div>
     <br>
     <div class="row g-3">
@@ -26,10 +34,20 @@
             <label for="Password" class="form-label">Password</label>
             <input type="password" class="form-control @error ('password') is-invalid @enderror "id="password"name = "password" placeholder="Password" required>
         </div>
+        @error('password')
+            <div id="password" class="invalid-feedback">
+                {{ $message }}
+            </div>
+        @enderror
         <div class="col">
             <label for="Confirm Password" class="form-label">Confirm Password</label>
             <input type="password" class="form-control @error ('password') is-invalid @enderror"name ="Repeat Password" id="password"placeholder="Password" required>
         </div>
+        @error('password')
+            <div id="password" class="invalid-feedback">
+                {{ $message }}
+            </div>
+        @enderror
     </div>
     <div class="row g-3 mt-2">
         <div class="col">
@@ -41,7 +59,9 @@
             <a type="submit" class = "btn btn-primary align-items-center justify-content-center  mb-4 mx-5">back</a>
             <button type="submit" class="btn btn-primary align-items-center justify-content-center mb-4 mx-5" style="text-align: justify;">register</button>
         </div>
-        <small style="text-align: center;font-size:16pt;">Already Login? <a href="/mainlogin">Login</a></small>
+        <div class="text-center">
+        <small style="text-align: center;">Already Login? <a href="/mainlogin">Login</a></small>
+    </div>
     </form>
 </div>
 
