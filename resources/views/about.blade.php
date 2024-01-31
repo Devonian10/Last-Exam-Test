@@ -4,8 +4,8 @@
 @section('container')
     
 
-      <div class="col">
-        <div id="carouselPhotoFade" class="carousel slide carousel-fade text-center" style="width: 1000px;height:1000px">
+      <div class="col mb-2">
+        <div id="carouselPhotoFade" class="carousel slide carousel-fade text-center" style="width: auto; height:auto;">
           <div class="carousel-inner">
             <div class="carousel-item active">
               <img src="{{ asset('gambar/20230826_105056.jpg') }}" class="d-block w-100" alt="...">

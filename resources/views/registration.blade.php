@@ -41,7 +41,7 @@
         @enderror
         <div class="col">
             <label for="Confirm Password" class="form-label">Confirm Password</label>
-            <input type="password" class="form-control @error ('password') is-invalid @enderror"name ="Repeat Password" id="password"placeholder="Password" required>
+            <input type="password" class="form-control @error ('password') is-invalid @enderror"name ="password" id="password" placeholder="password" required>
         </div>
         @error('password')
             <div id="password" class="invalid-feedback">

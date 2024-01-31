@@ -4,7 +4,7 @@
 @section('Adminku')
     @section('columns')
     <div class="col-md-10 p-5 pt-2">
-        <i class="fa-solid fa-dashboard mr-2"> Dashboard</i><hr class="bg-secondary">
+        <h3><i class="fa-solid fa-dashboard mr-2"></i> Dashboard</h3><hr class="bg-secondary">
         <div class="row text-white">
             <div class ="card bg-grey mb-5 " style="width:18rem;">
                 <div class="card-body">

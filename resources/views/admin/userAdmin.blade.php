@@ -3,7 +3,7 @@
 @section('title', 'userAdmin')
 @section('Adminku')
 @section('columns')
-<h3>User</h3>
+<h3><i class="fa-solid fa-user mr-2"></i> User</h3>
 <a class="btn btn-primary" onclick="" href="{{ url('/userAdmin/createUser') }}"><i class="fa-solid fa-plus"></i> Tambah</a>
 <div class="container rounded-lg shadow p-3 bg-primary mt-3">
 <table class="table table-responsive table-dark table-striped-columns text-center ">

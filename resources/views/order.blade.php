@@ -23,8 +23,8 @@
             <td>Rp. {{ $order->Total_harga }}</td>
             <td>{{ $order->status }}</td>
             <td class="text-center">
+                <button type="submit" class="btn btn-warning" ><i class="fa-solid fa-image"></i> gambar</button>
                 <button type="submit" class="btn btn-primary" ><i class="fa-solid fa-pen"></i> Detail</button>
-                <div class="modal">
                 <button type="submit" class="btn btn-danger" ><i class="fa-solid fa-xmark"></i> Batal</button>
             </div>
             </td>

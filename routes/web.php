@@ -21,7 +21,12 @@ use App\Models\User;
 // Route::get('/', function () {
 //     return view('welcome');
 //     });
+
 Route::get('/', function () {
+
+    return view('home');
+});
+Route::get('/Home', function () {
 
     return view('home');
 });
@@ -51,6 +56,7 @@ Route::get('/admin', function () {
 Route::get('/registration', function () {
     return view('registration');
 });
+Route::post('/registration', ["users"=>User::all()]);
 Route::get('/userAdmin', function () {
     return view('admin/userAdmin', ["title" => "kopi", "users" => User::all()]);
 });
