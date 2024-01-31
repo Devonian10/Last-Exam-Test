@@ -4,7 +4,7 @@
 
 @section('Adminku')
 @section('columns')
-<h3>Create User</h3>
+<h3><i class="fa-solid fa-user-plus mr-2"></i> Create User</h3>
 <hr class="bg-primary">
     <form action="{{ url('/userAdmin/createUser') }}" method="POST">
         @csrf
@@ -19,15 +19,26 @@
             <label for="email" class="form-label">Email</label>
             <input type="text" class="form-control @error ('email') is-invalid @enderror"  id="email"placeholder="email" required>
         </div>
+        @error('email')
+            <div class="invalid-feedback"><span class="text-danger mt-3">{{ $message }}</span></div>    
+        @enderror
         <div class="mb-3">
-            
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control @error ('password') is-invalid @enderror"  id="password" placeholder="password" required>
         </div>
-        @error('gambar')
+        @error('password')
         <div class="invalid-feedback"><span class="text-danger mt-3">{{ $message }}</span></div>
         @enderror
         <div class="mb-3">
-            <button class="btn btn-primary">Create</button>
-            <button class="btn btn-danger"><a href="/produk"></a>Cancel</button>
+            <label for="Phone Number" class="form-label">Phone Number</label>
+            <input type="text" class="form-control"  id="Phone Number" placeholder="Phone Number" required>
+        </div>
+        {{-- @error('phone')
+        <div class="invalid-feedback"><span class="text-danger mt-3">{{ $message }}</span></div>
+        @enderror --}}
+        <div class="mb-3">
+            <button class="btn btn-primary" type="submit">Create</button>
+            <a class="btn btn-danger" href="{{ url('/userAdmin') }}"> Cancel</a>
         </div>
         
     </form>

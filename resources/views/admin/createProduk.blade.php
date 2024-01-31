@@ -3,7 +3,7 @@
 @section('title', 'produk')
 @section('Adminku')
 @section('columns')
-<h3>Create Produk</h3>
+<h3><i class="fa-solid fa-store mr-2"></i> Create Produk</h3>
 
 <hr class="bg-primary">
     <form action="{{ url('/produk/tambah') }}" method="POST">
@@ -22,7 +22,7 @@
         <div class="mb-3">
             <label for="name_kopi" class="form-label">Gambar</label>
             <input type="file" class="form-control @error ('gambar') is-invalid @enderror"  id="gambar" placeholder="Gambar" required >
-            <img src= "assets('assets/gambar')"alt="">
+            <img src= "{{ assets('assets/gambar') }}"alt="">
         </div>
         @error('gambar')
         <div class="invalid-feedback">{{ $message }}</div>

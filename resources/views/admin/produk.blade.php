@@ -4,7 +4,7 @@
 
 @section('Adminku')
 @section('columns')
-<h3>Produk</h3>
+<h3><i class="fa-solid fa-store mr-2"></i> Produk</h3>
 <a href="{{ url('produk/tambah') }}" class="btn btn-primary" ><i class="fa-solid fa-plus mr-2"></i> Create Product</a>
     <div class="container rounded-lg shadow p-4 bg-primary mt-4">
         <table class="table table-dark table-striped-columns text-center">
