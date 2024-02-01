@@ -11,7 +11,7 @@ $year = "";
 
 @section('Adminku')
 @section('columns')
-<h3>Orders</h3>
+<h3><i class="fa-solid fa-address-card mr-2"></i> Orders</h3>
 <button class="btn btn-primary"><i class="fa-solid fa-plus"></i> Tambah</button>
     <div class="container rounded-lg shadow p-3 bg-primary mt-4">
         <table class="table table-info text-center">

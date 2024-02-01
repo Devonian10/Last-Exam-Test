@@ -1,6 +1,6 @@
 <nav>
-    <div class="row no-gutters mt-1">
-        <div class="col-md-2 bg-dark mt-2 pr-3 pt-4">
+    <div class="row no-gutters ">
+        <div class="col-md-2 bg-dark pr-3 pt-4">
         {{-- <ul class="nav flex-column bg-dark navbar-admin"> --}}
         <ul class="nav flex-column navbar-admin ml-4 mb-5" style>
             <li class="nav-item">
