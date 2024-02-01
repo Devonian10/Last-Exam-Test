@@ -46,6 +46,9 @@ Route::get('/shop', function () {
         //["Kopi" => $coffee, "judul" => "Belanja"]
     );
 });
+Route::get('/resipembayaran', function(){
+
+});
 /* Route::get('/shop/{title}', function(){
     return view('shop',["title"=> Shop::find()]);
 }); */

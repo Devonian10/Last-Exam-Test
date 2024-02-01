@@ -35,13 +35,13 @@ $year = "";
                 <td class="text-center">
                     <button class="btn btn-warning" alt="Edit" data-bs-toggle="modal" data-bs-target="#modalEdit"><i class="fa-solid fa-pen mr-2"></i></button>
                     <button class="btn btn-primary" alt="imageModal" data-bs-toggle="modal" data-bs-target="#modalImage"><i class="fa-solid fa-image mr-2"></i></button>
-                    <button class="btn btn-danger" alt=""><i class="fa-solid fa-close mr-2"></i></button>
+                    <button class="btn btn-danger" alt="DeleteModal" data-bs-toggle="modal" data-bs-target="#modalDelete"><i class="fa-solid fa-close mr-2"></i></button>
                 </td>
             </tr>
             @endforeach
         </table>
     </div>
-    <!-- Modal untuk Edit--->
+    <!-- Modal untuk EditOrder--->
     
     <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="modalEditLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -51,7 +51,7 @@ $year = "";
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form action="">
+              <form action="" method="get">
 
               </form>
             </div>
@@ -62,7 +62,9 @@ $year = "";
           </div>
         </div>
       </div>
-      <!--- End Modal EditKopi ---->
+      <!--- End Modal EditKopi Order---->
+
+      <!-- Start Modal Bukti Pembayaran OrderKopi--->
       <div class="modal fade" id="modalImage" tabindex="-1" aria-labelledby="modalImageLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
@@ -76,6 +78,29 @@ $year = "";
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
               <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- --->
+      <!-- Start Modal DeleteOrder --->
+      <div class="modal fade" id="modalDelete" tabindex="-1" aria-labelledby="modalDeleteLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="modalDeleteLabel"> User batal Pemesanan </h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              @csrf
+              <form action="{{ "" }}" method="get">
+              <label for="Alasan Cancel">Alasan Cancel</label>
+              <input type="text" class="form-control @error ('Alasan_Cancel') is-invalid @enderror ">
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+              
             </div>
           </div>
         </div>

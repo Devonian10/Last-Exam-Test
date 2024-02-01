@@ -1,6 +1,7 @@
 .topnav {
     background-color: rgb(234, 243, 109);
     overflow: hidden;
+    padding: 2px;
 }
 .topnav img {
     float: inline-start;

@@ -31,10 +31,8 @@
             </tr>
         @endforeach
         </table>
-        <!-- Modal Edit Kopi --->
-        <div class="modal">
-            
-        </div>
+        <!-- Modal Delete Kopi --->
+        
     
 
 @endsection

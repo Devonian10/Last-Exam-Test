@@ -22,7 +22,7 @@
         <div class="mb-3">
             <label for="name_kopi" class="form-label">Gambar</label>
             <input type="file" class="form-control @error ('gambar') is-invalid @enderror"  id="gambar" placeholder="Gambar" required >
-            <img src= "{{ assets('assets/gambar') }}"alt="">
+            <img src= "{{ asset('assets/gambar') }}"alt="">
         </div>
         @error('gambar')
         <div class="invalid-feedback">{{ $message }}</div>

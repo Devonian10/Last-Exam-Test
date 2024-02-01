@@ -11,7 +11,7 @@
     <div class="row g-3">
     <div class="col text-center ">
             <label for="Username" class="form-label">Username</label>
-            <input type="text" class="form-control @error ('username') is-invalid @enderror" id="username" placeholder="Username" name="username" required>
+            <input type="text" class="form-control @error ('username') is-invalid @enderror" id="username" placeholder="Username" name="username" value="old('username')" required>
         </div>
         @error('username')
             <div id="username" class="invalid-feedback">

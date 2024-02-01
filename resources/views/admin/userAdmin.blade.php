@@ -13,7 +13,7 @@
         <th>No</th>
         <th>Nama</th>
         <th>Email</th>
-        <th>Password</th>
+       
         <th>Phone Number</th>
         <th>Status</th>
         <th>Aksi</th>
@@ -24,7 +24,7 @@
         <td>{{ $user->id }}</td>
         <td>{{ $user->username }}</td>
         <td>{{ $user->email }}</td>
-        <td>{{ $user->password }}</td>
+      
         <td>{{ $user->phoneNumber }}</td>
         <td>{{ $user->status }}</td>
         <td class="ml-2"><button type="submit"class="btn btn-primary"><i class="fa-solid fa-pen"></i></button><button type="submit"class="btn btn-danger"><i class="fa-solid fa-xmark"></i></button></td>

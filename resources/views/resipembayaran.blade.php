@@ -33,17 +33,17 @@
             <div class="row">
             <div class="col-50 g-4">
             <label for="Dipesan Oleh" class="form-label labelku">Dipesan oleh</label>
-            <input type="text" class="">
+            <input type="text" class="form-control" value="{{ $user->$usersname }}">
         </div>
             <div class="col-50 g-4">
             <label for="Alamat Pengiriman" class="form-label labelku">Alamat pengiriman</label>
-            <input type="text" class="">
+            <input type="text" class="form-control">
         </div>
             <div class="col-100 g-4">
             <label for="metode pembayaran" class="form-label">Metode Pembayaran</label>
             <select name="Metode" id="metode">
                 <option selected>Pilih metode pembayaran...</option>
-                <option value="Qris Code"></option>
+                
                 <option value="Manual"></option>
             </select>
             <input type="text" required>
@@ -54,8 +54,6 @@
             <a href="#" class="btn btn-success">Konfirmasi</a>
         </div>
         </form>
-        <div class="row">
-            
-        </div>
+        
     </body>
 @endsection

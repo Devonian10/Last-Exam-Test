@@ -1,6 +1,6 @@
 <nav>
     <div class="topnav">
-        <img src="{{  asset('gambar/299385752_397934109147635_7327667729942218094_n4.jpg')}}" style="width:100px; height:60px;display:flex;" class="left"/>
+        <img src="{{  asset('gambar/299385752_397934109147635_7327667729942218094_n.jpg')}}" style="width:60px; height:60px;display:flex;border-radius:9999px " class="left"/>
         <a href="/Home" class="">Home</a>
         <a href="{{ url('/shop') }}">Shop</a>
         <a href="{{ url('/order') }}">Order</a>
