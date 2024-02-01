@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\LoginController;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
@@ -59,7 +61,9 @@ Route::get('/admin', function () {
 Route::get('/registration', function () {
     return view('registration');
 });
-Route::post('/registration', ["users"=>User::all()]);
+
+Route::post('/registration', [RegistrationController::class, 'store'])->name('registration.store');
+
 Route::get('/userAdmin', function () {
     return view('admin/userAdmin', ["title" => "kopi", "users" => User::all()]);
 });
@@ -69,12 +73,10 @@ Route::get('/userAdmin/createUser', function(){
 Route::get('/mainlogin', function () {
     return view('layout/mainlogin');
 });
-// Route::get('/login', function() {
-//     return view('layout/mainlogin', [LoginController::class]);
-// });
-Route::post('/mainlogin/registration', function () {
-    return self::find();
-});
+
+Route::post('/authentication', [LoginController::class, 'authenticate'])->name('registration.authenticate');
+Route::get('/logout', [LoginController::class, 'logout'])->name('registration.logout');
+
 Route::get('/admin/admin', function () {
     return view('admin/admin');
 });

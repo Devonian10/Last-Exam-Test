@@ -6,12 +6,12 @@
     @if ('success')
         <div></div>
     @endif
-    <form action="{{ url('/registration') }}" method="post">
+    <form action="{{ route('registration.store') }}" method="post">
         @csrf
     <div class="row g-3">
     <div class="col text-center ">
             <label for="Username" class="form-label">Username</label>
-            <input type="text" class="form-control @error ('username') is-invalid @enderror" id="username" placeholder="Username" name="username" value="old('username')" required>
+            <input type="text" class="form-control @error ('username') is-invalid @enderror" id="username" placeholder="Username" name="username" required>
         </div>
         @error('username')
             <div id="username" class="invalid-feedback">
@@ -41,7 +41,7 @@
         @enderror
         <div class="col">
             <label for="Confirm Password" class="form-label">Confirm Password</label>
-            <input type="password" class="form-control @error ('password') is-invalid @enderror"name ="password" id="password" placeholder="password" required>
+            <input type="password" class="form-control @error ('password') is-invalid @enderror"name ="password_confirmation" id="password" placeholder="password" required>
         </div>
         @error('password')
             <div id="password" class="invalid-feedback">
@@ -52,7 +52,7 @@
     <div class="row g-3 mt-2">
         <div class="col">
             <label for="Phone number" class="form-label">Phone Number</label>
-            <input type="text" class="form-control " name = "Phone Number" placeholder="Phone Number" style="width:536.5px">
+            <input type="text" class="form-control " name = "phone_number" placeholder="Phone Number" style="width:536.5px">
         </div>
     </div>
         <div class="text-center mt-5 button-registration">

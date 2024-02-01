@@ -6,7 +6,12 @@
         <a href="{{ url('/order') }}">Order</a>
         <a href="{{ url('/history') }}">History</a>
         <a href="{{ url('/about') }}">About Us</a>
+        @if(!Auth::check())
         <a href="{{ url('/mainlogin') }}" class="right">login</a>
         <a href="{{ url('/registration') }}" class="right">Signup</a>
+        @else
+        <a href="{{ route('registration.logout') }}" class="right">Logout</a>
+        <a class="right">Welcome, {{ Auth::user()->username }}</a>
+        @endif
     </div>
 </nav>
