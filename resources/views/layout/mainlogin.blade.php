@@ -31,6 +31,15 @@
       </div>
         
     @endif
+
+    @if (session()->has('loginError'))
+        
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ session('loginError') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+      </div>
+        
+    @endif
         
     
     <div class="row justify-content-md-center">
@@ -38,7 +47,7 @@
             <section class="login-box">
                 <div class="card border-info justify-content-center" style="border-radius: 4rem; width:45rem; ">
                 <h2 style="font-family: cursive">login Toraja Kawaa roastery</h2>
-                <form id="loginform" method="post" action="{{ url('/mainlogin') }}">
+                <form id="loginform" method="post" action="{{ route('registration.authenticate') }}">
                     @csrf
                     <label for="username" style="font-family: 'Times New Roman', Times, serif">Username</label>
                     <br />
@@ -53,14 +62,12 @@
                     <label for="confirmPassword" placeholder="Confirm Password" name="Confirm Password"></label>
                     <br>
                     <br />
-                    <a href="{{ url('/login') }}"></a>
                     <button type="submit" class="btn btn-success" value="Login">
                         Login
                     </button>
-                    <a href="{{ url('/registration') }}">
-                        <button type="submit" class="btn btn-warning" value="Signup" style="right: 50%">
-                            Sign up
-                        </button></a>
+                    <a type="button" href="{{ route('registration') }}" class="btn btn-warning" value="Signup" style="right: 50%">
+                        Sign up
+                    </a>
                 </form>
             </section>
         </div>

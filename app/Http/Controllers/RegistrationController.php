@@ -7,7 +7,7 @@ use App\Http\Requests\UpdateRegistrationRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
-class Registration extends Controller
+class RegistrationController extends Controller
 {
     //
     public function index()
@@ -28,15 +28,20 @@ class Registration extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            //"name"=>"required|max:255",
             "username" => "required|string|max:255|unique:users",
             "email" => "required|email|unique:users",
-            "password" => "required|string|min:5|max:255",
-            "stock" => "required|numeric|min:0"
+            "password" => "required|confirmed|string|min:5|max:255",
+            "phone_number" => "required|numeric|min:10",
         ]);
-        $validatedData['password'] = Hash::make($validatedData['password']);
         
-        User::create($validatedData);
+        $user = new User();
+        $user->username = $validatedData['username'];
+        $user->email = $validatedData['email'];
+        $user->password = Hash::make($validatedData['password']);
+        $user->is_admin = "user";  
+        $user->phoneNumber = $validatedData['phone_number'];
+        $user->status = "user";
+        $user->save();
         
         return redirect('/mainlogin')->with('success', 'Registration has been successfully, please login on website !');
     }
