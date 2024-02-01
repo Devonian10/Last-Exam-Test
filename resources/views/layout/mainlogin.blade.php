@@ -62,14 +62,12 @@
                     <label for="confirmPassword" placeholder="Confirm Password" name="Confirm Password"></label>
                     <br>
                     <br />
-                    <a href="{{ url('/login') }}"></a>
                     <button type="submit" class="btn btn-success" value="Login">
                         Login
                     </button>
-                    <a href="{{ url('/registration') }}">
-                        <button type="submit" class="btn btn-warning" value="Signup" style="right: 50%">
-                            Sign up
-                        </button></a>
+                    <a type="button" href="{{ route('registration') }}" class="btn btn-warning" value="Signup" style="right: 50%">
+                        Sign up
+                    </a>
                 </form>
             </section>
         </div>

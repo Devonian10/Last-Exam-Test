@@ -2,6 +2,16 @@
 @section('title', 'Registration')
 @section('container')
 <div class="registration container mt-4" style="background-color: brown">
+    @if($errors->any())
+    <div class="alert alert-danger alert-dismissible fade show mt-1" role="alert">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+    </div>
+    @endif
     <h2 class="judul2 text-center">Registration</h2>
     @if ('success')
         <div></div>

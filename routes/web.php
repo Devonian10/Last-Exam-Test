@@ -60,7 +60,7 @@ Route::get('/admin', function () {
 
 Route::get('/registration', function () {
     return view('registration');
-});
+})->name('registration');
 
 Route::post('/registration', [RegistrationController::class, 'store'])->name('registration.store');
 
