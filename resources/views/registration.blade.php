@@ -66,7 +66,7 @@
         </div>
     </div>
         <div class="text-center mt-5 button-registration">
-            <a type="submit" class = "btn btn-primary align-items-center justify-content-center  mb-4 mx-5">back</a>
+            <a href="{{ url('/') }}" type="submit" class = "btn btn-primary align-items-center justify-content-center  mb-4 mx-5">back</a>
             <button type="submit" class="btn btn-primary align-items-center justify-content-center mb-4 mx-5" style="text-align: justify;">register</button>
         </div>
         <div class="text-center">

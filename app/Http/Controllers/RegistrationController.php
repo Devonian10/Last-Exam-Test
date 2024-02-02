@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\UpdateRegistrationRequest;
+use App\Http\Requests\RegistrationRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -49,7 +50,7 @@ class RegistrationController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Registration $registration)
+    public function show(Request $request)
     {
         //
     }
@@ -57,7 +58,7 @@ class RegistrationController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Registration $registration)
+    public function edit(Request $request)
     {
         //
     }
@@ -73,7 +74,7 @@ class RegistrationController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Registration $registration)
+    public function destroy(Request $request)
     {
         //
     }

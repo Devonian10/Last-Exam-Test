@@ -23,9 +23,9 @@
             <td>Rp. {{ $order->Total_harga }}</td>
             <td>{{ $order->status }}</td>
             <td class="text-center">
-                <button type="submit" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalImages"><i class="fa-solid fa-image"></i> gambar</button>
+                <button type="submit" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalBuktiPembayaran"><i class="fa-solid fa-image"></i> Gambar</button>
                 <button type="submit" class="btn btn-primary" ><i class="fa-solid fa-pen"></i> Detail</button>
-                <button type="submit" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalDelete"><i class="fa-solid fa-xmark"></i> Batal</button>
+                <button type="submit" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalBatal"><i class="fa-solid fa-xmark"></i> Batal</button>
             </div>
             </td>
         </tr>
@@ -33,12 +33,36 @@
         {{-- @foreach ($collection as $item)
             
         @endforeach --}}
-        
-        <div class="modal fade" id="modalDelete" tabindex="-1" aria-labelledby="modalDeleteLabel" aria-hidden="true">
+        <!-- Modal Batal --->
+        <div class="modal fade" id="modalBatal" tabindex="-1" aria-labelledby="modalBatalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="modalDeleteLabel"> Batal Pemesanan </h1>
+                  <h1 class="modal-title fs-5" id="modalBatalLabel"> Batal Pemesanan </h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  @csrf
+                  <form action="{{ "" }}" method="post">
+                  <label for="Alasan Cancel">Alasan Cancel</label>
+                  <input type="text" class="form-control @error ('Alasan_Cancel') is-invalid @enderror">
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Modal End Batal--->
+
+          <!-- Modal --->
+          <div class="modal fade" id="modalBatal" tabindex="-1" aria-labelledby="modalBuktiPembayaranLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="modalBuktiPembayaranLabel"> Batal Pemesanan </h1>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">

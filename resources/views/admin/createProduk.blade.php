@@ -5,8 +5,11 @@
 @section('columns')
 <h3><i class="fa-solid fa-store mr-2"></i> Create Produk</h3>
 
+@if ('success')
+        <div></div>
+@endif
 <hr class="bg-primary">
-    <form action="{{ url('/produk/tambah') }}" method="POST">
+    <form action="{{ route('product.store') }}" method="POST">
         @csrf
         <div class="mb-3">
             <label for="name_kopi" class="form-label">Nama Kopi</label>
@@ -22,7 +25,7 @@
         <div class="mb-3">
             <label for="name_kopi" class="form-label">Gambar</label>
             <input type="file" class="form-control @error ('gambar') is-invalid @enderror"  id="gambar" placeholder="Gambar" required >
-            <img src= "{{ asset('assets/gambar') }}"alt="">
+            <img alt="">
         </div>
         @error('gambar')
         <div class="invalid-feedback">{{ $message }}</div>
@@ -35,8 +38,8 @@
         <div class="invalid-feedback">{{ $message }}</div>
         @enderror
         <div class="mb-3">
-            <button class="btn btn-primary">Create</button>
-            <button class="btn btn-danger"><a href="/produk"></a>Cancel</button>
+            <button class="btn btn-primary" type="submit">Create</button>
+            <button class="btn btn-danger"><a href="/produk">Cancel</a></button>
         </div>
         
     </form>

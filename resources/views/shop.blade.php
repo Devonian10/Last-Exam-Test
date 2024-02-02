@@ -47,5 +47,18 @@
       <a type="button"class="btn btn-primary text-lg-center" href="{{ url('/resipembayaran') }}"><i class="fa-solid fa-cart-plus" style="color: #FFFFFF "></i> Tambah keranjang</a>
     </div>
   </div>
+<script src="{{ asset('js/script2.js') }}">
+//function totalClick(click) {
+//const totalClicks =document.getElementById('totalClicks');
+//const sumvalue = parseInt(totalClicks.innerText)+click;
+//console.log(sumvalue + click);
+//totalClicks.innerText = sumvalue;
 
+//if (sumvalue < 0){
+//    totalClicks.innerText=0;
+//} if (click === 0){
+//    totalClicks.innerText=0
+//}
+//}
+</script>
 @endsection

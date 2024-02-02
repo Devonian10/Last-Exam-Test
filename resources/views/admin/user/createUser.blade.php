@@ -10,28 +10,28 @@
         @csrf
         <div class="mb-3">
             <label for="name_kopi" class="form-label">Username</label>
-            <input type="text" class="form-control @error ('username') is-invalid @enderror" id="username" placeholder="username" required>
+            <input type="text" class="form-control @error ('username') is-invalid @enderror" id="username" placeholder="username">
         </div>
         @error('username')
             <div class="invalid-feedback"><span class="text-danger mt-3">{{ $message }}</span></div>    
         @enderror
         <div class="mb-3">
             <label for="email" class="form-label">Email</label>
-            <input type="text" class="form-control @error ('email') is-invalid @enderror"  id="email"placeholder="email" required>
+            <input type="text" class="form-control @error ('email') is-invalid @enderror"  id="email"placeholder="email">
         </div>
         @error('email')
             <div class="invalid-feedback"><span class="text-danger mt-3">{{ $message }}</span></div>    
         @enderror
         <div class="mb-3">
             <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control @error ('password') is-invalid @enderror"  id="password" placeholder="password" required>
+            <input type="password" class="form-control @error ('password') is-invalid @enderror"  id="password" placeholder="password" >
         </div>
         @error('password')
         <div class="invalid-feedback"><span class="text-danger mt-3">{{ $message }}</span></div>
         @enderror
         <div class="mb-3">
             <label for="Phone Number" class="form-label">Phone Number</label>
-            <input type="text" class="form-control"  id="Phone Number" placeholder="Phone Number" required>
+            <input type="text" class="form-control"  id="Phone Number" placeholder="Phone Number">
         </div>
         {{-- @error('phone')
         <div class="invalid-feedback"><span class="text-danger mt-3">{{ $message }}</span></div>

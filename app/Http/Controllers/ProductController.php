@@ -15,6 +15,7 @@ class ProductController extends Controller
     public function index()
     {
         //
+        return view('product', ['title'=>'produk', 'active'=>'create']);
     }
 
     /**
@@ -23,7 +24,7 @@ class ProductController extends Controller
     public function create()
     {
         //
-        return view('admin.produk.tambah');
+        //return view('admin.produk.tambah');
         
     }
 
@@ -36,13 +37,21 @@ class ProductController extends Controller
         $validatedData = $request->validate(
             ["nama_kopi"=> "required|string|max:255",
              "harga"=>"required|numeric|min:0",
-             "gambar"=>"required|string|max",
+             //"gambar"=>"required|string|mimes:jpg,jpeg,png|max:255",
+             "gambar"=>"required|mimes:jpg,jpeg,png|max:255",
              "stock"=>"required|numeric|min:0"
         ]);
         if($request->file('gambar')){
             $validatedData['gambar'] = $request->file('gambar')->store('Product');
             
         }
+        $product= new Product();
+        $product->nama_kopi = $validatedData['nama_kopi'];
+        $product->harga = $validatedData['harga'];
+        $product->gambar = $validatedData['gambar'];
+        $product->stock = $validatedData['stock'];
+        $product->save();
+       
         return redirect('/produk/tambah')->with('success', 'Produk kopi has been added.');
     }
 

@@ -68,8 +68,9 @@ Route::get('/userAdmin', function () {
     return view('admin/userAdmin', ["title" => "kopi", "users" => User::all()]);
 });
 Route::get('/userAdmin/createUser', function(){
-    return view('admin/user/createUser', ['user'=>User::All()]);
+    return view('admin/user/createUser');//, ['user'=>User::All()]);
 });
+Route::post('/userAdmin/createUser', [RegistrationController::class, 'store'])->name('registration.store');
 Route::get('/mainlogin', function () {
     return view('layout/mainlogin');
 });
@@ -93,7 +94,7 @@ Route::get('produk/tambah', function () {
     return view('admin/createProduk', ["produk" => Product::all()]);
 });
 
-Route::post('produk/tambah', [ProductController::class, 'store']);
+Route::post('produk/tambah', [ProductController::class, 'store'])->name('product.store');
 Route::get('orderAdmin', function () {
     return view('admin/orderAdmin', ["title" => "kopi", "pesanan" => Order::all()]);
 });
