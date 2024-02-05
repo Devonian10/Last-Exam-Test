@@ -21,6 +21,7 @@ class ProductSeeder extends Seeder
             "stock"=> 0,
             "status"=> "public",
             
+            
         ]);
         Product::create([
             "nama_kopi"=>"Robusta",

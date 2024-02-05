@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\OrderController;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
@@ -26,11 +27,11 @@ use App\Models\User;
 
 Route::get('/', function () {
 
-    return view('home');
+    return view('home',["title"=>"Home","Shop"=> Product::all()]);
 });
-Route::get('/Home', function () {
+Route::get('/home', function () {
 
-    return view('home');
+    return view('home', ["title"=>"Home","Shop"=> Product::all()]);
 });
 Route::get('/about', function () {
 
@@ -74,7 +75,9 @@ Route::post('/userAdmin/createUser', [RegistrationController::class, 'store'])->
 Route::get('/mainlogin', function () {
     return view('layout/mainlogin');
 });
-
+Route::get('/profile', function () {
+    return view('profile');
+});
 Route::post('/authentication', [LoginController::class, 'authenticate'])->name('registration.authenticate');
 Route::get('/logout', [LoginController::class, 'logout'])->name('registration.logout');
 
@@ -84,10 +87,11 @@ Route::get('/admin/admin', function () {
 Route::get('/order', function () {
     return view('order', ["title"=> "kopi","pesanan" => Order::All()]);
 });
-Route::get('history', function () {
+Route::post('/order',[OrderController::class, 'store'])->name('orders');
+Route::get('/history', function () {
     return view('history');
 });
-Route::get('produk', function () {
+Route::get('/produk', function () {
     return view('admin/produk', ["title" => "kopi", "produk" => Product::all(), "tambah" => Product::all()]);
 });
 Route::get('produk/tambah', function () {

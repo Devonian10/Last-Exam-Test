@@ -14,6 +14,7 @@ class OrderController extends Controller
     public function index()
     {
         //
+        return view('order', ['title'=>'order', 'active'=>'order']);
     }
 
     /**
@@ -30,6 +31,13 @@ class OrderController extends Controller
     public function store(StoreOrderRequest $request)
     {
         //
+        $validatedData = $request->validate(
+            ["bukti_pembayaran"=>"required|images|file|max:1024"             
+        ]);
+        if($request->file('gambar')){
+            $validatedData['gambar'] = $request->file('gambar')->store('bukti_pembayaran');
+            
+        } return redirect('/order')->with('success', 'Bukti Pembayaran has sent to admin !');
     }
 
     /**

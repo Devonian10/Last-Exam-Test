@@ -13,18 +13,18 @@
         @csrf
         <div class="mb-3">
             <label for="name_kopi" class="form-label">Nama Kopi</label>
-            <input type="text" class="form-control @error('nama_kopi') is-invalid @enderror"  id="nama_kopi"placeholder="nama_kopi" required>
+            <input type="text" class="form-control @error('nama_kopi') is-invalid @enderror"  id="nama_kopi"placeholder="nama_kopi" >
         </div>
         @error('nama_kopi')
             <div class="invalid-feedback">{{ $message }}</div>    
         @enderror
         <div class="mb-3">
             <label for="name_kopi" class="form-label">Harga</label>
-            <input type="text" class="form-control @error ('harga')is-invalid @enderror" id="harga" placeholder="harga" required>
+            <input type="text" class="form-control @error ('harga')is-invalid @enderror" id="harga" placeholder="harga" >
         </div>
         <div class="mb-3">
             <label for="name_kopi" class="form-label">Gambar</label>
-            <input type="file" class="form-control @error ('gambar') is-invalid @enderror"  id="gambar" placeholder="Gambar" required >
+            <input type="file" class="form-control @error ('gambar') is-invalid @enderror"  id="gambar" placeholder="Gambar" >
             <img alt="">
         </div>
         @error('gambar')
@@ -39,7 +39,7 @@
         @enderror
         <div class="mb-3">
             <button class="btn btn-primary" type="submit">Create</button>
-            <button class="btn btn-danger"><a href="/produk">Cancel</a></button>
+            <a class="btn btn-danger" href="{{ url('/produk') }}">Cancel</a>
         </div>
         
     </form>

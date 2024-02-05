@@ -3,7 +3,7 @@
 @section('container')
 <div class="registration container mt-4" style="background-color: brown">
     @if($errors->any())
-    <div class="alert alert-danger alert-dismissible fade show mt-1" role="alert">
+    <div class="alert alert-danger alert-dismissible fade show mt-4 pt-2" role="alert">
         <ul>
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
@@ -12,7 +12,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
     </div>
     @endif
-    <h2 class="judul2 text-center">Registration</h2>
+    <h2 class="judul2 text-center pt-2">Registration</h2>
     @if ('success')
         <div></div>
     @endif
@@ -70,7 +70,7 @@
             <button type="submit" class="btn btn-primary align-items-center justify-content-center mb-4 mx-5" style="text-align: justify;">register</button>
         </div>
         <div class="text-center">
-        <small style="text-align: center;">Already Login? <a href="/mainlogin">Login</a></small>
+        <small style="text-align: center;color:antiquewhite">Already Login? <a href="/mainlogin">Login</a></small>
     </div>
     </form>
 </div>

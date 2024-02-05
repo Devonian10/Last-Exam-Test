@@ -17,7 +17,8 @@ return new class extends Migration
             $table->foreignId("users_id");
             $table->foreignId("product_id");
             $table->double("Total_harga");
-            // $table->string("bukti pembayaran");
+            $table->string("bukti_pembayaran")->nullable();
+            //$table->string("keterangan")->nullable();
             $table->enum("status", ["pending","cancel", "success"])->default("pending");
             $table->string("Alasan_cancel")->nullable();
             $table->timestamps();

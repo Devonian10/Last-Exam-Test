@@ -57,7 +57,7 @@
                 text-align: justify;
                 font-family: 'Times New Roman', Times, serif;">Password</label>
                     <br />
-                    <input type="text" placeholder="Password" name="password" />
+                    <input type="password" placeholder="Password" name="password" />
                     <br />
                     <label for="confirmPassword" placeholder="Confirm Password" name="Confirm Password"></label>
                     <br>

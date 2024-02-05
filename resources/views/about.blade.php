@@ -2,16 +2,16 @@
 @section('title', 'About Us')
 
 @section('container')
-    
+    <h1 class="text-center">About us</h1>
 
       <div class="col mb-2">
-        <div id="carouselPhotoFade" class="carousel slide carousel-fade text-center" style="width: auto; height:auto;">
+        <div id="carouselPhotoFade" class="carousel slide carousel-fade text-center" style="width: 100%; ">
           <div class="carousel-inner">
             <div class="carousel-item active">
               <img src="{{ asset('gambar/20230826_105056.jpg') }}" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-              <img src="{{ asset('gambar/20230826_111142.jpg') }}" class="d-block w-100" alt="...">
+              <img src="{{ asset('gambar/20230826_111142.jpg') }}" class="d-block w-100"  alt="...">
             </div>
             <div class="carousel-item">
               <img src="{{ asset('gambar/20230826_115807.jpg') }}" class="d-block w-100" alt="...">
@@ -40,7 +40,9 @@
           {{-- </div> --}}
           
           </div>
-
+          <div class="row">
+            <div class="card"></div>
+          </div>
     </div>
     
       @endsection

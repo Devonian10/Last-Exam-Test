@@ -21,6 +21,7 @@ $year = "";
                 <th>Jenis kopi</th>
                 <th>Total harga</th>
                 <th>tanggal</th>
+                <th>Bukti Pembayaran</th>
                 <th>Status</th>
                 <th>aksi</th>
             </tr>
@@ -31,6 +32,7 @@ $year = "";
                 <td>{{ $order->product->nama_kopi }}</td>
                 <td>Rp. {{ $order->Total_harga }}</td>
                 <td><?php echo date(DATE_RFC2822)?></td>
+                <td><img src={{ $order->bukti_pembayaran }} alt="Bukti Pembayaran"></td>
                 <td>{{ $order->status }}</td>
                 <td class="text-center">
                     <button class="btn btn-warning" alt="Edit" data-bs-toggle="modal" data-bs-target="#modalEdit"><i class="fa-solid fa-pen mr-2"></i></button>

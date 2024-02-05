@@ -12,8 +12,8 @@
           <div class="card-body">
             <p class="card-text text-center">Rp.{{ $kopiku->harga }}</p>
             <p class="card-text text-center">
-              <button class="btn btn-primary" onclick="totalClick(-1)"><i class="fa-solid fa-minus"></i></button>
-              <span class="btn btn-primary" id="totalClicks">0</span>
+              <button class="btn btn-primary " onclick="totalClick(-1)"><i class="fa-solid fa-minus"></i></button>
+              <span class="btn btn-primary" id="totalClicks" value="0">0</span>
               <button class = "btn btn-primary" onclick="totalClick(1)"><i class="fa-solid fa-plus"></i></button>
             </p>
             <p class="card-text text-center"onclick=""><button type="button"class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalDetail"><i class="fa-solid fa-magnifying-glass mr-2"> </i> Detail</button></p>

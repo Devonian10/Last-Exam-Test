@@ -10,3 +10,4 @@ function totalClick(click) {
         totalClicks.innerText=0
     }
 }
+

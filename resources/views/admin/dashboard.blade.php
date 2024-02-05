@@ -11,7 +11,7 @@
                     <div class="card-body-icon bg-red">
                     <i class="fa-solid fa-cart-shopping ml-2 i-dashboard-icon"></i></div>
                     <h5 class="card-title">Product</h5>
-                    <div class="dispaly-4">10000</div>
+                    <div class="display-4">10000</div>
                     <div class="card-text"><a href="{{ url('produk') }}">Lihat Detail</a></div>
                 </div>
             </div>
@@ -20,7 +20,7 @@
                     <div class="card-body-icon bg-blue">
                     <i class="fa-solid fa-user ml-2 i-dashboard-icon"></i></div>
                     <h5 class="card-title">Users</h5>
-                    <div class="dispaly-4">10000</div>
+                    <div class="display-4"></div>
                     <div class="card-text"><a href="{{ url('userAdmin') }}">Lihat Detail</a></div>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                     <div class="card-body-icon bg-green">
                     <i class="fa-solid fa-cart-shopping ml-2 i-dashboard-icon "></i></div>
                     <h5 class="card-title">Order</h5>
-                    <div class="dispaly-4">10000</div>
+                    <div class="display-4">10000</div>
                     <div class="card-text"><a href="{{ url('orderAdmin') }}">Lihat Detail</a></div>
                 </div>
             </div>

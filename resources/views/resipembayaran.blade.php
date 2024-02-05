@@ -30,21 +30,23 @@
     <div class="bg-primary sale-nota">
         <form action="resipembayaran.php" method="post">
             @csrf
+            
             <div class="row">
-            <div class="col-50 g-4">
+            <div class="col-5 g-4">
             <label for="Dipesan Oleh" class="form-label labelku">Dipesan oleh</label>
-            <input type="text" class="form-control" value="{{ $user->$usersname }}">
+            <input type="text" class="form-control" value="">
         </div>
-            <div class="col-50 g-4">
+            <div class="col-5 g-4">
             <label for="Alamat Pengiriman" class="form-label labelku">Alamat pengiriman</label>
             <input type="text" class="form-control">
         </div>
-            <div class="col-100 g-4">
+            <div class="col-5 g-4">
             <label for="metode pembayaran" class="form-label">Metode Pembayaran</label>
             <select name="Metode" id="metode">
                 <option selected>Pilih metode pembayaran...</option>
                 
-                <option value="Manual"></option>
+                <option value="Manual">Manual</option>
+                
             </select>
             <input type="text" required>
             </div>
