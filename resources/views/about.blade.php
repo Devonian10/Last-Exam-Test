@@ -26,7 +26,7 @@
             <span class="visually-hidden">Next</span>
           </button>
         </div>
-          <div class="embed-responsive embed-responsive-21by9 text-center">
+          <div class="embed-responsive embed-responsive-21by9 text-center mt-4 pt-2 pb-2">
           {{-- <div class="google-maps justify-content-center">
              --}}
             <iframe
@@ -40,9 +40,30 @@
           {{-- </div> --}}
           
           </div>
-          <div class="row">
-            <div class="card"></div>
+          <div class="row mt-4 row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+            <div class="card border-primary ml-2 text-center" style="width: 18rem">
+              
+              <div class="card-header pt-4 pb-4" style="font-weight: bold;font-size:16pt;">Facebook</div>
+              <div class="card-body">
+                <i class="fa-brands fa-facebook fa-2xl mb-2"style="color:#0045bd;"></i>
+               <p class="card-text mt-2 pt-2">Toraja kawaa roastery</p>
+                <a href="https://web.facebook.com/kawaaroastery/?locale=tl_PH&_rdc=1&_rdr" class="btn btn-primary">Go Link</a>
+              </div>
+            </div>
           </div>
+          <div class="col">
+            <div class="card border-danger ml-2 text-center" style="width: 18rem">
+              
+              <div class="card-header pt-4 pb-4" style="font-weight: bold;font-size:16pt;">Instagram</div>
+              <div class="card-body">
+                <i class="fa-brands fa-instagram fa-2xl mb-2"style="color:#f09433;"></i>
+               <p class="card-text mt-2 pt-2">Toraja kawaa roastery</p>
+                <a href="#" class="btn btn-primary">Go Link</a>
+              </div>
+            </div>
+          </div>
+        </div>
     </div>
     
       @endsection
