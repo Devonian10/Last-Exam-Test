@@ -5,7 +5,7 @@
 <h3>Create Produk</h3>
 
 <hr class="bg-primary">
-    <form action="{{ route('') }}" method="POST">
+    <form action="{{ route('product.store') }}" method="POST">
         @csrf
         <div class="mb-3">
             <label for="name_kopi" class="form-label">Nama Kopi</label>

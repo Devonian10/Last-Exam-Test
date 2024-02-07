@@ -7,6 +7,7 @@ use App\Http\Controllers\OrderController;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
+
 use App\Models\Shop;
 use App\Models\User;
 
@@ -27,11 +28,11 @@ use App\Models\User;
 
 Route::get('/', function () {
 
-    return view('home',["title"=>"Home","Shop"=> Product::all()]);
+    return view('home', ["title" => "Home", "Shop" => Product::all()]);
 });
 Route::get('/home', function () {
 
-    return view('home', ["title"=>"Home","Shop"=> Product::all()]);
+    return view('home', ["title" => "Home", "Shop" => Product::all()]);
 });
 Route::get('/about', function () {
 
@@ -49,8 +50,7 @@ Route::get('/shop', function () {
         //["Kopi" => $coffee, "judul" => "Belanja"]
     );
 });
-Route::get('/resipembayaran', function(){
-
+Route::get('/resipembayaran', function () {
 });
 /* Route::get('/shop/{title}', function(){
     return view('shop',["title"=> Shop::find()]);
@@ -68,13 +68,17 @@ Route::post('/registration', [RegistrationController::class, 'store'])->name('re
 Route::get('/userAdmin', function () {
     return view('admin/userAdmin', ["title" => "kopi", "users" => User::all()]);
 });
-Route::get('/userAdmin/createUser', function(){
-    return view('admin/user/createUser');//, ['user'=>User::All()]);
+Route::get('/userAdmin/createUser', function () {
+    return view('admin/user/createUser'); //, ['user'=>User::All()]);
 });
-Route::post('/userAdmin/createUser', [RegistrationController::class, 'store'])->name('registration.store');
+Route::get('/userAdmin/editUser', function () {
+    return view('admin/user/editUser'); //, ['user'=>User::All()]);
+});
+Route::post('/userAdmin/createUser', [RegistrationController::class, 'store'])->name('admin.userAdmin.store');
 Route::get('/mainlogin', function () {
     return view('layout/mainlogin');
 });
+Route::delete('/userAdmin/{id}', [RegistrationController::class, 'destroy'])->name('registration.destroy');
 Route::get('/profile', function () {
     return view('profile');
 });
@@ -85,9 +89,9 @@ Route::get('/admin/admin', function () {
     return view('admin/admin');
 });
 Route::get('/order', function () {
-    return view('order', ["title"=> "kopi","pesanan" => Order::All()]);
+    return view('order', ["title" => "kopi", "pesanan" => Order::All()]);
 });
-Route::post('/order',[OrderController::class, 'store'])->name('orders');
+Route::post('/order', [OrderController::class, 'store'])->name('orders');
 Route::get('/history', function () {
     return view('history');
 });

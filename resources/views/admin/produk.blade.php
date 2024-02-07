@@ -27,7 +27,7 @@
                 <td>{{ $barang->stock }}</td>
                 <td>{{ $barang->status }}</td>
                 <td><button class="btn btn-primary" onclick="" alt="Edit Kopi" data-bs-toggle="modal" data-bs-target="modalEditKopi"><i class="fa-solid fa-pen mr-2"></i></button>
-                    <button class="btn btn-danger" onclick="" alt="Delete Kopi" data-bs-toggle="modal" data-bs-target="modalDeleteKopi"><i class="fa-solid fa-trash mr-2"></i></button></td>
+                    <button class="btn btn-danger" onclick="return confirm('Are you sure Delete produ')" alt="Delete Kopi"><i class="fa-solid fa-trash mr-2"></i></button></td>
             </tr>
         @endforeach
         </table>

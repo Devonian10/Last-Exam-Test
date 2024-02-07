@@ -38,7 +38,7 @@ class ProductController extends Controller
             ["nama_kopi"=> "required|string|max:255",
              "harga"=>"required|numeric|min:0",
              //"gambar"=>"required|string|mimes:jpg,jpeg,png|max:255",
-             "gambar"=>"required|images|file|max:255",
+             "gambar"=>"required|images|file|max:1024",
              "stock"=>"required|numeric|min:0"
         ]);
         if($request->file('gambar')){
