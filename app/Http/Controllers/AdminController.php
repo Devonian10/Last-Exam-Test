@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Closure;
@@ -13,9 +15,14 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //
-        return view('admin/dashboard', ['title' => 'dashboard', 'active' => 'admin']);
+        $productCount = Product::count();
+        $userCount = User::count() - 1;
+        $orderCount = Order::count();
+
+        return view('admin/dashboard', ['title' => 'dashboard', 'active' => 'admin', 'productCount' => $productCount, 'userCount' => $userCount, 'orderCount' => $orderCount]);
     }
+
+
 
     /**
      * Show the form for creating a new resource.

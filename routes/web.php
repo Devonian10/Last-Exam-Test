@@ -31,6 +31,16 @@ Route::get('/', function () {
 
     return view('home', ["title" => "Home", "Shop" => Product::all()]);
 });
+
+// Route::get('/admin', function () {
+//     return view('admin/dashboard', ['title' => 'dashboard', 'active' => 'admin', 'produk' => Product::count()]);
+// });
+
+Route::get('/admin', [AdminController::class, 'index']);
+Route::get('/admin/admin', function () {
+    return view('admin/admin');
+});
+
 Route::get('/home', function () {
 
     return view('home', ["title" => "Home", "Shop" => Product::all()]);
@@ -58,9 +68,9 @@ Route::get('/resipembayaran', function () {
 }); */
 Route::group(['middleware' => 'auth', 'admin'], function () {
 });
-Route::get('/admin', function () {
-    return view('admin/dashboard', [LoginController::class, 'index']);
-});
+
+
+
 Route::post('/authentication', [LoginController::class, 'authenticate'])->name('admin.dashboard.authenticate');
 
 Route::get('/registration', function () {
@@ -89,7 +99,7 @@ Route::get('/profile', function () {
 Route::post('/authentication', [LoginController::class, 'authenticate'])->name('registration.authenticate');
 Route::get('/logout', [LoginController::class, 'logout'])->name('registration.logout');
 
-Route::get('/admin', function () {
+Route::get('/admin/admin', function () {
     return view('admin/admin');
 });
 
