@@ -89,9 +89,10 @@ Route::get('/profile', function () {
 Route::post('/authentication', [LoginController::class, 'authenticate'])->name('registration.authenticate');
 Route::get('/logout', [LoginController::class, 'logout'])->name('registration.logout');
 
-Route::get('/admin/admin', function () {
+Route::get('/admin', function () {
     return view('admin/admin');
 });
+
 Route::get('/order', function () {
     return view('order', ["title" => "kopi", "pesanan" => Order::All()]);
 });

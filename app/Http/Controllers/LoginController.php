@@ -41,6 +41,10 @@ class LoginController extends Controller
             $request->session()->regenerate();
             $user = auth()->user();
 
+            // TODO: remove after middleware added
+            if ($user->username == 'admin') {
+                return redirect()->intended('/admin');
+            }
             return redirect()->intended('/');
         }
 
