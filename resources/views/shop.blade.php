@@ -4,7 +4,7 @@
 
 <h2 style=" text-align:center;" class="mt-3">Shopping List</h2>
 <div class="container row justify-content-center mt-4" >
-  @foreach ($Shop as $kopiku)
+@foreach ($Shop as $index => $kopiku)
       <div class="row" style="width:18rem;" >
         <div class="card card border-success h-100">
           <div class="card-header bg-transparent border-success" style="text-align: center;font-size: 20px;" ><strong>{{ $kopiku->nama_kopi }}</strong></div>
@@ -12,9 +12,9 @@
           <div class="card-body">
             <p class="card-text text-center">Rp.{{ $kopiku->harga }}</p>
             <p class="card-text text-center">
-              <button class="btn btn-primary " onclick="totalClick(-1)"><i class="fa-solid fa-minus"></i></button>
-              <span class="btn btn-primary" id="totalClicks" value="0">0</span>
-              <button class = "btn btn-primary" onclick="totalClick(1)"><i class="fa-solid fa-plus"></i></button>
+              <button class="btn btn-primary " onclick="totalClick({{$index}}, -1)"><i class="fa-solid fa-minus"></i></button>
+              <span class="btn btn-primary" id="totalClicks{{ $index }}" value="0">0</span>
+              <button class = "btn btn-primary" onclick="totalClick({{$index}}, 1)"><i class="fa-solid fa-plus"></i></button>
             </p>
             <p class="card-text text-center"onclick=""><button type="button"class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalDetail"><i class="fa-solid fa-magnifying-glass mr-2"> </i> Detail</button></p>
             <!-- Modal Detail Button Shop--->

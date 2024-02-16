@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\LoginController;
@@ -55,9 +56,12 @@ Route::get('/resipembayaran', function () {
 /* Route::get('/shop/{title}', function(){
     return view('shop',["title"=> Shop::find()]);
 }); */
-Route::get('/admin', function () {
-    return view('admin/dashboard');
+Route::group(['middleware' => 'auth', 'admin'], function () {
 });
+Route::get('/admin', function () {
+    return view('admin/dashboard', [LoginController::class, 'index']);
+});
+Route::post('/authentication', [LoginController::class, 'authenticate'])->name('admin.dashboard.authenticate');
 
 Route::get('/registration', function () {
     return view('registration');
@@ -109,6 +113,7 @@ Route::get('orderAdmin', function () {
 Route::get('resipembayaran', function () {
     return view('resipembayaran'); //,'OrderController@resipembayaran' )->name('resipembayaran');
 });
+
 //Route::Auth;
 // Route::get('/verification', function(){
 //     return view('shop', if ($user === ) {

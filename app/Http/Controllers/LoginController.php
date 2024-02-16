@@ -2,18 +2,35 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use Closure;
+use GuzzleHttp\Psr7\Response;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Contracts\Auth\Guard;
 //use Auth;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
+    protected $redirectTo = 'admin';
+
     public function index()
     {
         return view('layout/mainlogin');
+        return view('admin/dashboard', ['title' => 'dashboard', 'active' => 'admin']);
     }
+    public function handle(Request $request, Closure $next): Response
+    {
+        if (auth()->check() && auth()->user()->username === 'admin') {
+            return $next($request)->redirect('admin/dashboard')->with('success', 'You logged admin');
+        }
+        //User::handle($next);
+        abort(403, 'Unauthorized action.');
 
-    public function authenticate(Request $request)
+        return redirect('admin')->with('success', 'You logged admin');
+    }
+    public function authenticate(Request $request): RedirectResponse
     {
         $credentials = $request->validate([
             'username' => ['required'],
@@ -25,10 +42,17 @@ class LoginController extends Controller
             $user = auth()->user();
 
             return redirect()->intended('/');
-
         }
 
         return back()->with('loginError', 'Your username or password is incorrect!');
+        if (Auth::guard('admin')->attempt($credentials)) {
+            $request->session()->regenerate();
+            $user = auth()->user();
+
+            return redirect()->intended('/admin');
+        }
+        //if (Auth::attempt($))
+
     }
 
     public function logout(Request $request)
@@ -39,5 +63,4 @@ class LoginController extends Controller
 
         return redirect('/')->with('logout', 'You have been logged out!');
     }
-
 }

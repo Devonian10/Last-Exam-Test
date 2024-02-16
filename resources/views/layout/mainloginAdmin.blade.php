@@ -22,7 +22,7 @@
 </head>
 
 <body>
-    {{-- @include('partials.navbar') --}}
+    @include('partials.navbar')
     @if (session()->has('success'))
         
     <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -31,7 +31,7 @@
       </div>
         
     @endif
-
+      
     @if (session()->has('loginError'))
         
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -47,7 +47,7 @@
             <section class="login-box"style="align-items: center; justify-content:center;display:flex;width:100%;">
                 <div class="card border-info justify-content-center" style="border-radius: 4rem; width:45rem; ">
                 <h2 style="font-family: cursive">login Toraja Kawaa roastery</h2>
-                <form id="loginform" method="post" action="{{ route('registration.authenticate') }}">
+                <form id="loginform" method="post" action="{{ route('admin.login') }}">
                     @csrf
                     <label for="username" style="font-family: 'Times New Roman', Times, serif">Username</label>
                     <br />

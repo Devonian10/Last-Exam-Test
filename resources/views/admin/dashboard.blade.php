@@ -3,6 +3,13 @@
 
 @section('Adminku')
     @section('columns')
+    @if (session()->has('success'))
+        
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+    </div>
+    @endif
     <div class="row p-5 pt-2">
         <h3><i class="fa-solid fa-dashboard mr-2"></i> Dashboard</h3><hr class="bg-secondary">
         <div class="row gy-4 text-white">

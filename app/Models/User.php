@@ -28,7 +28,8 @@ class User extends Authenticatable
         'username',
         'email',
         'password',
-        'phoneNumber'
+        'phoneNumber',
+        'is_admin'
     ];
     // protected $guarded=[''];
     /**
@@ -51,4 +52,5 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
     
+
 }
