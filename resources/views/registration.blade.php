@@ -166,7 +166,7 @@
 
                     </div>
                     <div class="text-center">
-                        <small style="text-align: center;color:antiquewhite">Already Login? <a href="/mainlogin">Login</a></small>
+                        <small style="text-align: center;color:antiquewhite">Already Login? <a href="/login">Login</a></small>
                     </div>
                 </form>
             </div>

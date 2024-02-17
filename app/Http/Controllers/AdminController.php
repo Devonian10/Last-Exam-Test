@@ -31,16 +31,7 @@ class AdminController extends Controller
     {
         //
     }
-    public function handle($request, Closure $next)
-    {
-        if (auth()->check() && auth()->user()->is_admin === 'admin') {
-            return $next($request)->redirect('admin/dashboard')->with('success', 'You logged admin');
-        }
-        //User::handle($next);
-        abort(403, 'Unauthorized action.');
 
-        return redirect('admin')->with('success', 'You logged admin');
-    }
     /**
      * Store a newly created resource in storage.
      */

@@ -15,7 +15,6 @@ class RegistrationController extends Controller
     {
         return view('registration', ["title" => "registration", "active" => 'register']);
         return view('admin.userAdmin', ["title" => "userAdmin", "active" => 'users']);
-        
     }
     /**
      * Show the form for creating a new resource.
@@ -45,8 +44,8 @@ class RegistrationController extends Controller
         $user->phoneNumber = $validatedData['phone_number'];
         $user->status = "user";
         $user->save();
-        
-        return redirect('/mainlogin')->with('success', 'Registration has been successfully, please login on website !');
+
+        return redirect('/login')->with('success', 'Registration has been successfully, please login on website !');
         return redirect('/userAdmin')->with('success', 'User Has been Added .');
     }
 
@@ -95,9 +94,8 @@ class RegistrationController extends Controller
 
         if ($request) {
             //return response()->json(['message' => 'User has not found'], 404);
-        //return response()->json(['message' => 'User has been deleted']);->route('admin.userAdmin.index')->
-        return redirect('/userAdmin')->with('success', 'User has been deleted');
+            //return response()->json(['message' => 'User has been deleted']);->route('admin.userAdmin.index')->
+            return redirect('/userAdmin')->with('success', 'User has been deleted');
         }
-        
     }
 }

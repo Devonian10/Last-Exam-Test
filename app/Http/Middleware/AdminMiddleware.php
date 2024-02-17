@@ -16,15 +16,10 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check()) {
-            if (Auth::user()->username === 'admin') {
-                return redirect(url('/'));
-            } else {
-                return $next($request);
-            }
+        if (Auth::check() && Auth::user()->status === 'admin') {
+            return $next($request);
         } else {
-            Auth::logout();
-            return redirect(url('/'));
+            return redirect('/'); // atau alamat lain jika pengguna bukan admin
         }
     }
 }
