@@ -1,1 +1,4 @@
-const product = {"id":1, "name_kopi":"Arabica"}
+const gambar = document.querySelector("#gambar");
+const imgPreview = document.querySelector(".img-preview");
+
+imgPreview.style.display = "block";

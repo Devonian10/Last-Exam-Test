@@ -80,9 +80,9 @@
     </div>
     @endif
 
-    @if (session()->has('loginError'))
+    @if (session()->has('error'))
     <div class="alert alert-danger alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x" role="alert" style="z-index: 1000;">
-        {{ session('loginError') }}
+        {{ session('error') }}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
     </div>
     @endif

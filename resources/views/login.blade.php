@@ -80,9 +80,9 @@
     </div>
     @endif
 
-    @if (session()->has('loginError'))
+    @if (session()->has('error'))
     <div class="alert alert-danger alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x" role="alert" style="z-index: 1000;">
-        {{ session('loginError') }}
+        {{ session('error') }}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
     </div>
     @endif
@@ -90,7 +90,7 @@
     <div class="bg">
         <div class="black-overlay">
             <div class="content">
-                <div class="row justify-content-md-center" style="align-items: center; justify-content:center;display:flex;width:100%;height:85vh;">
+                <div class="row justify-content-md-center" style="align-items: center; justify-content:center;display:flex;width:100%;height:100vh;">
                     <div class="col-xs-1 text-center">
                         <section class="login-box" style="align-items: center; justify-content:center;display:flex;width:100%;">
                             <div class="card justify-content-center py-5 login-card" style="border-radius: 2rem; width:45rem; ">
@@ -102,11 +102,11 @@
                                 <h2 style="font-family: cursive; color: white" class="mb-4">Login Toraja Kawaa Roastery</h2>
                                 <form id="loginform" method="post" action="{{ route('registration.authenticate') }}">
                                     @csrf
-                                    <label for="username" style="color: white; font-family: 'Times New Roman', Times, serif">Username</label>
+                                    <label for="username" style="color: white;">Username</label>
                                     <br />
                                     <input type="text" placeholder="Username" name="username" />
                                     <br />
-                                    <label for="password" style="color: white; text-align: justify;font-family: 'Times New Roman', Times, serif; margin-top: 10px;">Password</label>
+                                    <label for="password" style="color: white; text-align: justify;">Password</label>
                                     <br />
                                     <input type="password" placeholder="Password" name="password" />
                                     <br />

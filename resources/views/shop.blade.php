@@ -16,19 +16,19 @@
               <span class="btn btn-primary" id="totalClicks{{ $index }}" value="0">0</span>
               <button class = "btn btn-primary" onclick="totalClick({{$index}}, 1)"><i class="fa-solid fa-plus"></i></button>
             </p>
-            <p class="card-text text-center"onclick=""><button type="button"class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalDetail"><i class="fa-solid fa-magnifying-glass mr-2"> </i> Detail</button></p>
+            <p class="card-text text-center"onclick=""><button type="button"class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalDetail{{ $index }}"><i class="fa-solid fa-magnifying-glass mr-2"> </i> Detail</button></p>
             <!-- Modal Detail Button Shop--->
            
-            <div class="modal fade" id="modalDetail" tabindex="-1" aria-labelledby="modalDetailLabel" aria-hidden="true">
+            <div class="modal fade" id="modalDetail{{ $index }}" tabindex="-1" aria-labelledby="modalDetailLabel" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="modalDetailLabel" alt="kopi">{{ $kopiku->nama_kopi }}</h1>
+                    <h1 class="modal-title fs-5" id="modalDetailLabel{{ $index }}" alt="kopi">{{ $kopiku->nama_kopi }}</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
                     {{-- <p class="modal-text">Stock in {{ $produk }}</p> --}}
-                    <p class="modal-text">Stock </p>
+                    <p class="modal-text">Stock {{ $kopiku->stock }}</p>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

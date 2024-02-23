@@ -5,44 +5,41 @@
 @section('columns')
 <h3><i class="fa-solid fa-store mr-2"></i> Create Produk</h3>
 
-@if ('success')
-<div></div>
-@endif
+@if (session()->has('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+    </div>
+    @endif
 <hr class="bg-primary">
-<form action="{{ url('/produk/tambah') }}" method="POST">
+
+<form action="{{ route('produk.store') }}" method="post" enctype="multipart/form-data">
     @csrf
     <div class="mb-3">
         <label for="name_kopi" class="form-label">Nama Kopi</label>
-        <input type="text" class="form-control @error('nama_kopi') is-invalid @enderror" id="nama_kopi" placeholder="nama_kopi">
+        <input type="text" class="form-control" name="nama_kopi" id="nama_kopi" placeholder="nama_kopi" required>
     </div>
-    @error('nama_kopi')
-    <div class="invalid-feedback">{{ $message }}</div>
-    @enderror
     <div class="mb-3">
         <label for="name_kopi" class="form-label">Harga</label>
-        <input type="text" class="form-control @error ('harga')is-invalid @enderror" id="harga" placeholder="harga">
+        <input type="number" class="form-control " name="harga"id="harga" placeholder="harga" required>
     </div>
     <div class="mb-3">
         <label for="name_kopi" class="form-label">Gambar</label>
         <img alt="">
-        <input type="file" class="form-control @error ('gambar') is-invalid @enderror" id="gambar" placeholder="Gambar">
-
+        <input type="file" class="form-control" id="gambar" placeholder="Gambar" required>
     </div>
-    @error('gambar')
-    <div class="invalid-feedback">{{ $message }}</div>
-    @enderror
     <div class="mb-3">
         <label for="stock" class="form-label">Stock</label>
-        <input type="text" class="form-control @error ('stock') is-invalid @enderror" id="stock" placeholder="stock">
+        <input type="text" class="form-control" name="stock" id="stock" placeholder="stock" required>
     </div>
-    @error('stock')
-    <div class="invalid-feedback">{{ $message }}</div>
-    @enderror
+    
+
     <div class="mb-3">
-        <button class="btn btn-primary" type="submit">Create</button>
+        <button class="btn btn-primary" type="submit" value="create">Create</button>
         <a class="btn btn-danger" href="{{ url('/produk') }}">Cancel</a>
     </div>
 
 </form>
+
 @endsection
 @endsection

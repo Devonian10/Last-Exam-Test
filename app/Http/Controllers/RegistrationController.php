@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\UpdateRegistrationRequest;
 use App\Http\Requests\RegistrationRequest;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -45,7 +46,7 @@ class RegistrationController extends Controller
         $user->status = "user";
         $user->save();
 
-        return redirect('/login')->with('success', 'Registration has been successfully, please login on website !');
+        return redirect('/login')->with('success', 'Registration has been successfully, please login on website!');
         return redirect('/userAdmin')->with('success', 'User Has been Added .');
     }
 
@@ -96,6 +97,14 @@ class RegistrationController extends Controller
             //return response()->json(['message' => 'User has not found'], 404);
             //return response()->json(['message' => 'User has been deleted']);->route('admin.userAdmin.index')->
             return redirect('/userAdmin')->with('success', 'User has been deleted');
+        }
+    }
+    public function destroyProduct(Request $request, $id){
+
+        Product::destroy($id);
+
+        if ($request) {
+            return redirect('/produk')->with('success', 'Product Has been deleted');
         }
     }
 }

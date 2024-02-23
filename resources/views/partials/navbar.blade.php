@@ -13,7 +13,7 @@
         <a href="{{ url('/registration') }}" class="right">Signup</a>
         @else
         <a href="{{ route('registration.logout') }}" class="right">Logout</a>
-        <a class="right">Welcome, {{ Auth::user()->username }}</a>
+        <a class="right" href="{{ url('/profile') }}">Welcome, {{ Auth::user()->username }}</a>
         @if(Auth::user()->status==='admin')
         <a href="{{ url('/admin') }}" class="right">Admin</a>
         @endif

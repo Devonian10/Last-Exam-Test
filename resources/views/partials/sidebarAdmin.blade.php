@@ -4,7 +4,7 @@
       {{-- <ul class="nav flex-column bg-dark navbar-admin"> --}}
       <ul class="nav flex-column navbar-admin ml-4 mb-5" style>
         <li class="nav-item">
-          <a class="nav-link text-white" aria-current="page" href="{{ url('/admin') }}"><i class="fa-solid fa-dashboard mr-2"></i> Dashboard</a>
+          <a class="nav-link text-white" aria-current="page" href="{{ route('admin.index') }}"><i class="fa-solid fa-dashboard mr-2"></i> Dashboard</a>
           <hr class="bg-secondary">
         </li>
         <li class="nav-item">
@@ -16,7 +16,7 @@
           <hr class="bg-secondary">
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" href="{{ url('/produk') }}"><i class="fa-solid fa-store mr-2"></i> Produk</a>
+          <a class="nav-link text-white" href="{{ route('produk.index') }}"><i class="fa-solid fa-store mr-2"></i> Produk</a>
           <hr class="bg-secondary">
         </li>
         <!-- <li class="nav-item">

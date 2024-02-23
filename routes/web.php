@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductController;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
@@ -91,7 +92,7 @@ Route::middleware(['guest'])->group(function () {
 
 // Admin route
 Route::middleware(['admin'])->group(function () {
-    Route::get('/admin', [AdminController::class, 'index']);
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
     Route::get('/userAdmin', function () {
         return view('admin/userAdmin', ["title" => "kopi", "users" => User::all()]);
     });
@@ -107,11 +108,16 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/orderAdmin', function () {
         return view('admin/orderAdmin', ["title" => "kopi", "pesanan" => Order::all()]);
     });
+    Route::get('/produk', [ProductController::class,'index'])->name('produk.index');
+    Route::get('/produk/create',  [ProductController::class, 'create'])->name('produk.create');
+    Route::post('/produk/store', [ProductController::class, 'store'])->name('produk.store');
+    Route::delete('/produk/{id}',[ProductController::class, 'destroy'])->name('produk.destroy');
 
-    Route::get('/produk', function () {
-        return view('admin/produk', ["title" => "kopi", "produk" => Product::all(), "tambah" => Product::all()]);
-    });
-    Route::get('/produk/tambah', function () {
-        return view('admin/createProduk', ["produk" => Product::all()]);
-    });
+    // Route::get('/produk', function () {
+    //     return view('admin/produk', ["title" => "kopi", "produk" => Product::all(), "tambah" => Product::all()]);
+    // })->name('produk.index');
+    // Route::resource('products', [ProductController::class]);
+    // Route::get('/produk/tambah', function () {
+    //     return view([ProductController::class, 'create'])->name('produk.create');
+    // });
 });

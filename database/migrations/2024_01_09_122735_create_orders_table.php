@@ -19,6 +19,7 @@ return new class extends Migration
             $table->double("Total_harga");
             $table->string("bukti_pembayaran")->nullable();
             //$table->string("keterangan")->nullable();
+            $table->string("Alamat_Pengiriman")->nullable();
             $table->enum("status", ["pending","cancel", "success"])->default("pending");
             $table->string("Alasan_cancel")->nullable();
             $table->timestamps();

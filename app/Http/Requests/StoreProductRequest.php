@@ -11,7 +11,7 @@ class StoreProductRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,8 +21,12 @@ class StoreProductRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            //
+        return ["nama_kopi" => "required|string|max:255",
+        "harga" => "required|numeric|min:0",
+        //"gambar"=>"required|string|mimes:jpg,jpeg,png|max:255",
+        "gambar" => "required|images|file|max:1024658",
+        "stock" => "required|numeric|min:0",
         ];
+        //
     }
 }

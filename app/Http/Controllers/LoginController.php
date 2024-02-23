@@ -47,8 +47,8 @@ class LoginController extends Controller
             }
             return redirect('/');
         }
-
-        return redirect('/')->with('error', 'You are not logged in!'); // Redirect ke halaman utama dengan pesan error jika pengguna belum login
+        // return back('/')->with('error', 'You Username and password is incorrect !');// Redirect ke halaman utama dengan pesan error jika pengguna username dan password salah
+        return redirect('/')->withErrors(['error', 'You are not logged in!'])->withInput(); // Redirect ke halaman utama dengan pesan error jika pengguna belum login
     }
 
     public function logout(Request $request)
