@@ -60,12 +60,11 @@ Route::middleware(['auth'])->group(function () {
         return view('history');
     });
 
-
-
     // Receipt
     Route::get('/resipembayaran', function () {
         return view('resipembayaran');
     });
+    Route::post('/resipembayaran', [OrderController::class, 'store'])->name('resipembayaran.store');
 });
 
 // Routes for guests (not logged in)

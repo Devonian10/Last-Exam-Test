@@ -15,5 +15,12 @@ class Order extends Model
     public function user(){
         return $this->belongsTo(User::class,"users_id");
     }
+    // public function alamat_pengiriman(){
+    //     return $this->belongsTo(User::class, "Alamat_pengiriman");
+    // }
+    // public function bukti_Pembayaran(){
+    //     return $this->belongsToMany(User::class, "bukti_pembayaran");
+    // }
+
    
 }

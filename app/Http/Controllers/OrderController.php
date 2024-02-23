@@ -31,8 +31,10 @@ class OrderController extends Controller
     public function store(StoreOrderRequest $request)
     {
         //
+        
         $validatedData = $request->validate(
-            ["bukti_pembayaran"=>"required|images|file|max:1024"             
+            ["bukti_pembayaran"=>"required|images|file|max:102443",
+            "Alamat_pengiriman"=>"required|string|max:255"             
         ]);
         if($request->file('gambar')){
             $validatedData['gambar'] = $request->file('gambar')->store('bukti_pembayaran');

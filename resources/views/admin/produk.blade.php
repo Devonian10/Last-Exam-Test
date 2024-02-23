@@ -6,9 +6,9 @@
 @section('columns')
 <h3><i class="fa-solid fa-store mr-2"></i> Produk</h3>
 <hr>
-@if (session()->has('success'))
+@if (Session::has('success'))
 <div class="alert alert-success alert-dismissible fade show" role="alert">
-    {{ session('success') }}
+    {{ Session::get('success') }}
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
 </div>
 @endif    

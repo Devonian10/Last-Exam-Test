@@ -28,7 +28,7 @@
 
 <h2 class="text-center">Bukti Pembayaran</h2>
     <div class="bg-primary sale-nota">
-        <form action="{{ route('orders') }}" method="post">
+        <form action="{{ route('resipembayaran.store') }}" method="post">
             @csrf
         <div class="row">
             <div class="col-5 g-4">
@@ -44,10 +44,8 @@
             </div>
             <div class="col-5 g-4">
                 <label for="metode pembayaran" class="form-label">Metode Pembayaran</label>
-                <img class="img-preview" alt="Bukti Pembayaran">
                 <br>
-                <label for="bukti_pembayaran" class="form-label">Bukti Pembayaran</label>
-                <input class="form-control @error ('bukti_pembayaran') is-invalid @enderror" type="file" id="#gambar" >
+                <button type="submit" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalBukti"><i class="fa-solid fa-image"></i> Gambar</button>
             </div>
             <div class="mb-3">
                 <table class="table table-dark table-striped">
@@ -79,6 +77,30 @@
             <a class="btn btn-danger" href="{{ url('/shop') }}">Kembali</a>
             <a href="#" class="btn btn-success" onclick="return confirm('Are you sure Fix add to cart!')">Konfirmasi</a>
         </div>
+        <div class="modal fade" id="modalBukti" tabindex="-1" aria-labelledby="modalBuktiLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="modalBuktiLabel"> Batal Pemesanan </h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div class="mb-3">
+                    <form action="{{ ('/') }}" method="post">
+                      @csrf
+                      <label for="formFile" class="form-label">Silahkan upload bukti transfer yang sudah tersedia di no rek xxxx-xxxx-xxxx-xxxx</label>
+                      <input class="form-control" type="file" id="formFile"><img>
+                    </form>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="reset" class="btn btn-warning" onclick="">Reset</button>
+                  <button type="submit" class="btn btn-primary">Kirim</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </form>
         
     </body>

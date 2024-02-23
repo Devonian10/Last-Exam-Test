@@ -12,9 +12,9 @@
           <div class="card-body">
             <p class="card-text text-center">Rp.{{ $kopiku->harga }}</p>
             <p class="card-text text-center">
-              <button class="btn btn-primary " onclick="totalClick({{$index}}, -1)"><i class="fa-solid fa-minus"></i></button>
+              <button class="btn btn-primary " onclick="totalClick({{$index}}, -1 , {{ $kopiku->stock }})"><i class="fa-solid fa-minus"></i></button>
               <span class="btn btn-primary" id="totalClicks{{ $index }}" value="0">0</span>
-              <button class = "btn btn-primary" onclick="totalClick({{$index}}, 1)"><i class="fa-solid fa-plus"></i></button>
+              <button class = "btn btn-primary" onclick="totalClick({{$index}}, 1, {{ $kopiku->stock }})"><i class="fa-solid fa-plus"></i></button>
             </p>
             <p class="card-text text-center"onclick=""><button type="button"class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalDetail{{ $index }}"><i class="fa-solid fa-magnifying-glass mr-2"> </i> Detail</button></p>
             <!-- Modal Detail Button Shop--->

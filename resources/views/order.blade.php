@@ -11,6 +11,7 @@
       <th>Nama</th>
       <th>jenis kopi</th>
       <th>Tanggal</th>
+      <th>Bukti Pembayaran</th>
       <th>Alamat Pengiriman</th>
       <th>Total harga</th>
       <th>Status</th>
@@ -23,6 +24,7 @@
       <td>{{ $order->user->username }}</td>
       <td>{{ $order->product->nama_kopi }}</td>
       <td><?php echo date(DATE_RFC2822) ?></td>
+      <td><img src={{ $order->bukti_pembayaran }} alt="Bukti Pembayaran"></td>
       <td>{{ $order->Alamat_pengiriman }}</td>
       <td>Rp. {{ $order->Total_harga }}</td>
       <td>{{ $order->status }}</td>
