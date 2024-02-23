@@ -35,6 +35,8 @@
                 <td>{{ $barang->status }}</td>
                 <td><button class="btn btn-primary" onclick="" alt="Edit Kopi" data-bs-toggle="modal" data-bs-target="modalEditKopi"><i class="fa-solid fa-pen mr-2"></i></button>
                     <form action="/produk/{{ $barang->id }}" method="POST">
+                        @method('delete')
+                        @csrf
                     <button class="btn btn-danger" onclick="return confirm('Are you sure Delete produk')" alt="Delete Kopi"><i class="fa-solid fa-trash mr-2"></i></button></td>
                 </form>
                 </tr>
