@@ -5,6 +5,7 @@ use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
@@ -95,22 +96,29 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/userAdmin', function () {
         return view('admin/userAdmin', ["title" => "kopi", "users" => User::all()]);
     });
-    Route::get('/userAdmin/createUser', function () {
-        return view('admin/user/createUser');
-    });
+    Route::post('/userAdmin/createUser', [UserController::class, 'create'])->name('users.create');
     Route::get('/userAdmin/editUser', function () {
         return view('admin/user/editUser');
     });
-    Route::post('/userAdmin/createUser', [RegistrationController::class, 'store'])->name('admin.userAdmin.store');
+    Route::get(
+        '/userAdmin/createUser',
+        function () {
+            return view('admin/user/createUser');
+        }
+    );
     Route::delete('/userAdmin/{id}', [RegistrationController::class, 'destroy'])->name('registration.destroy');
-
     Route::get('/orderAdmin', function () {
         return view('admin/orderAdmin', ["title" => "kopi", "pesanan" => Order::all()]);
     });
-    Route::get('/produk', [ProductController::class,'index'])->name('produk.index');
-    Route::get('/produk/create',  [ProductController::class, 'create'])->name('produk.create');
-    Route::post('/produk/store', [ProductController::class, 'store'])->name('produk.store');
-    Route::delete('/produk/{id}',[ProductController::class, 'destroy'])->name('produk.destroy');
+    Route::get('/produk', [ProductController::class, 'index'])->name('produk.index');
+    Route::get('/produk/create', function () {
+        return view('admin/createProduk');
+    });
+    Route::post('/produk/store',  [ProductController::class, 'store'])->name('produk.store');
+    Route::get('/produk/store', function () {
+        return view('admin/createProduk');
+    })->name('produk.create');
+    Route::delete('/produk/{id}', [ProductController::class, 'destroy'])->name('produk.destroy');
 
     // Route::get('/produk', function () {
     //     return view('admin/produk', ["title" => "kopi", "produk" => Product::all(), "tambah" => Product::all()]);

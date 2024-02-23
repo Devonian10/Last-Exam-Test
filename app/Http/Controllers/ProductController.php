@@ -8,10 +8,6 @@ use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Symfony\Contracts\Service\Attribute\Required;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Redirect;
-
 
 class ProductController extends Controller
 {
@@ -20,15 +16,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
         $produk = Product::all();
-
         return view('admin.produk', compact('produk'), ['title' => 'kopi', 'active' => 'create']);
-        //"produk" => Product::all(), "tambah" => Product::all(),
-        return view('admin.createProduk', ['title' => 'produk', 'active' => 'create']);
-        return view('admin.produk', compact(["title" => "kopi", "produk" => Product::all(), "tambah" => Product::all()]));
-
-        // ["title" => "kopi", "produk" => Product::all(), "tambah" => Product::all()]);
     }
 
     /**
@@ -37,41 +26,36 @@ class ProductController extends Controller
     public function create(): View
     {
         $produk = Product::all();
-        //
         return view('admin.createProduk', compact('produk'), ['title' => 'produk', 'active' => 'create']);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreProductRequest $request): RedirectResponse
+    public function store(Request $request)
     {
-        // 
+        $request->validate([
+            'nama_kopi' => 'required',
+            'harga' => 'required|numeric',
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Sesuaikan dengan kebutuhan validasi gambar
+            'stock' => 'required|numeric',
+        ]);
 
-        $validatedData = $request->validate(
-            [
-                "nama_kopi" => "required|string|max:255",
-                "harga" => "required|numeric|min:0",
-                //"gambar"=>"required|string|mimes:jpg,jpeg,png|max:255",
-                "gambar" => "required|images|file|max:1024658",
-                "stock" => "required|numeric|min:0"
-            ]
-        );
+        // Simpan gambar
+        $gambarName = time() . '.' . $request->gambar->extension();
+        $request->gambar->move(public_path('gambar'), $gambarName);
 
-        // if file name already exists 
+        // Buat produk baru
+        $produk = new Product();
+        $produk->nama_kopi = $request->nama_kopi;
+        $produk->harga = $request->harga;
+        $produk->gambar = asset("gambar/$gambarName");
+        $produk->stock = $request->stock;
+        $produk->save();
 
-        if ($request->file('gambar')) {
-            $validatedData['gambar'] = $request->file('gambar')->store('gambar');
-        }
-        $product = new Product();
-        $product->nama_kopi = $validatedData['nama_kopi'];
-        $product->harga = $validatedData['harga'];
-        $product->gambar = $validatedData['gambar'];
-        $product->stock = $validatedData['stock'];
-        $product->save();
-        Product::create($validatedData);
-        return redirect()->route('produk.index')->with('success', 'Produk kopi has been added.');
+        return redirect()->route('produk.index')->with('success', 'Produk berhasil dibuat.');
     }
+
 
     /**
      * Display the specified resource.
