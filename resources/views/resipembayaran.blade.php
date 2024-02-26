@@ -1,6 +1,6 @@
 @extends('layout.main')
 
-@section('title', 'resi pembayaran')
+@section('title', 'Keranjang list')
     <style>
         .sale-nota {
             display: flex;
@@ -26,7 +26,7 @@
 <body>
     
 
-<h2 class="text-center">Bukti Pembayaran</h2>
+<h2 class="text-center">Cart list</h2>
     <div class="bg-primary sale-nota">
         <form action="{{ route('resipembayaran.store') }}" method="post">
             @csrf
@@ -68,13 +68,12 @@
                         <th>Total</th>
                         <th>0</th>
                         <th>Rp. </th>
-
                     </tr>
                 </table>
               </div>
         </div>
         <div class="row-50 g-4 mb-4 justify-content-center text-center">
-            <a class="btn btn-danger" href="{{ url('/shop') }}">Kembali</a>
+            <a class="btn btn-danger" href="{{ route('shop.index') }}">Kembali</a>
             <a href="#" class="btn btn-success" onclick="return confirm('Are you sure Fix add to cart!')">Konfirmasi</a>
         </div>
         <div class="modal fade" id="modalBukti" tabindex="-1" aria-labelledby="modalBuktiLabel" aria-hidden="true">
@@ -86,7 +85,7 @@
                 </div>
                 <div class="modal-body">
                   <div class="mb-3">
-                    <form action="{{ ('/') }}" method="post">
+                    <form action="{{ route('resipembayaran.store') }}" method="post">
                       @csrf
                       <label for="formFile" class="form-label">Silahkan upload bukti transfer yang sudah tersedia di no rek xxxx-xxxx-xxxx-xxxx</label>
                       <input class="form-control" type="file" id="formFile"><img>

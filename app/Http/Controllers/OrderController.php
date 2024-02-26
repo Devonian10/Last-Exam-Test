@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
-
+use Illuminate\Http\Request;
 class OrderController extends Controller
 {
     /**
@@ -14,9 +14,13 @@ class OrderController extends Controller
     public function index()
     {
         //
-        return view('order', ['title'=>'order', 'active'=>'order']);
+        $pesanan = Order::All();
+        return view('order', compact('pesanan'), ["title" => "kopi"]);
     }
-
+    public function indexAdmin(){
+        $pesanan = Order::all();
+        return view('admin.orderAdmin', compact('pesanan'));
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -24,16 +28,16 @@ class OrderController extends Controller
     {
         //
     }
-
+    
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreOrderRequest $request)
+    public function store(Request $request)
     {
         //
         
         $validatedData = $request->validate(
-            ["bukti_pembayaran"=>"required|images|file|max:102443",
+            ["bukti_pembayaran"=>"required|images|file|max:2043",
             "Alamat_pengiriman"=>"required|string|max:255"             
         ]);
         if($request->file('gambar')){
@@ -71,6 +75,6 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        //
+        
     }
 }

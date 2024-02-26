@@ -11,7 +11,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
     </div>
     @endif
-<a class="btn btn-primary" onclick="" href="{{ url('/userAdmin/createUser') }}"><i class="fa-solid fa-plus"></i> Tambah</a>
+<a class="btn btn-primary" href="{{ route('users.create') }}"><i class="fa-solid fa-plus"></i> Tambah</a>
 <div class="container rounded-lg shadow p-3 bg-primary mt-3">
 <table class="table table-responsive table-dark table-striped-columns text-center ">
     {{-- @foreach
@@ -32,8 +32,9 @@
         <td>{{ $user->email }}</td>
         <td>{{ $user->phoneNumber }}</td>
         <td>{{ $user->status }}</td>
-        <td class="ml-2"><button type="submit"class="btn btn-primary" href="{{ url('/userAdmin/editUser') }}"><i class="fa-solid fa-pen"></i></button>
-            <form action="/userAdmin/{{$user->id}}" method="POST">
+        <td class="ml-2">
+            <a class="btn btn-warning" href="{{ route('users.update', ["id"=> $user->id]) }}"><i class="fa-solid fa-pen"></i></a>
+            <form action="{{ route('registration.destroy',["id"=>$user->id]) }}" method="POST">
                 @method('delete')
                 @csrf
             <button type="submit"class="btn btn-danger" onclick="return confirm('Are you sure delete this user?')"><i class="fa-solid fa-xmark"></i></button>

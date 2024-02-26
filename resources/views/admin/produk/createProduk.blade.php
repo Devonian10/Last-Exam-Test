@@ -31,7 +31,14 @@
         <label for="stock" class="form-label">Stock</label>
         <input type="text" class="form-control" name="stock" id="stock" placeholder="stock" required>
     </div>
-
+    <div class="mb-3">
+        <label for="stock" class="form-label">Status</label>
+        {{-- <input type="text" class="form-control" name="status" id="status" placeholder="status" required> --}}
+        <select name="status" class="form-control" id="status">
+            <option value="draft" @if( old('status')== 'draft') {{ $produk->status }} @endif>draft</option>
+            <option value="public"  @if( old('status')== 'public') {{ $produk->status }} @endif>public</option>
+        </select>
+    </div>
     <div class="mb-3">
         <button class="btn btn-primary" type="submit" name="action" value="create">Create</button>
         <a class="btn btn-danger" href="{{ url('/produk') }}">Cancel</a>

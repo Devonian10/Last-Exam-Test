@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\ShopCart;
 use Illuminate\Http\Request;
+use App\Models\Product;
+use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
 {
@@ -13,6 +15,9 @@ class CartController extends Controller
     public function index()
     {
         //
+        $ShopCount = Session::get('shop', []);
+        $Shop=Product::all();
+        return view('/shop', compact('Shop'));
     }
 
     /**
@@ -29,7 +34,7 @@ class CartController extends Controller
     public function store(Request $request)
     {
         //
-        
+        // $orders ;
     }
 
     /**
@@ -38,6 +43,7 @@ class CartController extends Controller
     public function show(ShopCart $shopCart)
     {
         //
+        
     }
 
     /**

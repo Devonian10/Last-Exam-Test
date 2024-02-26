@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CartController;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
@@ -37,9 +38,10 @@ Route::middleware(['auth'])->group(function () {
     });
 
     // Shop
-    Route::get('/shop', function () {
+    /*  Route::get('/shop', function () {
         return view('shop', ["title" => "Kopi", "Shop" => Product::all()]);
-    });
+    }); */
+    Route::get('/shop', [CartController::class, 'index'])->name('shop.index');
 
     // Authentication
     Route::post('/authentication', [LoginController::class, 'authenticate'])->name('admin.dashboard.authenticate');
@@ -51,10 +53,8 @@ Route::middleware(['auth'])->group(function () {
     });
 
     // Order
-    Route::get('/order', function () {
-        return view('order', ["title" => "kopi", "pesanan" => Order::All()]);
-    });
-    Route::post('/order', [OrderController::class, 'store'])->name('orders');
+    Route::get('/order', [OrderController::class, 'index'])->name('order.index');
+    Route::post('/order', [OrderController::class, 'store'])->name('order.store');
 
     // History
     Route::get('/history', function () {
@@ -93,33 +93,45 @@ Route::middleware(['guest'])->group(function () {
 // Admin route
 Route::middleware(['admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
-    Route::get('/userAdmin', function () {
-        return view('admin/userAdmin', ["title" => "kopi", "users" => User::all()]);
-    });
-    Route::post('/userAdmin/createUser', [UserController::class, 'create'])->name('users.create');
+    // Route::get('/userAdmin', function () {
+    //     return view('admin/userAdmin', ["title" => "kopi", "users" => User::all()]);
+    // });
+    //Admin User
+    Route::get('/userAdmin',[UserController::class,'index'])->name('userAdmin.index');
+    // Route::get('/userAdmin/createUser', function () {
+    //     return view('admin/user/createUser');
+    // });
+    Route::get('/userAdmin/createUser', [UserController::class, 'create'])->name('users.create');
+    Route::post('/userAdmin/createUser', [UserController::class, 'store'])->name('users.store');
     Route::get('/userAdmin/editUser', function () {
         return view('admin/user/editUser');
     });
-    Route::get(
-        '/userAdmin/createUser',
-        function () {
-            return view('admin/user/createUser');
-        }
-    );
+    Route::get('/userAdmin/{id}/editUser',[UserController::class, 'editAdmin'])->name('users.update');
+    Route::put('/userAdmin/{id}/editUser',[UserController::class, 'update'])->name('users.update');
     Route::delete('/userAdmin/{id}', [RegistrationController::class, 'destroy'])->name('registration.destroy');
-    Route::get('/orderAdmin', function () {
-        return view('admin/orderAdmin', ["title" => "kopi", "pesanan" => Order::all()]);
-    });
+    
+    //Order Admin
+    Route::get('/orderAdmin', [OrderController::class, 'indexAdmin'])->name('orderAdmin.indexAdmin');
+    Route::get('/transaksi');
+    // Route::get('/produk/create', function () {
+        //     return view('admin/createProduk');
+        // });
+        
     Route::get('/produk', [ProductController::class, 'index'])->name('produk.index');
-    Route::get('/produk/create', function () {
-        return view('admin/createProduk');
-    });
+    // Membuat Produk
     Route::post('/produk/store',  [ProductController::class, 'store'])->name('produk.store');
-    Route::get('/produk/store', function () {
-        return view('admin/createProduk');
-    })->name('produk.create');
-    Route::delete('/produk/{id}', [ProductController::class, 'destroy'])->name('produk.destroy');
+    Route::get('/produk/store',  [ProductController::class, 'create'])->name('produk.create');
+    // Route::get('/produk/store', function () {
+    //     return view('admin/createProduk');
+    // })->name('produk.create');
 
+    // Route::get('/produk/edit', function () {
+    //     return view('admin/editProduk')->name('produk.edit');
+    // });
+    Route::get('/produk/{id}/edit', [ProductController::class, 'edit'])->name('produk.update');
+    Route::put('/produk/{id}/edit', [ProductController::class, 'update'])->name('produk.update');
+    Route::delete('/produk/{id}', [ProductController::class, 'destroy'])->name('produk.destroy');
+    
     // Route::get('/produk', function () {
     //     return view('admin/produk', ["title" => "kopi", "produk" => Product::all(), "tambah" => Product::all()]);
     // })->name('produk.index');

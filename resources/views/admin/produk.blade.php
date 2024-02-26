@@ -34,8 +34,7 @@
             <td>{{ $barang->stock }}</td>
             <td>{{ $barang->status }}</td>
             <td>
-                <button class="btn btn-primary" onclick="" alt="Edit Kopi" data-bs-toggle="modal" data-bs-target="modalEditKopi"><i class="fa-solid fa-pen mr-2"></i></button>
-
+                    <a class="btn btn-warning" href="{{ route('produk.update', ['id' => $barang->id]) }}" alt="Edit Kopi" type="button"><i class="fa-solid fa-pen mr-2"></i></a>
                 <form action="{{ route('produk.destroy', $barang->id) }}" method="POST" style="display:inline;">
                     @csrf
                     @method('DELETE')

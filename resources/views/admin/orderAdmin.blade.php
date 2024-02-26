@@ -1,14 +1,7 @@
-<?php 
 
-$date= "";
-$month= "";
-$year = "";
-?>
 @extends('layout.mainAdmin')
 
 @section('title', 'Pesanan')
-    
-
 @section('Adminku')
 @section('columns')
 <h3><i class="fa-solid fa-address-card mr-2"></i> Orders</h3>
@@ -27,7 +20,7 @@ $year = "";
             </tr>
             @foreach($pesanan as $order)
             <tr>
-                <td>{{ $order->id }}</td>
+                <td>{{ $loop->iteration }}</td>
                 <td>{{ $order->user->username}}</td>
                 <td>{{ $order->product->nama_kopi }}</td>
                 <td>Rp. {{ $order->Total_harga }}</td>
@@ -35,8 +28,7 @@ $year = "";
                 <td><img src={{ $order->bukti_pembayaran }} alt="Bukti Pembayaran"></td>
                 <td>{{ $order->status }}</td>
                 <td class="text-center">
-                    <button class="btn btn-warning" alt="Edit" data-bs-toggle="modal" data-bs-target="#modalEdit"><i class="fa-solid fa-pen mr-2"></i></button>
-                    <button class="btn btn-primary" alt="imageModal" data-bs-toggle="modal" data-bs-target="#modalImage"><i class="fa-solid fa-image mr-2"></i></button>
+                  <a class="btn btn-warning" href="#" alt="Edit Kopi" type="button"><i class="fa-solid fa-pen mr-2"></i></a>       
                     <button class="btn btn-danger" alt="DeleteModal" data-bs-toggle="modal" data-bs-target="#modalDelete"><i class="fa-solid fa-close mr-2"></i></button>
                 </td>
             </tr>
@@ -45,7 +37,7 @@ $year = "";
     </div>
     <!-- Modal untuk EditOrder--->
     
-    <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="modalEditLabel" aria-hidden="true">
+    {{-- <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="modalEditLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
@@ -63,7 +55,7 @@ $year = "";
             </div>
           </div>
         </div>
-      </div>
+      </div> --}}
       <!--- End Modal EditKopi Order---->
 
       <!-- Start Modal Bukti Pembayaran OrderKopi--->

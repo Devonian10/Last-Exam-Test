@@ -64,6 +64,7 @@ class RegistrationController extends Controller
     public function edit(Request $request)
     {
         //
+        
     }
     public function update(Request $request, User $user)
     {

@@ -26,7 +26,7 @@ class ProductController extends Controller
     public function create(): View
     {
         $produk = Product::all();
-        return view('admin.createProduk', compact('produk'), ['title' => 'produk', 'active' => 'create']);
+        return view('admin.produk.createProduk', compact('produk'), ['title' => 'produk', 'active' => 'create']);
     }
 
     /**
@@ -37,7 +37,7 @@ class ProductController extends Controller
         $request->validate([
             'nama_kopi' => 'required',
             'harga' => 'required|numeric',
-            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Sesuaikan dengan kebutuhan validasi gambar
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:50432', // Sesuaikan dengan kebutuhan validasi gambar
             'stock' => 'required|numeric',
         ]);
 
@@ -51,6 +51,7 @@ class ProductController extends Controller
         $produk->harga = $request->harga;
         $produk->gambar = asset("gambar/$gambarName");
         $produk->stock = $request->stock;
+        $produk->status = $request->status;
         $produk->save();
 
         return redirect()->route('produk.index')->with('success', 'Produk berhasil dibuat.');
@@ -60,26 +61,36 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
+    public function show($id)
     {
         //
-
+        $produk = Product::findOrFail($id);
+        return view('resipembayaran', compact('produk'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Product $product)
+    public function edit(string $id) :View
     {
         //
+        $produk = Product::findOrFail($id);
+        return view('admin.produk.editProduk', compact('produk'), ['title' => 'kopi']);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProductRequest $request, Product $product)
+    public function update(Request $request, string $id) :RedirectResponse
     {
         //
+        $produk = Product::findOrFail($id);
+        $gambarName = time() . '.' . $request->gambar->extension();
+        $request->gambar->move(public_path('gambar'), $gambarName);
+        $produk->gambar = asset("gambar/$gambarName");
+        $produk->update($request->all());
+        // $produk->save();
+        return redirect()->route('produk.index')->with('success', 'Product has been updated.');
     }
 
     /**

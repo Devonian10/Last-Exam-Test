@@ -8,11 +8,11 @@
           <hr class="bg-secondary">
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" href="{{ url('/userAdmin') }}"><i class="fa fa-users mr-2"></i> User</a>
+          <a class="nav-link text-white" href="{{ route('userAdmin.index') }}"><i class="fa fa-users mr-2"></i> User</a>
           <hr class="bg-secondary">
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" href="{{ url('/orderAdmin') }}"><i class="fa-solid fa-address-card mr-2"></i> Pesanan</a>
+          <a class="nav-link text-white" href="{{ route('orderAdmin.indexAdmin') }}"><i class="fa-solid fa-address-card mr-2"></i> Pesanan</a>
           <hr class="bg-secondary">
         </li>
         <li class="nav-item">

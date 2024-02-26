@@ -6,7 +6,7 @@
 @section('columns')
 <h3><i class="fa-solid fa-user-plus mr-2"></i> Create User</h3>
 <hr class="bg-primary">
-<form action="{{ route('users.create') }}" method="POST">
+<form action="{{ route('users.store') }}" method="POST">
     @csrf
     <div class="mb-3">
         <label for="username" class="form-label">Username</label>
