@@ -29,4 +29,13 @@ class StoreProductRequest extends FormRequest
         ];
         //
     }
+    public function message(): array
+    {
+        return[
+            'nama_kopi.required'=>'masukkan nama',
+            'harga.required'=>'masukkan harga',
+            'gambar.required'=>'masukkan gambar',
+            'stock.required'=>'masukkan stock'
+        ];
+    }
 }

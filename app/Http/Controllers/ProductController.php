@@ -8,6 +8,7 @@ use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -23,6 +24,8 @@ class ProductController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+
+    
     public function create(): View
     {
         $produk = Product::all();
@@ -71,7 +74,7 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id) :View
+    public function edit(string $id): View
     {
         //
         $produk = Product::findOrFail($id);
@@ -81,15 +84,26 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id) :RedirectResponse
+    public function update(Request $request, string $id): RedirectResponse
     {
         //
         $produk = Product::findOrFail($id);
+        $produk->update($request->except('gambar'));
+        if ($request->has('gambar')) {
+            // Hapus gambar lama jika ada
+            if ($produk->gambar) {
+                $gambarPath = public_path('gambar/') . basename($produk->gambar);
+                if (file_exists($gambarPath)) {
+                    unlink($gambarPath);
+                }
+            }
         $gambarName = time() . '.' . $request->gambar->extension();
         $request->gambar->move(public_path('gambar'), $gambarName);
         $produk->gambar = asset("gambar/$gambarName");
-        $produk->update($request->all());
-        // $produk->save();
+    } else {
+        $produk->gambar = $produk->gambar;
+    }
+        $produk->save();
         return redirect()->route('produk.index')->with('success', 'Product has been updated.');
     }
 
@@ -100,7 +114,7 @@ class ProductController extends Controller
     {
         //
         Product::destroy($id);
-
+        
         if ($product) {
             return redirect()->route('produk.index')->with('success', 'Product Has been deleted');
         }

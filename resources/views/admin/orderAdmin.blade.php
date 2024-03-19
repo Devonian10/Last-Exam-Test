@@ -5,7 +5,6 @@
 @section('Adminku')
 @section('columns')
 <h3><i class="fa-solid fa-address-card mr-2"></i> Orders</h3>
-<button class="btn btn-primary"><i class="fa-solid fa-plus"></i> Tambah</button>
     <div class="container rounded-lg shadow p-3 bg-primary mt-4">
         <table class="table table-info text-center">
             <tr>
@@ -28,9 +27,14 @@
                 <td><img src={{ $order->bukti_pembayaran }} alt="Bukti Pembayaran"></td>
                 <td>{{ $order->status }}</td>
                 <td class="text-center">
-                  <a class="btn btn-warning" href="#" alt="Edit Kopi" type="button"><i class="fa-solid fa-pen mr-2"></i></a>       
-                    <button class="btn btn-danger" alt="DeleteModal" data-bs-toggle="modal" data-bs-target="#modalDelete"><i class="fa-solid fa-close mr-2"></i></button>
-                </td>
+                  <a class="btn btn-warning" href="#" alt="Edit Kopi" type="button"><i class="fa-solid fa-pen mr-2"></i></a> 
+                    <button class="btn btn-primary" alt><i class="fa-solid fa-eye mr-2"></i></button>      
+                    <form action="{{ route('order.index') }}" method="post">
+                      @csrf
+                      @method('delete')
+                    <button type="submit"class="btn btn-danger" onclick="return confirm('Are you sure delete this Order?')"><i class="fa-solid fa-trash"></i></button>
+                  </form>
+                  </td>
             </tr>
             @endforeach
         </table>
@@ -88,13 +92,12 @@
             <div class="modal-body">
               @csrf
               <form action="{{ "" }}" method="get">
-              <label for="Alasan Cancel">Alasan Cancel</label>
-              <input type="text" class="form-control @error ('Alasan_Cancel') is-invalid @enderror ">
+              <label for="Alasan Cancel" class="form-control mt-2 g-4">Alasan Cancel</label>
+              <textarea name="" id="" cols="30" rows="10"></textarea>
               </form>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-              
             </div>
           </div>
         </div>

@@ -11,3 +11,24 @@ function totalClick(index, click, maxStock) {
     console.log(totalClicks.innerText); // Logging the updated totalClicks value
     console.log(currentClicks.innerText); // Logging the updated totalClicks value
 }
+
+function removeCart(cartId) {
+    $.ajax({
+        url: "{{ route('cart.remove') }}",
+        method: "POST",
+        data: {
+              cartId: cartId,
+              _token: "{{ csrf_token() }}"
+        },
+        success: function(response) {
+            //remove table row cart
+            $('#removeCart-' + cartId).remove();
+            
+            updateCartCount();
+            updateCartTotal();
+        },
+        error: function(xhr, status, error) {
+            console.error(error);
+        }
+    });
+}

@@ -2,12 +2,13 @@
 @section('title', 'About Us')
 
 @section('container')
+<body style="background-color: #6F4E37;">
     <h1 class="text-center">About us</h1>
-
+    <main>
       <div class="col mb-2">
         <div id="carouselPhotoFade" class="carousel slide carousel-fade text-center" style="width: 100%; ">
           <div class="carousel-inner">
-            <div class="carousel-item active">
+            <div class="carousel-item active" style="width:100%; height:100%;">
               <img src="{{ asset('gambar/20230826_105056.jpg') }}" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
@@ -26,6 +27,7 @@
             <span class="visually-hidden">Next</span>
           </button>
         </div>
+      </main>
           <div class="embed-responsive embed-responsive-21by9 text-center mt-4 pt-2 pb-2">
           {{-- <div class="google-maps justify-content-center">
              --}}
@@ -65,5 +67,5 @@
           </div>
         </div>
     </div>
-    
+  </body>
       @endsection

@@ -24,10 +24,10 @@
         @error('email')
             <div class="invalid-feedback"><span class="text-danger mt-3">{{ $message }}</span></div>    
         @enderror
-        {{-- <div class="mb-3">
+        <div class="mb-3">
             <label for="password" class="form-label">Password</label>
             <input type="password" class="form-control @error ('password') is-invalid @enderror" name="password" id="password" placeholder="password" value="{{ old('password', $users->password) }}" >
-        </div> --}}
+        </div>
         @error('password')
         <div class="invalid-feedback"><span class="text-danger mt-3">{{ $message }}</span></div>
         @enderror
@@ -46,3 +46,7 @@
  
 @endsection
 @endsection
+<script>
+
+
+</script>

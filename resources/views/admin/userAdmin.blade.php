@@ -37,7 +37,7 @@
             <form action="{{ route('registration.destroy',["id"=>$user->id]) }}" method="POST">
                 @method('delete')
                 @csrf
-            <button type="submit"class="btn btn-danger" onclick="return confirm('Are you sure delete this user?')"><i class="fa-solid fa-xmark"></i></button>
+            <button type="submit"class="btn btn-danger" onclick="return confirm('Are you sure delete this user?')"><i class="fa-solid fa-trash"></i></button>
         </form>
         </td>
         

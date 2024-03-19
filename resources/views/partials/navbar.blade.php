@@ -3,9 +3,11 @@
         <img src="{{  asset('gambar/299385752_397934109147635_7327667729942218094_n.jpg')}}" style="width:60px; height:60px;display:flex; padding:2px; border-radius:9999px" class="left" />
         <a href="{{ url('/') }}" class="">Home</a>
         @if(Auth::check())
-        <a href="{{ url('/shop') }}">Shop</a>
+        <a href="{{ route('shop.index') }}">Shop</a>
+        <a href="{{ url('/resipembayaran') }}">Cart</a>
         <a href="{{ url('/order') }}">Order</a>
         <a href="{{ url('/history') }}">History</a>
+        <i class="fa-solid fa-cart-shopping fa-lg"></i>
         @endif
         <a href="{{ url('/about') }}">About Us</a>
         @if(!Auth::check())
@@ -17,6 +19,7 @@
         @if(Auth::user()->status==='admin')
         <a href="{{ url('/admin') }}" class="right">Admin</a>
         @endif
+        
         @endif
 
     </div>

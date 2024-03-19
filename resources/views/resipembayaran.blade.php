@@ -7,6 +7,7 @@
             padding-bottom: 3px;
             justify-content: center;
             border-radius: 3em;
+            background: ;
         }
         .sale-nota p{
             font-family: cursive;
@@ -21,60 +22,80 @@
         body {
             font-family:cursive;
         }
+        /* table {
+          border:1px solid;
+          text-align: center;
+          background-color:brown;
+          display: flex;
+          margin: 50px;
+        }
+        th, td {
+          padding: 15px;
+          text-align: center;
+        } */
+        
     </style>
 @section('container')
 <body>
-    
-
-<h2 class="text-center">Cart list</h2>
+    <h2 class="text-center">Cart list</h2>
     <div class="bg-primary sale-nota">
         <form action="{{ route('resipembayaran.store') }}" method="post">
             @csrf
         <div class="row">
             <div class="col-5 g-4">
-                <label for="Dipesan Oleh" class="form-label labelku">Dipesan oleh</label>
-                <br>
-                @if (Auth::check())
-                <p class="form-control">{{ Auth::user()->username}}</p>
-                @endif
-            </div>
-            <div class="col-5 g-4">
                 <label for="Alamat Pengiriman" class="form-label labelku">Alamat pengiriman</label>
                 <input type="text" class="form-control">
             </div>
-            <div class="col-5 g-4">
-                <label for="metode pembayaran" class="form-label">Metode Pembayaran</label>
+            
+            <div class="row">
+              <div class="col-5 g-4">
                 <br>
-                <button type="submit" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalBukti"><i class="fa-solid fa-image"></i> Gambar</button>
+                
+              </div>
             </div>
-            <div class="mb-3">
-                <table class="table table-dark table-striped">
-                    <tr>
-                        <th>Kopi</th>
-                        <th>Jumlah</th>
+            {{-- @if ($cartItem->count() > 0) --}}
+            <div class="mb-3" >
+                <table class="table">
+                   <thead>
+                      <tr>
+                        <th>Customer Name</th>
+                        <th>Produk</th>
+                        <th>Gambar</th>
                         <th>Harga</th>
-                    </tr>
-                    <tr>
-                        <td>Arabica</td>
-                        <td>0</td>
-                        <td>Rp. </td>
-                    </tr>
-                    <tr>
-                        <td>Robusta</td>
-                        <td>0</td>
-                        <td>Rp.</td>
-                    </tr>
-                    <tr>
-                        <th>Total</th>
-                        <th>0</th>
-                        <th>Rp. </th>
-                    </tr>
+                        <th>Quantity</th>
+                        <th>Total harga</th>
+                        <th>Aksi</th>
+                      </tr>
+                   </thead>
+                  
+                   <tbody>
+                    {{-- @foreach ($cartItem as $data) --}}
+                      <tr>
+                        <td>@if (Auth::check())
+                          <p style="font-size: 16px;">{{ Auth::user()->username}}</p>
+                          @endif</td>
+                          <td>
+                            <span></span>
+                          </td>
+                          <td><img src={{ $data->gambar }} ></td>
+                          <td>Rp. {{ $data->harga }}</td>
+                          <td>{{ $data->Quantity }}</td>
+                          <td>Rp. {{ $data->Total_harga }}</td>
+                          <td><button class="btn btn-danger"onclick="removeCart"><i class="fa-solid fa-close"></i></button></td>
+                        </form>
+                        </tr>
+                        {{-- @endforeach --}}
+                   </tbody>
                 </table>
               </div>
+              {{-- @endif --}}
         </div>
         <div class="row-50 g-4 mb-4 justify-content-center text-center">
             <a class="btn btn-danger" href="{{ route('shop.index') }}">Kembali</a>
-            <a href="#" class="btn btn-success" onclick="return confirm('Are you sure Fix add to cart!')">Konfirmasi</a>
+            <form action="{{ route('resipembayaran.store') }}" method="post">
+              @csrf
+            <button type="submit" class="btn btn-success">Checkout</button>
+          </form>
         </div>
         <div class="modal fade" id="modalBukti" tabindex="-1" aria-labelledby="modalBuktiLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -104,3 +125,7 @@
         
     </body>
 @endsection
+<script src="{{ asset('js/script2.js') }}">
+
+
+</script>

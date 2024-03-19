@@ -39,10 +39,10 @@
     <div class="mb-3">
         <label for="phone_number" class="form-label">Phone Number</label>
         <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Phone Number">
-        {{-- @error('phone_number')
+        @error('phone_number')
             <div class="invalid-feedback"><span class="text-danger mt-3">{{ $message }}</span>
-    </div>
-    @enderror --}}
+        </div>
+        @enderror
     </div>
     <div class="mb-3">
         <button class="btn btn-primary" type="submit">Create</button>

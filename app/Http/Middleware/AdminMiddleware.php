@@ -19,7 +19,7 @@ class AdminMiddleware
         if (Auth::check() && Auth::user()->status === 'admin') {
             return $next($request);
         } else {
-            return redirect('/'); // atau alamat lain jika pengguna bukan admin
+            return redirect('/dashboard'); // atau alamat lain jika pengguna bukan admin
         }
     }
 }

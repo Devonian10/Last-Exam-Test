@@ -22,7 +22,9 @@ class AdminController extends Controller
         return view('admin/dashboard', ['title' => 'dashboard', 'active' => 'admin', 'productCount' => $productCount, 'userCount' => $userCount, 'orderCount' => $orderCount]);
     }
 
-
+    public function showLoginForm(){
+        
+    }
 
     /**
      * Show the form for creating a new resource.

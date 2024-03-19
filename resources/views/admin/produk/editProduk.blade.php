@@ -10,21 +10,22 @@
         @method('PUT')
         <div class="mb-3">
             <label for="name_kopi" class="form-label">Nama Kopi</label>
-            <input type="text" class="form-control"  id="nama_kopi" name="nama_kopi"placeholder="nama_kopi" value="{{ old('nama_kopi', $produk->nama_kopi) }}" required>
+            <input type="text" class="form-control"  id="nama_kopi" name="nama_kopi"placeholder="nama_kopi" value="{{ old('nama_kopi', $produk->nama_kopi) }}" >
         </div>
 
         <div class="mb-3">
             <label for="name_kopi" class="form-label">Harga</label>
-            <input type="text" class="form-control" id="harga" name="harga" placeholder="harga" value="{{ old('harga', $produk->harga) }}"required>
+            <input type="text" class="form-control" id="harga" name="harga" placeholder="harga" value="{{ old('harga', $produk->harga) }}">
         </div>
         <div class="mb-3">
             <label for="name_kopi" class="form-label">Gambar</label>
-            <input type="file" class="form-control" id="gambar" name="gambar" placeholder="Gambar Kopi" value="{{ old('gambar', $produk->gambar) }}" required >
+            <img class="img-preview img-fluid">
+            <input type="file" class="form-control" id="gambar" name="gambar" placeholder="Gambar Kopi" value="{{ old('gambar', $produk->gambar) }}"  onchange="previewImage()">
             <img src= "{{ asset('assets/gambar') }}"alt="">
         </div>
         <div class="mb-3">
             <label for="stock" class="form-label">Stock</label>
-            <input type="text" class="form-control" name="stock" id="stock" placeholder="stock" value="{{ old('stock', $produk->stock) }}" required>
+            <input type="number" class="form-control" name="stock" id="stock" placeholder="stock" value="{{ old('stock', $produk->stock) }}" >
         </div>
         <div class="mb-3">
             <label for="stock" class="form-label">Status</label>

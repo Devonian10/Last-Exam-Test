@@ -17,20 +17,41 @@
     @csrf
     <div class="mb-3">
         <label for="nama_kopi" class="form-label">Nama Kopi</label>
-        <input type="text" class="form-control" name="nama_kopi" id="nama_kopi" placeholder="nama_kopi" required>
+        <input type="text" class="form-control " name="nama_kopi" id="nama_kopi" placeholder="nama_kopi" required>
     </div>
+    @error('nama_kopi')
+    <p class="text-danger" >
+        {{ $message }}
+      </p>
+    @enderror
     <div class="mb-3">
         <label for="harga" class="form-label">Harga</label>
-        <input type="number" class="form-control" name="harga" id="harga" placeholder="harga" required>
+        <input type="number" class="form-control " name="harga" id="harga" placeholder="harga" required>
     </div>
+    @error('harga')
+    <p class="text-danger" >
+        {{ $message }}
+      </p>
+    @enderror
     <div class="mb-3">
         <label for="gambar" class="form-label">Gambar</label>
-        <input type="file" class="form-control" name="gambar" id="gambar" placeholder="Gambar" required>
+        <img class="img-preview img-fluid">
+        <input type="file" class="form-control" name="gambar" id="gambar" placeholder="Gambar" onchange="" required>
     </div>
+    @error('gambar')
+    <p class="text-danger" >
+        {{ $message }}
+      </p>
+    @enderror
     <div class="mb-3">
         <label for="stock" class="form-label">Stock</label>
-        <input type="text" class="form-control" name="stock" id="stock" placeholder="stock" required>
+        <input type="number" class="form-control " name="stock" id="stock" placeholder="stock" required>
     </div>
+    @error('stock')
+    <p class="text-danger" >
+        {{ $message }}
+      </p>
+    @enderror
     <div class="mb-3">
         <label for="stock" class="form-label">Status</label>
         {{-- <input type="text" class="form-control" name="status" id="status" placeholder="status" required> --}}
@@ -41,7 +62,7 @@
     </div>
     <div class="mb-3">
         <button class="btn btn-primary" type="submit" name="action" value="create">Create</button>
-        <a class="btn btn-danger" href="{{ url('/produk') }}">Cancel</a>
+        <a class="btn btn-danger" href="{{ route('produk.index') }}">Cancel</a>
     </div>
 </form>
 

@@ -63,9 +63,6 @@
                     <button type="submit" class="btn btn-success" value="Login">
                         Login
                     </button>
-                    <a type="button" href="{{ route('registration') }}" class="btn btn-warning" value="Signup" style="right: 50%">
-                        Sign up
-                    </a>
                 </form>
             </section>
         </div>

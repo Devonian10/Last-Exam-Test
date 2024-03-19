@@ -42,7 +42,8 @@ Route::middleware(['auth'])->group(function () {
         return view('shop', ["title" => "Kopi", "Shop" => Product::all()]);
     }); */
     Route::get('/shop', [CartController::class, 'index'])->name('shop.index');
-
+    Route::post('/shop/buy/{Shop}', [CartController::class, 'buy'])->name('shop.buy');
+    // Route::post('/shop')
     // Authentication
     Route::post('/authentication', [LoginController::class, 'authenticate'])->name('admin.dashboard.authenticate');
     Route::get('/logout', [LoginController::class, 'logout'])->name('registration.logout');
@@ -64,6 +65,9 @@ Route::middleware(['auth'])->group(function () {
     // Receipt
     Route::get('/resipembayaran', function () {
         return view('resipembayaran');
+    });
+    Route::get('/cartItem', function(){
+        return view('cart.cartItem');
     });
     Route::post('/resipembayaran', [OrderController::class, 'store'])->name('resipembayaran.store');
 });
@@ -97,7 +101,7 @@ Route::middleware(['admin'])->group(function () {
     //     return view('admin/userAdmin', ["title" => "kopi", "users" => User::all()]);
     // });
     //Admin User
-    Route::get('/userAdmin',[UserController::class,'index'])->name('userAdmin.index');
+    Route::get('/userAdmin', [UserController::class, 'index'])->name('userAdmin.index');
     // Route::get('/userAdmin/createUser', function () {
     //     return view('admin/user/createUser');
     // });
@@ -106,17 +110,17 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/userAdmin/editUser', function () {
         return view('admin/user/editUser');
     });
-    Route::get('/userAdmin/{id}/editUser',[UserController::class, 'editAdmin'])->name('users.update');
-    Route::put('/userAdmin/{id}/editUser',[UserController::class, 'update'])->name('users.update');
+    Route::get('/userAdmin/{id}/editUser', [UserController::class, 'editAdmin'])->name('users.update');
+    Route::put('/userAdmin/{id}/editUser', [UserController::class, 'update'])->name('users.update');
     Route::delete('/userAdmin/{id}', [RegistrationController::class, 'destroy'])->name('registration.destroy');
-    
+
     //Order Admin
     Route::get('/orderAdmin', [OrderController::class, 'indexAdmin'])->name('orderAdmin.indexAdmin');
     Route::get('/transaksi');
     // Route::get('/produk/create', function () {
-        //     return view('admin/createProduk');
-        // });
-        
+    //     return view('admin/createProduk');
+    // });
+    Route::delete('/orderAdmin/{id}', [OrderController::class,'destroy']);
     Route::get('/produk', [ProductController::class, 'index'])->name('produk.index');
     // Membuat Produk
     Route::post('/produk/store',  [ProductController::class, 'store'])->name('produk.store');
@@ -131,7 +135,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/produk/{id}/edit', [ProductController::class, 'edit'])->name('produk.update');
     Route::put('/produk/{id}/edit', [ProductController::class, 'update'])->name('produk.update');
     Route::delete('/produk/{id}', [ProductController::class, 'destroy'])->name('produk.destroy');
-    
+
     // Route::get('/produk', function () {
     //     return view('admin/produk', ["title" => "kopi", "produk" => Product::all(), "tambah" => Product::all()]);
     // })->name('produk.index');
