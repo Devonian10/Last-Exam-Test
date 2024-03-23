@@ -8,11 +8,17 @@
 <table>
     <thead>
         <th> 
+            Bukti Pembayaran
         </th>
         <tr>
-            <img src="">
+            <td><img src="" alt="Bukti_pembayaran">
+            <input type="text" value="">
+        </td>
         </tr>
     </thead>
+    <tbody>
+        <tr></tr>
+    </tbody>
 </table>
 
 @endsection

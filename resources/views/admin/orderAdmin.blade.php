@@ -4,8 +4,15 @@
 @section('title', 'Pesanan')
 @section('Adminku')
 @section('columns')
+
 <h3><i class="fa-solid fa-address-card mr-2"></i> Orders</h3>
-    <div class="container rounded-lg shadow p-3 bg-primary mt-4">
+@if (session()->has('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+    </div>
+    @endif
+    <div class="container rounded-lg shadow p-3 bg-brown mt-4">
         <table class="table table-info text-center">
             <tr>
                 <th>No.</th>
@@ -17,7 +24,9 @@
                 <th>Status</th>
                 <th>aksi</th>
             </tr>
+            
             @foreach($pesanan as $order)
+            {{-- @dd($order) --}}
             <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $order->user->username}}</td>
@@ -27,21 +36,21 @@
                 <td><img src={{ $order->bukti_pembayaran }} alt="Bukti Pembayaran"></td>
                 <td>{{ $order->status }}</td>
                 <td class="text-center">
-                  <a class="btn btn-warning" href="#" alt="Edit Kopi" type="button"><i class="fa-solid fa-pen mr-2"></i></a> 
+                  <a class="btn btn-warning" href="{{ route('orderAdmin.update', ["id"=> $order->id]) }}"><i class="fa-solid fa-pen mr-2"></i></a> 
                     <button class="btn btn-primary" alt><i class="fa-solid fa-eye mr-2"></i></button>      
-                    <form action="{{ route('order.index') }}" method="post">
+                    <form action="{{ route('orderAdmin.destroy', ["id"=>$order->id]) }}" method="post">
                       @csrf
                       @method('delete')
                     <button type="submit"class="btn btn-danger" onclick="return confirm('Are you sure delete this Order?')"><i class="fa-solid fa-trash"></i></button>
-                  </form>
-                  </td>
+                    </form>
+                </td>
             </tr>
             @endforeach
         </table>
     </div>
     <!-- Modal untuk EditOrder--->
     
-    {{-- <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="modalEditLabel" aria-hidden="true">
+    <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="modalEditLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
@@ -59,7 +68,7 @@
             </div>
           </div>
         </div>
-      </div> --}}
+      </div>
       <!--- End Modal EditKopi Order---->
 
       <!-- Start Modal Bukti Pembayaran OrderKopi--->

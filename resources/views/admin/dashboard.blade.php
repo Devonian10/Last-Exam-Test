@@ -30,7 +30,7 @@
             <div class="card-body">
                 <div class="d-flex flex-column " style="margin-bottom: 10px;">
                     <div class="rounded bg-green d-flex justify-content-center align-items-center" style="width: 50px; height: 50px;">
-                        <i class="fa-solid fa-user i-dashboard-icon text-white"></i>
+                        <i class="fa-solid fa-users i-dashboard-icon text-white"></i>
                     </div>
                 </div>
                 <h5 class="card-title">Users</h5>

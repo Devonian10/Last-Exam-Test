@@ -13,6 +13,7 @@
       <th>Tanggal</th>
       <th>Bukti Pembayaran</th>
       <th>Alamat Pengiriman</th>
+      <th>Quantity</th>
       <th>Total harga</th>
       <th>Status</th>
       <th>Aksi</th>
@@ -26,6 +27,7 @@
       <td><?php echo date(DATE_RFC2822) ?></td>
       <td><img src={{ $order->bukti_pembayaran }} alt="Bukti Pembayaran"></td>
       <td>{{ $order->Alamat_pengiriman }}</td>
+      <td></td>
       <td>Rp. {{ $order->Total_harga }}</td>
       <td>{{ $order->status }}</td>
       <td class="text-center">

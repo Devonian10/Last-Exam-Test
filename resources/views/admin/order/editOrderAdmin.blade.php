@@ -4,43 +4,24 @@
 
 @section('Adminku')
 @section('columns')
-<form action="{{ url('order') }}" method="POST">
-    @csrf
-    @method('PUT')
-        <div class="mb-3">
-            <label for="name_kopi" class="form-label">Username</label>
-            <input type="text" class="form-control @error ('username') is-invalid @enderror" id="username" name="username"placeholder="username" value="{{ old('username', $users->username) }}">
+    <h2>Edit Orders</h2>
+    <form action="{{ route("orderAdmin.update", $pesanan->id ) }}" method="POST"  enctype="multipart/form-data">
+        @csrf
+        @method('PUT')
+        <div class="row">
+            <div class="col-4 g-4">
+                <label for="status">Status</label>
+                <select id="status" name="status" class="form-control">
+                    
+                    <option value="pending" {{ old('status', $pesanan->status) == 'pending' ? 'selected' : '' }}>Pending</option>
+                    <option value="cancel" {{ old('status', $pesanan->status) == 'cancel' ? 'selected' : '' }}>Cancel</option>
+                    <option value="success" {{ old('status', $pesanan->status) == 'success' ? 'selected' : '' }}>Success</option>
+                   
+                </select>
+            </div>
         </div>
-        @error('username')
-            <div class="invalid-feedback"><span class="text-danger mt-3">{{ $message }}</span></div>    
-        @enderror
-        <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="text" class="form-control @error ('email') is-invalid @enderror"  id="email" name="email" placeholder="email" value="{{ old('email', $users->email) }}">
-        </div>
-        @error('email')
-            <div class="invalid-feedback"><span class="text-danger mt-3">{{ $message }}</span></div>    
-        @enderror
-        {{-- <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control @error ('password') is-invalid @enderror" name="password" id="password" placeholder="password" value="{{ old('password', $users->password) }}" >
-        </div> --}}
-        @error('password')
-        <div class="invalid-feedback"><span class="text-danger mt-3">{{ $message }}</span></div>
-        @enderror
-        <div class="mb-3">
-            <label for="Phone Number" class="form-label">Phone Number</label>
-            <input type="text" class="form-control"  id="phoneNumber" name="phoneNumber" placeholder="Phone Number" value="{{ old('phoneNumber') }}">
-        </div>
-        {{-- @error('phone')
-        <div class="invalid-feedback"><span class="text-danger mt-3">{{ $message }}</span></div>
-        @enderror --}}
-        <div class="mb-3">
-            <button class="btn btn-primary" type="submit">Update</button>
-            <a class="btn btn-danger" href="#"> Cancel</a>
-        </div>
+        <a href="{{ route('orderAdmin.indexAdmin') }}" class="btn btn-danger mt-4">Cancel</a>
+        <button type="submit" class="btn btn-primary mt-4">Update</button>
     </form>
-
 @endsection
 @endsection
-
