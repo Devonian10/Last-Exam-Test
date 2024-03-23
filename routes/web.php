@@ -26,7 +26,7 @@ use App\Models\User;
 Route::middleware(['auth', 'guest'])->group(function () {
     Route::get('/', function () {
         return view('home', ["title" => "Home", "Shop" => Product::all()]);
-    });
+    })->name('home');
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -34,13 +34,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/about', function () {
         return view('about', ["name" => "Toraja Kawaa Roastery", "description" =>
         "Toraja Kawaa roastery adalah salah satu kopi yang nikmat dan ", "location" =>
-        "Toraja Kawaa Roastery", "phoneNumber" => 4456732123, "gambar_instagram" => "Ellipse 9.jpg", "gambar_whatsapp" => "WhatsApp 1.jpg"]);
+        "Toraja Kawaa Roastery", "phoneNumber" => 4456732123, "gambar_instagram" => "Ellipse 9.jpg", "gambar_whatsapp" => "WhatsApp 1.jpg"])->name('about');
     });
 
-    // Shop
-    /*  Route::get('/shop', function () {
-        return view('shop', ["title" => "Kopi", "Shop" => Product::all()]);
-    }); */
     Route::get('/shop', [CartController::class, 'index'])->name('shop.index');
     Route::post('/shop/buy/{Shop}', [CartController::class, 'buy'])->name('shop.buy');
     // Route::post('/shop')
@@ -66,10 +62,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/resipembayaran', function () {
         return view('resipembayaran');
     });
-    Route::get('/cartItem', function(){
-        return view('cart.cartItem');
-    });
+    Route::get('/cartItem', [CartController::class, 'indexCart'])->name('cartItem');
     Route::post('/resipembayaran', [OrderController::class, 'store'])->name('resipembayaran.store');
+
+    Route::post('/addToCart', [CartController::class, 'addToCart'])->name('addToCart');
 });
 
 // Routes for guests (not logged in)
@@ -120,7 +116,7 @@ Route::middleware(['admin'])->group(function () {
     // Route::get('/produk/create', function () {
     //     return view('admin/createProduk');
     // });
-    Route::delete('/orderAdmin/{id}', [OrderController::class,'destroy']);
+    Route::delete('/orderAdmin/{id}', [OrderController::class, 'destroy']);
     Route::get('/produk', [ProductController::class, 'index'])->name('produk.index');
     // Membuat Produk
     Route::post('/produk/store',  [ProductController::class, 'store'])->name('produk.store');

@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
+use Illuminate\Http\Request; // Import the Request class
 use App\Models\Order;
-use App\Models\ShopCart;
-use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\User;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Storage;
 
 class CartController extends Controller
 {
@@ -18,14 +16,41 @@ class CartController extends Controller
     //Bagian Controller Keranjang
     public function indexCart()
     {
-        $cartItem = ShopCart::instance('carts')->content();
-        return view('resipembayaran', ['cartItem' => $cartItem]);
+        $userId = auth()->user()->id; // Ambil ID pengguna saat ini
+        $cartItems = Cart::where('users_id', $userId)->get();
+        return view('resipembayaran', ['cartItem' => $cartItems]);
     }
+
+
     public function addToCart(Request $request)
     {
-        $produk = Product::find($request->id);
-        //$harga = $produk->Total_harga ? $produk->Total_harga->harga;
+        // Cek apakah item sudah ada di keranjang untuk pengguna yang sedang login
+        $existingCartItem = Cart::where('users_id', auth()->id())
+            ->where('product_id', $request->productId)
+            ->first();
+
+        if ($existingCartItem) {
+            // Jika item sudah ada, tambahkan kuantitasnya
+            $existingCartItem->quantity += $request->quantity;
+            $existingCartItem->save();
+        } else {
+            // Jika item belum ada, tambahkan item baru ke keranjang
+            $cartItem = new Cart();
+            $cartItem->users_id = auth()->id();
+            $cartItem->product_id = $request->productId;
+            $cartItem->quantity = $request->quantity;
+            $cartItem->save();
+        }
+
+        // Update stok produk
+        $produk = Product::findOrFail($request->productId);
+        $produk->stock = $produk->stock - $request->quantity;
+        $produk->save();
+
+        return redirect()->back()->with('success', 'Item berhasil ditambahkan ke keranjang');
     }
+
+
 
     //Bagian Controller belanja (Shop)
     public function index()
@@ -33,7 +58,7 @@ class CartController extends Controller
         //
 
         $Shop = Product::all();
-        return view('/shop', compact('Shop'));
+        return view('cart.shop', compact('Shop'));
     }
     public function increaseStock(Product $Shop)
     {
@@ -116,7 +141,7 @@ class CartController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(ShopCart $shopCart)
+    public function edit(Cart $shopCart)
     {
         //
     }
@@ -124,7 +149,7 @@ class CartController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, ShopCart $shopCart)
+    public function update(Request $request, Cart $shopCart)
     {
         //
 
@@ -133,7 +158,7 @@ class CartController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(ShopCart $shopCart)
+    public function destroy(Cart $shopCart)
     {
         //
     }

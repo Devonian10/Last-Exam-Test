@@ -26,11 +26,43 @@
     color: white;
 }
 .topnav i {
-    margin-left: 400px;
     margin-top: 15px;
     padding-left: 95px;
     padding: 15px;
     color: #ffffff;
+}
+
+#cartItem {
+    padding: 0px;
+    height: 60px;
+}
+
+.cart-icon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    float: right;
+    width: 60;
+    margin-right: 20px;
+}
+
+.cart-icon > i {
+    width: 60;
+    height: 40px;
+    display: inline-block;
+}
+
+.cart-icon .badge {
+    position: absolute;
+    top: 4px;
+    display: inline;
+    right: -2px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 4px 8px;
+    font-size: 12px;
 }
 .beranda {
     color: black;
