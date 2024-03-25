@@ -98,6 +98,7 @@ class OrderController extends Controller
     public function updateOrder(Request $request, string $id): RedirectResponse
     {
         $pesanan =  Order::findOrFail($id);
+        // dd($request->status);
         $pesanan->update(['status' => $request->status]);
         return redirect()->route('orderAdmin.indexAdmin')->with('success', 'data telah diperbarui');
     }

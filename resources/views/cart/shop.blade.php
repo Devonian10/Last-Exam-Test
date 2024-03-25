@@ -67,7 +67,7 @@
   @endforeach
 
 </div>
-<script src="{{ asset('js/script2.js') }}" />
+<script src="{{ asset('js/script2.js') }}" >
 
 </script>
 @endsection

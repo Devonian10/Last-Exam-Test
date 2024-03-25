@@ -46,10 +46,7 @@
     <form action="{{ route('resipembayaran.store') }}" method="post">
       @csrf
       <div class="row">
-        <div class="col-5 g-4">
-          <label for="Alamat Pengiriman" class="form-label labelku">Alamat pengiriman</label>
-          <input type="text" class="form-control">
-        </div>
+        
 
         <div class="row">
           <div class="col-5 g-4">
@@ -86,41 +83,55 @@
                 <td>Rp. {{ $data->product->harga }}</td>
                 <td>{{ $data->quantity }}</td>
                 <td>Rp. {{ $data->product->harga * $data->quantity }}</td>
-                <td><button class="btn btn-danger" onclick="removeCart"><i class="fa-solid fa-close"></i></button></td>
+              </form>
+                <td><form action="{{ route('cart.remove', ['cartItemId'=>$data->id]) }}" method="POST">
+                  @csrf
+                  @method('DELETE')<button class="btn btn-danger remove-btn"  data-cart-item-id="{{ $data->id }}"><i class="fa-solid fa-close"></i></button></form></td>
               </tr>
               @endforeach
-    </form>
     </tbody>
+    <tfoot>
+      <tr>
+        <td>Total</td>
+        <td>Rp. {{ $total }}</td>
+      </tr>
+     
+    </tfoot>
+
     </table>
   </div>
   {{-- @endif --}}
   </div>
   <div class="row-50 g-4 mb-4 justify-content-center text-center">
-    <form action="{{ route('resipembayaran.store') }}" method="post">
+    <form action="" method="post">
       @csrf
-      <button type="submit" class="btn btn-success">Checkout</button>
+      <button type="submit" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalBukti">Checkout</button>
     </form>
   </div>
   <div class="modal fade" id="modalBukti" tabindex="-1" aria-labelledby="modalBuktiLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="modalBuktiLabel"> Batal Pemesanan </h1>
+          <h1 class="modal-title fs-5" id="modalBuktiLabel">Bukti </h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <div class="mb-3">
-            <form action="{{ route('resipembayaran.store') }}" method="post">
+            <form action="" method=""> <!-- Perbarui action formulir unggah bukti pembayaran -->
               @csrf
-              <label for="formFile" class="form-label">Silahkan upload bukti transfer yang sudah tersedia di no rek xxxx-xxxx-xxxx-xxxx</label>
-              <input class="form-control" type="file" id="formFile"><img>
+              <label for="formFile" class="form-label">Upload bukti pembayaran</label>
+              <input class="form-control" type="file" id="formFile" name="payment_proof"> <!-- Tambahkan atribut name -->
+              <div class="col-5 g-4">
+                <label for="Alamat Pengiriman" class="form-label labelku">Alamat pengiriman</label>
+                <input type="text" class="form-control">
+              </div>
             </form>
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="reset" class="btn btn-warning" onclick="">Reset</button>
-          <button type="submit" class="btn btn-primary">Kirim</button>
+          
+          <button type="submit" class="btn btn-primary" form="uploadForm">Kirim</button> <!-- Tambahkan atribut form untuk menentukan formulir mana yang akan di-submit -->
         </div>
       </div>
     </div>
@@ -128,8 +139,55 @@
   </form>
 
 </body>
+
 @endsection
 <script src="{{ asset('js/script2.js') }}">
 
+function removeCartItem(cartItemId){
+  if (confirm('Anda yakin ingin menghapus item ini dari keranjang?')) {
+            // Kirim permintaan penghapusan ke server menggunakan Ajax
+            $.ajax({
+              url:'cart/remove/' + cartItemId,
+              type: 'DELETE',
+              data: {
+                _method:'DELETE'
+              },
+              headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 
+              },success: function(response){
+                location.reload
+              }, 
+              error:function(xhr){
+                console.error('Error', xhr.responseText);
+              }
+            });
+  }
+}
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js">
+$(document).ready(function() {
+        $('.remove-btn').on('click', function() {
+            var cartItemId = $(this).data('cart-item-id');
+            if (confirm('Anda yakin ingin menghapus item ini dari keranjang?')) {
+                $.ajax({
+                    url: '/cart/remove/' + cartItemId, // Ganti dengan URL endpoint yang sesuai
+                    type: 'POST',
+                    data: {
+                      _method:'DELETE'
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                        // Refresh halaman setelah penghapusan berhasil
+                        location.reload();
+                    },
+                    error: function(xhr) {
+                        console.error('Error:', xhr.responseText);
+                    }
+                });
+            }
+        });
+    });
 </script>

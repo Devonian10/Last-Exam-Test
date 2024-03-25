@@ -63,9 +63,11 @@ Route::middleware(['auth'])->group(function () {
         return view('resipembayaran');
     });
     Route::get('/cartItem', [CartController::class, 'indexCart'])->name('cartItem');
+    
     Route::post('/resipembayaran', [OrderController::class, 'store'])->name('resipembayaran.store');
-
     Route::post('/addToCart', [CartController::class, 'addToCart'])->name('addToCart');
+    Route::post('/uploadPayment', [CartController::class, 'uploadPayment'])->name('upload.payment');
+    Route::delete('/cart/remove/{cartItemId}', [CartController::class, 'removeFromCart'])->name('cart.remove');
 });
 
 // Routes for guests (not logged in)
@@ -112,11 +114,13 @@ Route::middleware(['admin'])->group(function () {
 
     //Order Admin
     Route::get('/orderAdmin', [OrderController::class, 'indexAdmin'])->name('orderAdmin.indexAdmin');
+    Route::get('/orderAdmin/{id}/editOrder', [OrderController::class, 'editOrder'])->name('orderAdmin.update');
+    Route::put('/orderAdmin/{id}/editOrder', [OrderController::class, 'updateOrder'])->name('orderAdmin.update');
     Route::get('/transaksi');
     // Route::get('/produk/create', function () {
     //     return view('admin/createProduk');
     // });
-    Route::delete('/orderAdmin/{id}', [OrderController::class, 'destroy']);
+    Route::delete('/orderAdmin/{id}', [OrderController::class, 'destroy'])->name('orderAdmin.destroy');
     Route::get('/produk', [ProductController::class, 'index'])->name('produk.index');
     // Membuat Produk
     Route::post('/produk/store',  [ProductController::class, 'store'])->name('produk.store');

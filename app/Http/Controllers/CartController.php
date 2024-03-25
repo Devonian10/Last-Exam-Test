@@ -7,6 +7,7 @@ use Illuminate\Http\Request; // Import the Request class
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
+use SebastianBergmann\CodeCoverage\Report\Xml\Totals;
 
 class CartController extends Controller
 {
@@ -16,10 +17,16 @@ class CartController extends Controller
     //Bagian Controller Keranjang
     public function indexCart()
     {
-        $userId = auth()->user()->id; // Ambil ID pengguna saat ini
-        $cartItems = Cart::where('users_id', $userId)->get();
-        return view('resipembayaran', ['cartItem' => $cartItems]);
+        $userId = auth()->id(); // Ambil ID pengguna saat ini dengan metode yang lebih singkat
+        $cartItems = Cart::where('users_id', $userId)->get(); // Menggunakan 'user_id' sesuai konvensi Laravel
+        $total = 0;
+
+        foreach ($cartItems as $item) {
+            $total += $item->quantity * $item->product->harga;
+        }
+        return view('resipembayaran', ['cartItem' => $cartItems, 'total' => $total]); // Mengubah 'cartItem' menjadi 'cartItems'
     }
+
 
 
     public function addToCart(Request $request)
@@ -50,8 +57,33 @@ class CartController extends Controller
         return redirect()->back()->with('success', 'Item berhasil ditambahkan ke keranjang');
     }
 
+    public function clearItem()
+    {
+        $userId = auth()->user()->id; // Ambil ID pengguna saat ini untuk melakukan 
+        Cart::where('users_id', $userId)->delete();
+        return redirect()->back()->with('success', 'Item telah dihapus');
+    }
+    public function removeItem($cartItemId)
+    {
+        $cartItem = Cart::findOrfail($cartItemId);
+        $productId = $cartItem->product_id;
+        $quantityId = $cartItem->quantityId;
 
+        $cartItem->delete();
+    }
+    public function removeFromCart($cartItemId)
+    {
+        // Temukan item keranjang berdasarkan ID
 
+        $cartItem = Cart::find($cartItemId);
+
+        // Hapus item jika ditemukan
+        if ($cartItem) {
+            $cartItem->delete();
+            return redirect('/cartItem')->with('success', 'Item has been removed from cart.');
+        }
+        return redirect('/cartItem')->with('error', 'Item not found in cart.');
+    }
     //Bagian Controller belanja (Shop)
     public function index()
     {
@@ -104,7 +136,24 @@ class CartController extends Controller
             return redirect()->back()->with('error', 'Operasi tidak Valid');
         }
     }
+    public function uploadPayment(Request $request){
+        $validatedData = $request->validate(
+            [
+                "bukti_pembayaran" => "required|image|file|max:2048",
+                "Alamat_pengiriman" => "required|string|max:255"
+            ]
+        );
+        $order = new Order();
+        $order->bukti_pembayaran = $request->bukti_pembayaran;
+        $order->Alamat_pengiriman = $request->Alamat_pengiriman;
+        $order->status('pending');
+        $order->save();
 
+        if ($request->hasFile('bukti_pembayaran')) {
+            $validatedData['bukti_pembayaran'] = $request->file('bukti_pembayaran')->store('bukti_pembayaran');
+        }
+        return redirect('/cartItem')->with('success', 'Bukti Pembayaran has sent to admin !');
+    }
     public function getCartById()
     {
     }

@@ -11,10 +11,7 @@
                 <th>Status</th>
             </tr>
             <tr>
-                <td>1</td>
-                <td>Arabica/Robusta</td>
-                <td></td>
-                <td>Selesai</td>
+                
             </tr>
             {{-- @foreach ($collection as $item)
                 
