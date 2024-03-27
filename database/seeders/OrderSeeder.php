@@ -17,12 +17,14 @@ class OrderSeeder extends Seeder
        Order::create([
         "users_id"=>1, 
         "product_id"=> 2,
+        "order_id"=>"1",
         "Total_harga"=>190000,
         "status"=>"success",
         "Alasan_cancel"=>null
        ]);
        Order::create([
-        "users_id"=>3, 
+        "users_id"=>3,
+        "order_id"=>"1",
         "product_id"=> 1,
         "Total_harga"=>180000,
         "status"=>"success",

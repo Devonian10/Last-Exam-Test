@@ -92,7 +92,7 @@ class OrderController extends Controller
         Order::destroy($id);
 
         if ($order) {
-            return redirect()->route('order.index')->with('success', 'Order Has been deleted');
+            return redirect()->route('orderAdmin.indexAdmin')->with('success', 'Order Has been deleted');
         }
     }
     public function updateOrder(Request $request, string $id): RedirectResponse

@@ -7,7 +7,6 @@
     padding-bottom: 3px;
     justify-content: center;
     border-radius: 3em;
-    background: ;
   }
 
   .sale-nota p {
@@ -46,7 +45,7 @@
     <form action="{{ route('resipembayaran.store') }}" method="post">
       @csrf
       <div class="row">
-        
+
 
         <div class="row">
           <div class="col-5 g-4">
@@ -83,19 +82,21 @@
                 <td>Rp. {{ $data->product->harga }}</td>
                 <td>{{ $data->quantity }}</td>
                 <td>Rp. {{ $data->product->harga * $data->quantity }}</td>
-              </form>
-                <td><form action="{{ route('cart.remove', ['cartItemId'=>$data->id]) }}" method="POST">
-                  @csrf
-                  @method('DELETE')<button class="btn btn-danger remove-btn"  data-cart-item-id="{{ $data->id }}"><i class="fa-solid fa-close"></i></button></form></td>
-              </tr>
-              @endforeach
+    </form>
+    <td>
+      <form action="{{ route('cart.remove', ['cartItemId'=>$data->id]) }}" method="POST">
+        @csrf
+        @method('DELETE')<button class="btn btn-danger remove-btn" data-cart-item-id="{{ $data->id }}"><i class="fa-solid fa-close"></i></button></form>
+    </td>
+    </tr>
+    @endforeach
     </tbody>
     <tfoot>
       <tr>
         <td>Total</td>
         <td>Rp. {{ $total }}</td>
       </tr>
-     
+
     </tfoot>
 
     </table>
@@ -117,79 +118,83 @@
         </div>
         <div class="modal-body">
           <div class="mb-3">
-            <form action="{{ route('upload.payment', ["cartItemId"=> $cartItem->id]) }}" method="post"> <!-- Perbarui action formulir unggah bukti pembayaran -->
+            <form action="{{ route('upload.payment') }}" method="post" enctype="multipart/form-data">
               @csrf
+              <!-- Menambahkan input tersembunyi untuk mengirimkan list produk -->
+              @foreach($cartItem as $product)
+              <input type="hidden" name="cartItem[]" value="{{ $product->id }}">
+              @endforeach
+
               <label for="formFile" class="form-label">Upload bukti pembayaran</label>
-              <input class="form-control" type="file" id="bukti_pembayaran" name="bukti_pembayaran"> <!-- Tambahkan atribut name -->
+              <input class="form-control" type="file" id="bukti_pembayaran" name="bukti_pembayaran">
+
               <div class="col-5 g-4">
                 <label for="Alamat Pengiriman" class="form-label labelku">Alamat pengiriman</label>
                 <input type="text" class="form-control" id="Alamat_pengiriman" name="Alamat_pengiriman">
               </div>
-            </form>
+
+              <button type="submit" </div>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Kirim</button> <!-- Tambahkan atribut form untuk menentukan formulir mana yang akan di-submit -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Kirim</button> <!-- Tambahkan atribut form untuk menentukan formulir mana yang akan di-submit -->
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  </form>
+    </form>
 
 </body>
 
 @endsection
 <script src="{{ asset('js/script2.js') }}">
+  function removeCartItem(cartItemId) {
+    if (confirm('Anda yakin ingin menghapus item ini dari keranjang?')) {
+      // Kirim permintaan penghapusan ke server menggunakan Ajax
+      $.ajax({
+        url: 'cart/remove/' + cartItemId,
+        type: 'DELETE',
+        data: {
+          _method: 'DELETE'
+        },
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 
-function removeCartItem(cartItemId){
-  if (confirm('Anda yakin ingin menghapus item ini dari keranjang?')) {
-            // Kirim permintaan penghapusan ke server menggunakan Ajax
-            $.ajax({
-              url:'cart/remove/' + cartItemId,
-              type: 'DELETE',
-              data: {
-                _method:'DELETE'
-              },
-              headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-
-              },success: function(response){
-                location.reload
-              }, 
-              error:function(xhr){
-                console.error('Error', xhr.responseText);
-              }
-            });
+        },
+        success: function(response) {
+          location.reload
+        },
+        error: function(xhr) {
+          console.error('Error', xhr.responseText);
+        }
+      });
+    }
   }
-}
 </script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js">
-$(document).ready(function() {
-        $('.remove-btn').on('click', function() {
-            var cartItemId = $(this).data('cart-item-id');
-            if (confirm('Anda yakin ingin menghapus item ini dari keranjang?')) {
-                $.ajax({
-                    url: '/cart/remove/' + cartItemId, // Ganti dengan URL endpoint yang sesuai
-                    type: 'POST',
-                    data: {
-                      _method:'DELETE'
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function(response) {
-                        // Refresh halaman setelah penghapusan berhasil
-                        location.reload();
-                    },
-                    error: function(xhr) {
-                        console.error('Error:', xhr.responseText);
-                    }
-                });
-            }
+  $(document).ready(function() {
+    $('.remove-btn').on('click', function() {
+      var cartItemId = $(this).data('cart-item-id');
+      if (confirm('Anda yakin ingin menghapus item ini dari keranjang?')) {
+        $.ajax({
+          url: '/cart/remove/' + cartItemId, // Ganti dengan URL endpoint yang sesuai
+          type: 'POST',
+          data: {
+            _method: 'DELETE'
+          },
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          },
+          success: function(response) {
+            // Refresh halaman setelah penghapusan berhasil
+            location.reload();
+          },
+          error: function(xhr) {
+            console.error('Error:', xhr.responseText);
+          }
         });
+      }
     });
-
-    
+  });
 </script>
 <script src="{{ asset('js/script3.js') }}"></script>

@@ -7,7 +7,10 @@ use Illuminate\Http\Request; // Import the Request class
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Ramsey\Uuid\Uuid;
 use SebastianBergmann\CodeCoverage\Report\Xml\Totals;
+use Symfony\Component\Uid\UuidV4;
 
 class CartController extends Controller
 {
@@ -138,28 +141,45 @@ class CartController extends Controller
             return redirect()->back()->with('error', 'Operasi tidak Valid');
         }
     }
-    // Bukti Pembayaran
-    public function uploadPayment(Request $request){
-        $validatedData = $request->validate(
-            [
-                "bukti_pembayaran" => "required|image|file|max:2048",
-                "Alamat_pengiriman" => "required|string|max:255"
-            ]
-        );
-        
-        $order = new Order();
-        $order->bukti_pembayaran = $request->bukti_pembayaran;
-        $order->Alamat_pengiriman = $request->Alamat_pengiriman;
-        $imageName = time().'.'.$request->bukti_pembayaran->extension();
-        $request->bukti_pembayaran->move(public_path('images'), $imageName);
-        $order->status('pending');
-        $order->save();
 
-        if ($request->hasFile('bukti_pembayaran')) {
-            $validatedData['bukti_pembayaran'] = $request->file('bukti_pembayaran')->store('bukti_pembayaran');
+    public function uploadPayment(Request $request)
+    {
+        // Validasi input
+        $validatedData = $request->validate([
+            "bukti_pembayaran" => "required|image|max:2048",
+            "Alamat_pengiriman" => "required|string|max:255"
+        ]);
+
+        // Generate UUID for order
+        $orderId = Uuid::uuid4()->toString();
+
+        // Get authenticated user
+        $user = Auth::user();
+
+        $cartItems = Cart::whereIn('product_id', $request->cartItem)->get();
+        // Simpan bukti pembayaran ke direktori public/images
+        $imageName = time() . '.' . $request->bukti_pembayaran->extension();
+        $request->bukti_pembayaran->move(public_path('images'), $imageName);
+        foreach ($cartItems as $product) { // Menggunakan findOrFail untuk mencari produk dengan ID yang sesuai
+            $order = new Order();
+            $order->users_id = $user->id;
+            $order->bukti_pembayaran = $imageName;
+            $order->Alamat_pengiriman = $request->Alamat_pengiriman;
+            $order->order_id = $orderId;
+            $order->product_id = $product->product_id; // Menggunakan product_id untuk mendapatkan ID produk
+            $order->Total_harga = $product->product->harga * $product->quantity; // Menggunakan product->harga untuk mendapatkan harga produk
+            $order->status = 'pending';
+            $order->save();
         }
-        return redirect()->route('cartItem')->with('success', 'Bukti Pembayaran has sent to admin !');
+
+        Cart::whereIn('product_id', $request->cartItem)->delete();
+
+
+
+        return redirect()->route('cartItem')->with('success', 'Bukti Pembayaran has been sent to admin!');
     }
+
+
     public function getCartById()
     {
     }

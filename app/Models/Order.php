@@ -16,7 +16,7 @@ class Order extends Model
     // public const PAYMENT_COMPLETE = 'completed';
     // public const PAYMENT_CANCEL = 'cancelled';
 
-    protected $fillable = ['users_id', 'product_id', 'Alamat_pengiriman', 'bukti_pembayaran', 'status'];
+    protected $fillable = ['users_id', 'product_id', 'Alamat_pengiriman', 'bukti_pembayaran', 'status', 'order_id'];
     public function product()
     {
         return $this->belongsTo(Product::class, "product_id");
