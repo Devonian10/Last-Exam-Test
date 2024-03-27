@@ -14,7 +14,7 @@
         <a href="{{ url('/registration') }}" class="right">Signup</a>
         @else
         <a href="{{ route('registration.logout') }}" class="right">Logout</a>
-        <a class="right" href="{{ url('/profile') }}">Welcome, {{ Auth::user()->username }}</a>
+        <a class="right" href="{{ route('updateProfile', ['id' => Auth::user()->id]) }}">Welcome, {{ Auth::user()->username }}</a>
         @if(Auth::user()->status==='admin')
         <a href="{{ url('/admin') }}" class="right">Admin</a>
         <a id="cartItem" href="{{url('/cartItem')}}" class="cart-icon right">

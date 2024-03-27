@@ -45,10 +45,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [LoginController::class, 'logout'])->name('registration.logout');
 
     // Profile
-    Route::get('/profile', function () {
-        return view('profile');
-    });
-
+    Route::get('/profile', [UserController::class,'indexProfile'])->name('profile');
+    Route::get('/profile/{id}', [UserController::class, 'editProfile'])->name('updateProfile');
+    Route::put('/profile/{id}', [UserController::class, 'updateProfile'])->name('updateProfile');
     // Order
     Route::get('/order', [OrderController::class, 'index'])->name('order.index');
     Route::post('/order', [OrderController::class, 'store'])->name('order.store');

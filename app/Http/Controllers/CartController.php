@@ -80,10 +80,12 @@ class CartController extends Controller
         // Hapus item jika ditemukan
         if ($cartItem) {
             $cartItem->delete();
-            return redirect('/cartItem')->with('success', 'Item has been removed from cart.');
+            return redirect()->route('cartItem')->with('success', 'Item has been removed from cart.');
         }
-        return redirect('/cartItem')->with('error', 'Item not found in cart.');
+        return redirect()->route('cartItem')->with('error', 'Item not found in cart.');
     }
+
+
     //Bagian Controller belanja (Shop)
     public function index()
     {
@@ -136,6 +138,7 @@ class CartController extends Controller
             return redirect()->back()->with('error', 'Operasi tidak Valid');
         }
     }
+    // Bukti Pembayaran
     public function uploadPayment(Request $request){
         $validatedData = $request->validate(
             [
@@ -143,16 +146,19 @@ class CartController extends Controller
                 "Alamat_pengiriman" => "required|string|max:255"
             ]
         );
+        
         $order = new Order();
         $order->bukti_pembayaran = $request->bukti_pembayaran;
         $order->Alamat_pengiriman = $request->Alamat_pengiriman;
+        $imageName = time().'.'.$request->bukti_pembayaran->extension();
+        $request->bukti_pembayaran->move(public_path('images'), $imageName);
         $order->status('pending');
         $order->save();
 
         if ($request->hasFile('bukti_pembayaran')) {
             $validatedData['bukti_pembayaran'] = $request->file('bukti_pembayaran')->store('bukti_pembayaran');
         }
-        return redirect('/cartItem')->with('success', 'Bukti Pembayaran has sent to admin !');
+        return redirect()->route('cartItem')->with('success', 'Bukti Pembayaran has sent to admin !');
     }
     public function getCartById()
     {

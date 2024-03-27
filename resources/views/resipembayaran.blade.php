@@ -105,7 +105,7 @@
   <div class="row-50 g-4 mb-4 justify-content-center text-center">
     <form action="" method="post">
       @csrf
-      <button type="submit" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalBukti">Checkout</button>
+      <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalBukti">Checkout</button>
     </form>
   </div>
   <div class="modal fade" id="modalBukti" tabindex="-1" aria-labelledby="modalBuktiLabel" aria-hidden="true">
@@ -117,21 +117,20 @@
         </div>
         <div class="modal-body">
           <div class="mb-3">
-            <form action="" method=""> <!-- Perbarui action formulir unggah bukti pembayaran -->
+            <form action="{{ route('upload.payment', ["cartItemId"=> $cartItem->id]) }}" method="post"> <!-- Perbarui action formulir unggah bukti pembayaran -->
               @csrf
               <label for="formFile" class="form-label">Upload bukti pembayaran</label>
-              <input class="form-control" type="file" id="formFile" name="payment_proof"> <!-- Tambahkan atribut name -->
+              <input class="form-control" type="file" id="bukti_pembayaran" name="bukti_pembayaran"> <!-- Tambahkan atribut name -->
               <div class="col-5 g-4">
                 <label for="Alamat Pengiriman" class="form-label labelku">Alamat pengiriman</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" id="Alamat_pengiriman" name="Alamat_pengiriman">
               </div>
             </form>
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          
-          <button type="submit" class="btn btn-primary" form="uploadForm">Kirim</button> <!-- Tambahkan atribut form untuk menentukan formulir mana yang akan di-submit -->
+          <button type="submit" class="btn btn-primary">Kirim</button> <!-- Tambahkan atribut form untuk menentukan formulir mana yang akan di-submit -->
         </div>
       </div>
     </div>
@@ -190,4 +189,7 @@ $(document).ready(function() {
             }
         });
     });
+
+    
 </script>
+<script src="{{ asset('js/script3.js') }}"></script>

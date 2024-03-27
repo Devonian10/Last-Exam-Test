@@ -52,9 +52,22 @@ class UserController extends Controller
         $users->save();
         return redirect()->route('userAdmin.index')->with('success', 'User Has been Updated.');
     }
-    // public function index1(){
-    //     return view('about', ["name" => "Toraja Kawaa Roastery", "description" =>
-    //     "Toraja Kawaa roastery adalah salah satu kopi yang nikmat dan ", "location" =>
-    //     "Toraja Kawaa Roastery", "phoneNumber" => 4456732123, "gambar_instagram" => "Ellipse 9.jpg", "gambar_whatsapp" => "WhatsApp 1.jpg"]);
-    // }
+    // Profile users
+    public function indexProfile()
+    {
+        $users = User::all();
+        return view('profile', compact('users'), ['title' => 'users']);
+    }
+    public function updateProfile(Request $request, string $id){
+        $users = User::findOrFail($id);
+        $users->update($request->except(["password"]));
+        $users->save();
+        return redirect()->route('home')->with('success', 'Your Profile has been update');
+    }
+
+    public function editProfile(string $id)
+    {
+        $users = User::findOrFail($id);
+        return view('profile', compact('users'));
+    }
 }
