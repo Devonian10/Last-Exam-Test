@@ -8,13 +8,11 @@
 <table class="table table-dark">
     <thead>
         <tr>
-            <th> Bukti Pembayaran</th>
-        </tr> 
-        <tr>
-            <td><img src="" alt="Bukti_pembayaran"></td>
+            <th colspan="5">Bukti Pembayaran</th>
         </tr>
-    </thead>
-    <tbody>
+        <tr>
+            <td colspan="5"><img <img src="{{ asset('gambar/bukti_pembayaran/' . $pesanan[0]->bukti_pembayaran) }}" alt="Bukti Pembayaran" width="100px" height="100px">
+        </tr>
         <tr>
             <th>No</th>
             <th>Jenis Kopi</th>
@@ -22,21 +20,23 @@
             <th>Quantity</th>
             <th>Jumlah Harga</th>
         </tr>
-        {{-- @foreach ($cartItem as $item) --}}
-            
-       
+    </thead>
+    <tbody>
+        @foreach($pesanan as $index => $item)
         <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>{{ $index + 1 }}</td>
+            <td>{{ $item->product->nama_kopi }}</td>
+            <td>Rp. {{ $item->product->harga }}</td>
+            <td>{{ $item->jumlah }}</td>
+            <td>Rp. {{ $item->product->harga * $item->jumlah }}</td>
         </tr>
-        {{-- @endforeach --}}
+        @endforeach
     </tbody>
     <tfoot>
-        <td>Total</td>
-        {{-- <td>{{ $total }}</td> --}}
+        <tr>
+            <td colspan="4">Total</td>
+            <td>Rp. {{ $total }}</td>
+        </tr>
     </tfoot>
 </table>
 

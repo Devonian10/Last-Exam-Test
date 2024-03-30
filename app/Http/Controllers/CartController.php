@@ -181,7 +181,7 @@ class CartController extends Controller
             $order->Alamat_pengiriman = $request->Alamat_pengiriman;
             $order->order_id = $orderId;
             $order->product_id = $product->product_id; // Menggunakan product_id untuk mendapatkan ID produk
-            $order->Total_harga = $product->product->harga * $product->quantity; // Menggunakan product->harga untuk mendapatkan harga produk
+            $order->jumlah = $product->quantity; // Menggunakan product->harga untuk mendapatkan harga produk
             $order->status = 'pending';
             $order->save();
         }

@@ -28,7 +28,7 @@
       <td><img src={{ $order->bukti_pembayaran }} alt="Bukti Pembayaran"></td>
       <td>{{ $order->Alamat_pengiriman }}</td>
       <td></td>
-      <td>Rp. {{ $order->Total_harga }}</td>
+      <td>Rp. {{ $order->jumlah }}</td>
       <td>{{ $order->status }}</td>
       <td class="text-center">
         <button type="submit" class="btn btn-primary"><i class="fa-solid fa-pen"></i> Detail</button>

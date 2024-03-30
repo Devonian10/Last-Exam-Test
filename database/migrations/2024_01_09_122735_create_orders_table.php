@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string("order_id");
             $table->foreignId("users_id");
             $table->foreignId("product_id");
-            $table->double("Total_harga");
+            $table->integer("jumlah");
             $table->string("bukti_pembayaran")->nullable();
             //$table->string("keterangan")->nullable();
             $table->string("Alamat_Pengiriman")->nullable();

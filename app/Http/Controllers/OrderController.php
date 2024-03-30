@@ -22,17 +22,46 @@ class OrderController extends Controller
         $pesanan = Order::All();
         return view('order', compact('pesanan'), ["title" => "kopi"]);
     }
-    public function indexAdminDetail(){
-        $pesanan = Order::all();
-        return view('admin.order.detailPesanan', compact('pesanan'), ["title"=>"kopi"]);
+    public function indexAdminDetail($id)
+    {
+        $pesanan = Order::where('order_id', $id)->get();
+        $total = 0;
+
+        foreach ($pesanan as $item) {
+            $total += $item->jumlah * $item->product->harga;
+        }
+        return view('admin.order.detailPesanan', ["title" => "kopi", "pesanan" => $pesanan, "total" => $total]);
     }
     public function indexAdmin()
     {
-        $pesanan = Order::all();
-        $pesanan = DB::select('select  from users groupby where id = :id', ['id' => 1]);
+        $pesanan = DB::select(
+            'SELECT 
+            order_id, 
+            u.username as username,  
+            GROUP_CONCAT(CONCAT(o.jumlah, " x ", p.nama_kopi) SEPARATOR ", ") AS nama_kopi, 
+            SUM(p.harga * o.jumlah) AS total_harga, 
+            o.bukti_pembayaran as bukti_pembayaran, 
+            o.Alamat_Pengiriman as Alamat_Pengiriman, 
+            o.`status` as status, 
+            o.Alasan_cancel as Alasan_cancel, 
+            o.updated_at as updated_at
+        FROM orders o
+        JOIN users u ON u.id = o.users_id
+        JOIN products p ON p.id = o.product_id
+        GROUP BY 
+            order_id, 
+            u.username, 
+            o.bukti_pembayaran, 
+            o.Alamat_Pengiriman, 
+            o.`status`, 
+            o.Alasan_cancel, 
+            o.updated_at'
+        );
 
-        return view('admin.orderAdmin', compact('pesanan'), ["title" => "kopi"]);
+        return view('admin.orderAdmin', compact('pesanan'))->with(["title" => "kopi"]);
     }
+
+
     /**
      * Show the form for creating a new resource.
      */
@@ -94,24 +123,30 @@ class OrderController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Order $order, $id)
+    public function destroy(Order $order, $order_id)
     {
-        Order::destroy($id);
+        $pesanan = Order::where('order_id', $order_id)->get();
+        foreach ($pesanan as $order) {
+            $order->delete();
+        }
 
         if ($order) {
             return redirect()->route('orderAdmin.indexAdmin')->with('success', 'Order Has been deleted');
         }
     }
-    public function updateOrder(Request $request, string $id): RedirectResponse
+    public function updateOrder(Request $request, string $order_id): RedirectResponse
     {
-        $pesanan =  Order::findOrFail($id);
-        // dd($request->status);
-        $pesanan->update(['status' => $request->status]);
-        return redirect()->route('orderAdmin.indexAdmin')->with('success', 'data telah diperbarui');
+        $pesanan = Order::where('order_id', $order_id)->get();
+        foreach ($pesanan as $order) {
+            $order->update(['status' => $request->status]);
+        }
+
+        return redirect()->route('orderAdmin.indexAdmin')->with('success', 'Data telah diperbarui');
     }
-    public function editOrder($id): View
+
+    public function editOrder($order_id): View
     {
-        $pesanan = Order::findOrFail($id);
+        $pesanan = Order::where('order_id', $order_id)->get();
         return view('admin.order.editOrderAdmin', compact('pesanan'), ['title' => 'kopi']);
     }
 }
