@@ -42,11 +42,9 @@
 <body>
   <h2 class="text-center">Cart list</h2>
   <div class="bg-primary sale-nota">
-    <form action="{{ route('resipembayaran.store') }}" method="post">
-      @csrf
+    {{-- <form action="{{ route('resipembayaran.store') }}" method="post">
+      @csrf --}}
       <div class="row">
-
-
         <div class="row">
           <div class="col-5 g-4">
             <br>
@@ -78,7 +76,7 @@
                 <td>
                   {{ $data->product->nama_kopi }}
                 </td>
-                <td><img src="{{ asset($data->product->gambar) }}" style="height:80px; width: 70px; object-fit: cover;"></td>
+                <td><div class="img"><img src="{{ asset($data->product->gambar) }}" style="height:80px; width: 70px; object-fit: cover;"></div></td>
                 <td>Rp. {{ $data->product->harga }}</td>
                 <td>{{ $data->quantity }}</td>
                 <td>Rp. {{ $data->product->harga * $data->quantity }}</td>
@@ -104,10 +102,10 @@
   {{-- @endif --}}
   </div>
   <div class="row-50 g-4 mb-4 justify-content-center text-center">
-    <form action="" method="post">
-      @csrf
-      <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalBukti">Checkout</button>
-    </form>
+    
+      {{-- <button type="submit">Checkout</button> --}}
+      <a href="{{ route('bukti-pembayaran.bukti') }}" class="btn btn-success">Checkout</a>
+      {{-- <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalBukti">Checkout</button> --}}
   </div>
   <div class="modal fade" id="modalBukti" tabindex="-1" aria-labelledby="modalBuktiLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -132,8 +130,6 @@
                 <label for="Alamat Pengiriman" class="form-label labelku">Alamat pengiriman</label>
                 <input type="text" class="form-control" id="Alamat_pengiriman" name="Alamat_pengiriman">
               </div>
-
-              <button type="submit" </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

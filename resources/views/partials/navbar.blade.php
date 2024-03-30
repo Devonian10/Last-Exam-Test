@@ -10,11 +10,16 @@
         @endif
         <a href="{{ url('/about') }}">About Us</a>
         @if(!Auth::check())
+        
         <a href="{{ url('/login') }}" class="right">Login</a>
         <a href="{{ url('/registration') }}" class="right">Signup</a>
         @else
         <a href="{{ route('registration.logout') }}" class="right">Logout</a>
         <a class="right" href="{{ route('updateProfile', ['id' => Auth::user()->id]) }}">Welcome, {{ Auth::user()->username }}</a>
+        <a id="cartItem" href="{{url('/cartItem')}}" class="cart-icon right">
+            <i class="fa-solid fa-cart-shopping fa-lg"></i>
+            <span class="badge">{{ $cartItemCount }}</span>
+        </a>
         @if(Auth::user()->status==='admin')
         <a href="{{ url('/admin') }}" class="right">Admin</a>
         <a id="cartItem" href="{{url('/cartItem')}}" class="cart-icon right">

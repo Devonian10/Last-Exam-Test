@@ -15,6 +15,7 @@
   <table class="table table-info text-center">
     <tr>
       <th>No.</th>
+      <th>Order id</th>
       <th>Nama</th>
       <th>Jenis kopi</th>
       <th>Total harga</th>
@@ -28,15 +29,16 @@
     {{-- @dd($order) --}}
     <tr>
       <td>{{ $loop->iteration }}</td>
+      <td>{{ $order->order_id }}</td>
       <td>{{ $order->user->username}}</td>
       <td>{{ $order->product->nama_kopi }}</td>
-      <td>Rp. {{ $order->Total_harga }}</td>
-      <td><?php echo date(DATE_RFC2822) ?></td>
-      <td><img src="images/{{ $order->bukti_pembayaran }}" alt="Bukti Pembayaran" width="100px" height="100px"></td>
+      <td>Rp. {{ $order->product->Total_harga }}</td>
+      <td>{{ $order->created_at->toDateString() }}</td>
+      <td><img src="gambar/bukti_pembayaran/{{ $order->bukti_pembayaran }}" alt="Bukti Pembayaran" width="100px" height="100px"></td>
       <td>{{ $order->status }}</td>
       <td class="text-center">
         <a class="btn btn-warning" href="{{ route('orderAdmin.update', ["id"=> $order->id]) }}"><i class="fa-solid fa-pen mr-2"></i></a>
-        <button class="btn btn-primary" alt><i class="fa-solid fa-eye mr-2"></i></button>
+        <a class="btn btn-primary" href="{{ route('orderAdmin.Detail',["id"=>$order->id]) }}"><i class="fa-solid fa-eye mr-2"></i></a>
         <form action="{{ route('orderAdmin.destroy', ["id"=>$order->id]) }}" method="post">
           @csrf
           @method('delete')
@@ -46,7 +48,8 @@
     </tr>
     @endforeach
   </table>
-</div>
+
+  </div>
 <!-- Modal untuk EditOrder--->
 
 <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="modalEditLabel" aria-hidden="true">

@@ -82,6 +82,12 @@ class CartController extends Controller
 
         // Hapus item jika ditemukan
         if ($cartItem) {
+            $produk = Product::find($cartItem->product_id);
+            if ($produk) {
+                $produk->stock += $cartItem->quantity;
+                $produk->save();
+            }
+
             $cartItem->delete();
             return redirect()->route('cartItem')->with('success', 'Item has been removed from cart.');
         }
@@ -141,17 +147,24 @@ class CartController extends Controller
             return redirect()->back()->with('error', 'Operasi tidak Valid');
         }
     }
+    public function bukti()
+    {
+        $userId = auth()->id(); // Ambil ID pengguna saat ini dengan metode yang lebih singkat
+        $cartItems = Cart::where('users_id', $userId)->get(); // Menggunakan 'user_id' sesuai konvensi Laravel
+        $total = 0;
 
+        foreach ($cartItems as $item) {
+            $total += $item->quantity * $item->product->harga;
+        }
+         
+        return view('bukti-pembayaran',['cartItem' => $cartItems, 'total' => $total, 'cartItemCount'=>$cartItems->count()]);
+        
+    }
     public function uploadPayment(Request $request)
     {
-        // Validasi input
-        $validatedData = $request->validate([
-            "bukti_pembayaran" => "required|image|max:2048",
-            "Alamat_pengiriman" => "required|string|max:255"
-        ]);
 
         // Generate UUID for order
-        $orderId = Uuid::uuid4()->toString();
+        $orderId = Uuid::uuid1()->toString();
 
         // Get authenticated user
         $user = Auth::user();
@@ -159,7 +172,8 @@ class CartController extends Controller
         $cartItems = Cart::whereIn('product_id', $request->cartItem)->get();
         // Simpan bukti pembayaran ke direktori public/images
         $imageName = time() . '.' . $request->bukti_pembayaran->extension();
-        $request->bukti_pembayaran->move(public_path('images'), $imageName);
+        $request->bukti_pembayaran->move(public_path('gambar/bukti_pembayaran'), $imageName);
+        
         foreach ($cartItems as $product) { // Menggunakan findOrFail untuk mencari produk dengan ID yang sesuai
             $order = new Order();
             $order->users_id = $user->id;
@@ -171,6 +185,7 @@ class CartController extends Controller
             $order->status = 'pending';
             $order->save();
         }
+        // dd()
 
         Cart::whereIn('product_id', $request->cartItem)->delete();
 

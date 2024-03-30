@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateOrderRequest;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 
 class OrderController extends Controller
@@ -21,9 +22,15 @@ class OrderController extends Controller
         $pesanan = Order::All();
         return view('order', compact('pesanan'), ["title" => "kopi"]);
     }
+    public function indexAdminDetail(){
+        $pesanan = Order::all();
+        return view('admin.order.detailPesanan', compact('pesanan'), ["title"=>"kopi"]);
+    }
     public function indexAdmin()
     {
         $pesanan = Order::all();
+        $pesanan = DB::select('select  from users groupby where id = :id', ['id' => 1]);
+
         return view('admin.orderAdmin', compact('pesanan'), ["title" => "kopi"]);
     }
     /**

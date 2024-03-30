@@ -51,7 +51,7 @@ Route::middleware(['auth'])->group(function () {
     // Order
     Route::get('/order', [OrderController::class, 'index'])->name('order.index');
     Route::post('/order', [OrderController::class, 'store'])->name('order.store');
-
+  
     // History
     Route::get('/history', function () {
         return view('history');
@@ -62,7 +62,7 @@ Route::middleware(['auth'])->group(function () {
         return view('resipembayaran');
     });
     Route::get('/cartItem', [CartController::class, 'indexCart'])->name('cartItem');
-    
+    Route::get('/cartItem/bukti', [CartController::class, 'bukti'])->name('bukti-pembayaran.bukti');
     Route::post('/resipembayaran', [OrderController::class, 'store'])->name('resipembayaran.store');
     Route::post('/addToCart', [CartController::class, 'addToCart'])->name('addToCart');
     Route::post('/uploadPayment', [CartController::class, 'uploadPayment'])->name('upload.payment');
@@ -115,6 +115,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/orderAdmin', [OrderController::class, 'indexAdmin'])->name('orderAdmin.indexAdmin');
     Route::get('/orderAdmin/{id}/editOrder', [OrderController::class, 'editOrder'])->name('orderAdmin.update');
     Route::put('/orderAdmin/{id}/editOrder', [OrderController::class, 'updateOrder'])->name('orderAdmin.update');
+    Route::get('/orderAdmin/{id}/detailOrder',[OrderController::class,'indexAdminDetail'])->name('orderAdmin.Detail');
     Route::get('/transaksi');
     // Route::get('/produk/create', function () {
     //     return view('admin/createProduk');
