@@ -11,8 +11,15 @@
             <th colspan="5">Bukti Pembayaran</th>
         </tr>
         <tr>
-            <td colspan="5"><img <img src="{{ asset('gambar/bukti_pembayaran/' . $pesanan[0]->bukti_pembayaran) }}" alt="Bukti Pembayaran" width="100px" height="100px">
+            <td colspan="5"><img src="{{ asset('gambar/bukti_pembayaran/' . $pesanan[0]->bukti_pembayaran) }}" alt="Bukti Pembayaran" width="400px" height="400px">
         </tr>
+        <tr>
+            <th>Alamat</th>
+        </tr>
+        @foreach($pesanan as $index => $item)
+        <tr><td colspan="5">{{ $item->Alamat_Pengiriman }}</td>
+        </tr>
+        @endforeach
         <tr>
             <th>No</th>
             <th>Jenis Kopi</th>

@@ -17,7 +17,7 @@
   @endif
   @foreach ($Shop as $index => $kopiku)
   <div class="row" style="width:18rem;">
-    <div class="card card border-success h-100">
+    <div class="card card border-success h-100 text-center">
       <div class="card-header bg-transparent border-success" style="text-align: center;font-size: 20px;"><strong>{{ $kopiku->nama_kopi }}</strong></div>
       <img src="{{ $kopiku->gambar }}" alt="" class="rounded-img">
       <div class="card-body">

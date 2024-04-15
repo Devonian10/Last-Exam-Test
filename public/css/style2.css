@@ -108,6 +108,7 @@ body {
     height: 150px;
     border-radius: 99px;
     margin: auto;
+    padding: auto;
 }
 /* .google-maps {
     padding-bottom: 50%;

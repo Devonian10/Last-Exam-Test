@@ -22,7 +22,7 @@
       <th>Tanggal</th>
       <th>Bukti Pembayaran</th>
       <th>Status</th>
-      <th>Aksi</th>
+      <th colspan="4" scope="col">Aksi</th>
     </tr>
 
     @foreach($pesanan as $order)
@@ -38,13 +38,16 @@
       <td><img src="gambar/bukti_pembayaran/{{ $order->bukti_pembayaran }}" alt="Bukti Pembayaran" width="100px" height="100px"></td>
       <td>{{ $order->status }}</td>
       <td class="text-center">
-        <a class="btn btn-warning" href="{{ route('orderAdmin.update', ["id"=> $order->order_id]) }}"><i class="fa-solid fa-pen mr-2"></i></a>
-        <a class="btn btn-primary" href="{{ route('orderAdmin.Detail',["id"=>$order->order_id]) }}"><i class="fa-solid fa-eye mr-2"></i></a>
-        <form action="{{ route('orderAdmin.destroy', ["id"=>$order->order_id]) }}" method="post">
+        <td><a class="btn btn-warning" href="{{ route('orderAdmin.update', ["id"=> $order->order_id]) }}"><i class="fa-solid fa-pen mr-2"></i></a>
+        </td>
+        <td><a class="btn btn-primary" href="{{ route('orderAdmin.Detail',["id"=>$order->order_id]) }}"><i class="fa-solid fa-eye mr-2"></i></a>
+        </td>
+        <td><form action="{{ route('orderAdmin.destroy', ["id"=>$order->order_id]) }}" method="post">
           @csrf
           @method('delete')
           <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure delete this Order?')"><i class="fa-solid fa-trash"></i></button>
         </form>
+        </td>
       </td>
     </tr>
     @endforeach

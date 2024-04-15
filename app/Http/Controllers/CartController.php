@@ -184,6 +184,8 @@ class CartController extends Controller
             $order->jumlah = $product->quantity; // Menggunakan product->harga untuk mendapatkan harga produk
             $order->status = 'pending';
             $order->save();
+
+        
         }
         // dd()
 

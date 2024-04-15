@@ -23,7 +23,7 @@
             <th>Gambar</th>
             <th>Stock</th>
             <th>Status</th>
-            <th>Aksi</th>
+            <th colspan="3" scope="col">Aksi</th>
         </tr>
         @foreach($produk as $barang)
         <tr>
@@ -33,9 +33,9 @@
             <td><img src="{{ asset($barang->gambar) }}" alt="" width="100px" height="100px"></td>
             <td>{{ $barang->stock }}</td>
             <td>{{ $barang->status }}</td>
-            <td>
-                    <a class="btn btn-warning" href="{{ route('produk.update', ['id' => $barang->id]) }}" alt="Edit Kopi" type="button"><i class="fa-solid fa-pen mr-2"></i></a>
-                <form action="{{ route('produk.destroy', $barang->id) }}" method="POST" style="display:inline;">
+            <td><a class="btn btn-warning" href="{{ route('produk.update', ['id' => $barang->id]) }}" alt="Edit Kopi" type="button"><i class="fa-solid fa-pen mr-2"></i></a>
+                </td>
+            <td><form action="{{ route('produk.destroy', $barang->id) }}" method="POST" style="display:inline;">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure Delete produk')" alt="Delete Kopi"><i class="fa-solid fa-trash mr-2"></i></button>

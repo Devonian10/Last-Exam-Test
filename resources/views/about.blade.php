@@ -5,8 +5,8 @@
 <body style="background-color: #6F4E37;">
     <h1 class="text-center">About us</h1>
     <main>
-      <div class="col mb-2">
-        <div id="carouselPhotoFade" class="carousel slide carousel-fade text-center" style="width: 100%; ">
+      <div class="container-fluid col mb-2 d-flex justify-content-center text-center">
+        <div id="carouselPhotoFade" class="carousel slide carousel-fade text-center" style="width: 100%;">
           <div class="carousel-inner">
             <div class="carousel-item active" style="width:100%; height:100%;">
               <img src="{{ asset('gambar/20230826_105056.jpg') }}" class="d-block w-100" alt="...">
@@ -27,7 +27,8 @@
             <span class="visually-hidden">Next</span>
           </button>
         </div>
-      </main>
+      </div>
+    </main>
           <div class="embed-responsive embed-responsive-21by9 text-center mt-4 pt-2 pb-2">
           {{-- <div class="google-maps justify-content-center">
              --}}
@@ -42,7 +43,8 @@
           {{-- </div> --}}
           
           </div>
-          <div class="row mt-4 row-cols-1 row-cols-md-3 g-4">
+          <div class="container-xl text-center">
+          <div class="row mt-4 row-cols-1 row-cols-md-3 g-4 text-center">
             <div class="col">
             <div class="card border-primary ml-2 text-center" style="width: 18rem">
               
@@ -65,7 +67,19 @@
               </div>
             </div>
           </div>
+          <div class="col">
+            <div class="card border-success ml-2 text-center" style="width: 18rem">
+              
+              <div class="card-header pt-4 pb-4" style="font-weight: bold;font-size:16pt;">Whatsapp</div>
+              <div class="card-body">
+                <i class="fa-brands fa-whatsapp fa-2xl mb-2"style="color:#4FCE5D;"></i>
+               <p class="card-text mt-2 pt-2">Toraja kawaa roastery</p>
+                <a href="#" class="btn btn-primary">Go Link</a>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
   </body>
       @endsection

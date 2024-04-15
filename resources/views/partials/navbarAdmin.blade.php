@@ -9,7 +9,7 @@
         <a href="{{ route('registration.logout') }}" class="right">Logout</a>
         <a class="right">Welcome, {{ Auth::user('admin')->username}}</a>
         @endif
-        <a href="{{ url('/') }}" class="right">Show as Client</a>
+        {{-- <a href="{{ url('/') }}" class="right">Show as Client</a> --}}
 
 
     </div>

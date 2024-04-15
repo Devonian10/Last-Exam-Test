@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
+use Illuminate\Support\Facades\Auth;
+use Ramsey\Uuid\Uuid;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -18,9 +21,41 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
-        $pesanan = Order::All();
-        return view('order', compact('pesanan'), ["title" => "kopi"]);
+        $users = Auth::user();
+        $cartItems = Cart::where('users_id', auth()->user()->id)->get();
+        //$cartItems = Cart::where('users_id', $users->id)->get();
+        $cartItemCount = $cartItems->count();
+        $total = 0;
+        foreach ($cartItems as $item) {
+            $total += $item->jumlah * $item->product->harga;
+        }
+        $pesanan = Order::where('users_id', auth()->user()->id)->get();
+        $pesanan = Order::where('users_id', $users->id)->whereNotNull('bukti_pembayaran')->get();
+        // $pesanan = DB::select(
+        //     'SELECT 
+        //     order_id, 
+        //     u.username as username,  
+        //     GROUP_CONCAT(CONCAT(o.jumlah, " x ", p.nama_kopi) SEPARATOR ", ") AS nama_kopi, 
+        //     SUM(p.harga * o.jumlah) AS total_harga, 
+        //     o.bukti_pembayaran as bukti_pembayaran, 
+        //     o.Alamat_Pengiriman as Alamat_Pengiriman, 
+        //     o.`status` as status, 
+        //     o.Alasan_cancel as Alasan_cancel, 
+        //     o.updated_at as updated_at
+        // FROM orders o
+        // JOIN users u ON u.id = o.users_id
+        // JOIN products p ON p.id = o.product_id
+        // GROUP BY 
+        //     order_id, 
+        //     u.username, 
+        //     o.bukti_pembayaran, 
+        //     o.Alamat_Pengiriman, 
+        //     o.`status`, 
+        //     o.Alasan_cancel, 
+        //     o.created_at,
+        //     o.updated_at',
+        // );
+        return view('order', compact('pesanan', 'cartItemCount', 'total'), ["title" => "kopi", "cartItemCount" => $cartItemCount, "total" => $total]);
     }
     public function indexAdminDetail($id)
     {
@@ -148,5 +183,28 @@ class OrderController extends Controller
     {
         $pesanan = Order::where('order_id', $order_id)->get();
         return view('admin.order.editOrderAdmin', compact('pesanan'), ['title' => 'kopi']);
+    }
+    public function Orderlist(Request $request)
+    {
+        $userId = auth()->id(); // Ambil ID pengguna saat ini dengan metode yang lebih singkat
+        $cartItems = Cart::where('users_id', $userId)->get(); // Menggunakan 'user_id' sesuai konvensi Laravel
+        $total = 0;
+        $orderId = Uuid::uuid1()->toString();
+
+        // Get authenticated user
+        $user = Auth::user();
+
+        $cartItems = Cart::whereIn('product_id', $request->cartItem)->get();
+        foreach ($cartItems as $item) {
+            $total += $item->quantity * $item->product->harga;
+        }
+        return view('order', ['cartItemCount' => $cartItems->count()]);
+    }
+    public function batal($id)
+    {
+        $pesanan = Order::findOrFail($id);
+        $pesanan->delete();
+        
+        return redirect()->back()->with('success', 'Pesanan Berhasil Dibatalkan');
     }
 }

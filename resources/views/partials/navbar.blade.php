@@ -1,12 +1,12 @@
 <nav>
     <div class="topnav">
         <img src="{{ asset('gambar/299385752_397934109147635_7327667729942218094_n.jpg')}}" style="width:60px; height:60px;display:flex; padding:2px; border-radius:9999px" class="left" />
-        <a href="{{ url('/') }}" class="">Home</a>
+        <a href="{{ route('home') }}" class="">Home</a>
         @if(Auth::check())
         <a href="{{ route('shop.index') }}">Shop</a>
         <!-- <a href="{{ url('/resipembayaran') }}">Cart</a> -->
-        <!-- <a href="{{ url('/order') }}">Order</a> -->
-        <a href="{{ url('/history') }}">History</a>
+        <a href="{{ route('order.index') }}">Order</a>
+        {{-- <a href="{{ url('/history') }}">History</a> --}}
         @endif
         <a href="{{ url('/about') }}">About Us</a>
         @if(!Auth::check())

@@ -8,14 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use HasFactory;
-    // public const PROCESS = 'Dalam Proses';
-    // public const DELIVERY = 'Pengiriman';
-    // public const CANCEL = 'Batal';
-
-    // public const PAYMENT_PENDING = 'pending';
-    // public const PAYMENT_COMPLETE = 'completed';
-    // public const PAYMENT_CANCEL = 'cancelled';
-
     protected $fillable = ['users_id', 'product_id', 'Alamat_pengiriman', 'bukti_pembayaran', 'status', 'order_id'];
     public function product()
     {

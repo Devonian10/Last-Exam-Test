@@ -22,7 +22,7 @@
         <th>Email</th>
         <th>Phone Number</th>
         <th>Status</th>
-        <th>Aksi</th>
+        <th colspan="3" scope="col">Aksi</th>
     </tr>
     @foreach($users as $user)
     <tr> {{-- Ini untuk migrasi database --}}
@@ -34,11 +34,12 @@
         <td>{{ $user->status }}</td>
         <td class="ml-2">
             <a class="btn btn-warning" href="{{ route('users.update', ["id"=> $user->id]) }}"><i class="fa-solid fa-pen"></i></a>
-            <form action="{{ route('registration.destroy',["id"=>$user->id]) }}" method="POST">
+        <td><form action="{{ route('registration.destroy',["id"=>$user->id]) }}" method="POST">
                 @method('delete')
                 @csrf
             <button type="submit"class="btn btn-danger" onclick="return confirm('Are you sure delete this user?')"><i class="fa-solid fa-trash"></i></button>
-        </form>
+            </form>
+        </td>
         </td>
         
     </tr>

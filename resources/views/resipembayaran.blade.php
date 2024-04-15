@@ -41,6 +41,19 @@
 
 <body>
   <h2 class="text-center">Cart list</h2>
+  @if (session()->has('success'))
+                <div class="alert alert-success alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x" role="alert" style="z-index: 1000;">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+                </div>
+                @endif
+
+                @if (session()->has('error'))
+                <div class="alert alert-danger alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x" role="alert" style="z-index: 1000;">
+                    {{ session('error') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+                </div>
+                @endif
   <div class="bg-primary sale-nota">
     {{-- <form action="{{ route('resipembayaran.store') }}" method="post">
       @csrf --}}
