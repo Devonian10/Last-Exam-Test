@@ -49,14 +49,19 @@
 <table class="table">
     <tfoot>
          <tr>
-            <td>Total</td>
+            <td colspan="2">Total</td>
             <td>Rp. {{ $total }}</td>
         </tr>
         <tr>
             <th colspan="3" scope="col">Payment Method</th>
         </tr>
         <tr>
-            <td>MANDIRI - </td>
+            <td>Please, make a direct Bank Transfer to one of the accounts below, 
+                to complete your payment!
+            </td>
+            <td rowspan="3" scope="row">MANDIRI - </td>
+            <td>BRI - </td>
+            <td>BCA - </td>
         </tr>
     </tfoot>
 </table>

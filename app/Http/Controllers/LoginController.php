@@ -31,6 +31,10 @@ class LoginController extends Controller
 
     //     // return redirect('admin')->with('success', 'You logged admin');
     // }
+    public function indexAdmin(){
+        return view('login-admin');
+        
+    }
     public function authenticate(Request $request): RedirectResponse
     {
         $credentials = $request->validate([

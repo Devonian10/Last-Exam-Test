@@ -13,7 +13,7 @@
 </div>
 @endif
 <a href="{{ route('produk.create') }}" class="btn btn-primary"><i class="fa-solid fa-plus mr-2"></i> Create Product</a>
-<div class="container rounded-lg shadow p-4 bg-primary mt-4">
+<div class="container rounded-lg shadow p-4 bg-brown mt-4">
     <table class="table table-dark table-striped-columns text-center">
 
         <tr>

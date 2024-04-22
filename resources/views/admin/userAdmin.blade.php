@@ -12,7 +12,7 @@
     </div>
     @endif
 <a class="btn btn-primary" href="{{ route('users.create') }}"><i class="fa-solid fa-plus"></i> Tambah</a>
-<div class="container rounded-lg shadow p-3 bg-primary mt-3">
+<div class="container rounded-lg shadow p-3 bg-brown mt-3">
 <table class="table table-responsive table-dark table-striped-columns text-center ">
     {{-- @foreach
     @endforeach --}}

@@ -21,13 +21,33 @@
         width:18rem;
         text-align: center;
       }
+      .logo {
+        display: flex; 
+        justify-content: center; 
+        flex-direction: column;
+    }
     </style>
   </head>
+<body>
+  @if (session()->has('success'))
+    <div class="alert alert-success alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x" role="alert" style="z-index: 1000;">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+    </div>
+    @endif
+
+    @if (session()->has('error'))
+    <div class="alert alert-danger alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x" role="alert" style="z-index: 1000;">
+        {{ session('error') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+    </div>
+    @endif
   <div class="containerku">
     <div class="card">
       <div class="card-body">
+        <img src="{{ asset('gambar/299385752_397934109147635_7327667729942218094_n.jpg') }}" class="logo" alt="logo">
         <h5 class="card-title">Login Administrator</h5>
-        <form action="{{ route('admin') }}" method="post">
+        <form action="{{ route('admin.login') }}" method="post">
             @csrf
           <div class="mb-3">
             <label for="username" class="form-label">Username</label>

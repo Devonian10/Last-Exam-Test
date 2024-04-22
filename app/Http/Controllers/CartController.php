@@ -185,7 +185,7 @@ class CartController extends Controller
             $order->status = 'pending';
             $order->save();
 
-        
+            
         }
         // dd()
 

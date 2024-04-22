@@ -160,5 +160,7 @@ label {
         width: 100%;
     }
 }
-
+.bg-brown {
+    background: #6F4E37;
+}
 @import url("https://fonts.googleapis.com/css2?family=Abyssinica+SIL&family=Playpen+Sans:wght@300&display=swap");

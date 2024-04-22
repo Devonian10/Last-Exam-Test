@@ -11,6 +11,7 @@ use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
+use Illuminate\Auth\Events\Login;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,7 +52,8 @@ Route::middleware(['auth'])->group(function () {
     // Order
     Route::get('/order', [OrderController::class, 'index'])->name('order.index');
     Route::post('/order', [OrderController::class, 'store'])->name('order.store');
-    Route::delete('/order/cancel/{id}', [OrderController::class, 'batal'])->name('order.cancel');
+    Route::post('/order/cancel/{id}', [OrderController::class, 'batal'])->name('order.cancel');
+    // Route::delete('/order/cancel/{id}', [OrderController::class, 'batal'])->name('order.cancel');
     // History
     Route::get('/history', function () {
         return view('history');
@@ -82,13 +84,15 @@ Route::middleware(['guest'])->group(function () {
         return view('login');
     })->name('login');
     Route::post('/authentication', [LoginController::class, 'authenticate'])->name('registration.authenticate');
-
+   
     // About
     Route::get('/about', function () {
         return view('about', ["name" => "Toraja Kawaa Roastery", "description" =>
         "Toraja Kawaa roastery adalah salah satu kopi yang nikmat dan ", "location" =>
         "Toraja Kawaa Roastery", "phoneNumber" => 4456732123, "gambar_instagram" => "Ellipse 9.jpg", "gambar_whatsapp" => "WhatsApp 1.jpg"]);
     });
+    Route::get('/login-admin', [LoginController::class, 'indexAdmin'])->name('admin.login');
+    Route::get('/login-admin', [LoginController::class, 'authenticate'])->name('admin.login');
 });
 
 // Admin route
@@ -98,6 +102,7 @@ Route::middleware(['admin'])->group(function () {
     //     return view('admin/userAdmin', ["title" => "kopi", "users" => User::all()]);
     // });
     //Admin User
+    
     Route::get('/userAdmin', [UserController::class, 'index'])->name('userAdmin.index');
     // Route::get('/userAdmin/createUser', function () {
     //     return view('admin/user/createUser');

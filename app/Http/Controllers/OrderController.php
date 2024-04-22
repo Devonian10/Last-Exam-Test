@@ -203,8 +203,9 @@ class OrderController extends Controller
     public function batal($id)
     {
         $pesanan = Order::findOrFail($id);
-        $pesanan->delete();
+        $pesanan->status='cancel';
+        $pesanan->save();
         
-        return redirect()->back()->with('success', 'Pesanan Berhasil Dibatalkan');
+        return redirect()->back()->with('success', 'Pesanan Berhasil Dibatalkan.');
     }
 }
