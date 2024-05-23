@@ -41,7 +41,7 @@ class LoginController extends Controller
             'username' => ['required'],
             'password' => ['required'],
         ]);
-
+        
         if (Auth::attempt($credentials)) {
             $user = auth()->user();
             if ($user->username === 'admin') {

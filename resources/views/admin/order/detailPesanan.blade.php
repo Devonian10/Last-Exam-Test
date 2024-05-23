@@ -46,6 +46,6 @@
         </tr>
     </tfoot>
 </table>
-
+<a href="{{ route('orderAdmin.indexAdmin') }}" class="btn btn-danger mt-4">Kembali</a>
 @endsection
 @endsection

@@ -3,7 +3,7 @@
 
 @section('container')
 
-<div class="container rounded-lg shadow p-3 bg-brown mt-4">
+<div class="container rounded-lg shadow p-3 bg-brown2 mt-4">
   <h1 class="text-center">Order List</h1>
   <table class="table table-dark table-striped-columns text-center" style="align-items: center; overflow:auto;">
     <tr>
@@ -20,7 +20,8 @@
     </tr>
     
     @foreach ($pesanan as $index => $item)
-    <?php $total += $item->jumlah * $item->product->harga; ?>
+    <?php $total = 0; $total += $item->jumlah * $item->product->harga; ?>
+    
     <tr>
       <td>{{ $index + 1 }}</td>
       <td>{{ substr($item->order_id, 0, 5) }}</td>
