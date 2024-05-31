@@ -5,7 +5,7 @@
 @section('Adminku')
 @section('columns')
 
-<h3><i class="fa-solid fa-user-plus mr-2"></i> Edit User</h3>
+<h3><i class="fa-solid fa-user-pen mr-2"></i> Edit User</h3>
 <hr class="bg-primary">
     <form action="{{ route('users.update', ["id"=> $users->id]) }}" method="POST">
     @csrf
