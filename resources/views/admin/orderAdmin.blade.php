@@ -12,7 +12,7 @@
 </div>
 @endif
 <div class="container rounded-lg shadow p-3 bg-brown mt-4">
-  <table class="table table-info text-center">
+  <table class="table table-dark text-center">
     <tr>
       <th>No.</th>
       <th>Order id</th>

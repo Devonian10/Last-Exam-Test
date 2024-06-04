@@ -8,19 +8,28 @@
     } */
     .bg {
         display: inline;
-        height: 100%;
-        width: 100%;
+        height: 100vh;
+        width: 100vw;
         background-image: url("{{ asset('gambar/20230826_105056.jpg') }}");
         background-size: cover;
         background-position:center; 
         position:fixed;
         z-index: 2;
-        padding: 0 !important;
+        /* padding: 0 !important;
         margin: !important;
-        
+         */
         
     }
-    
+    .content-row {
+    position: relative; /* Establish context for .content layering */
+  }
+
+  .content {
+    background-color: rgba(0, 0, 0, 0.5); /* Set semi-transparent dark background */
+    padding: 3rem; /* Add some padding for content spacing */
+    border-radius: 4px;
+    color: white; /* Ensure text color is white for contrast */
+  }
     .text-centerku {
         color: white;
         text-align: center;
@@ -58,6 +67,6 @@
     </div>
 </div>
 <script>
-
+    
 </script>
-@endsection
+    @endsection

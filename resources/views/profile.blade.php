@@ -4,7 +4,7 @@
 
 @section('container')
     <h2 class="text-center">Profile</h2>
-    <div class="row mt-3" style="background-color: #CC8E8E; border-radius:20px;">
+    <div class="row mt-3 bg-brown" style="border-radius:20px;">
         <form action="{{ route('updateProfile', ["id"=> $users->id]) }}" method="POST">
             @csrf
             @method('PUT')

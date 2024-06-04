@@ -54,7 +54,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
                 </div>
                 @endif
-  <div class="bg-primary sale-nota">
+  <div class="bg-brown sale-nota">
     {{-- <form action="{{ route('resipembayaran.store') }}" method="post">
       @csrf --}}
       <div class="row">
