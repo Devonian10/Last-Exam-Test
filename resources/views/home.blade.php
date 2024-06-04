@@ -18,8 +18,19 @@
         /* padding: 0 !important;
         margin: !important;
          */
-        
+    
     }
+    .black-overlay {
+            position: relative;
+            height: 100vh;
+        width: 100vw;
+        background-size: cover;
+        background-position:center; 
+        position:fixed;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1;
+            backdrop-filter: blur(5px);
+        }
     .content-row {
     position: relative; /* Establish context for .content layering */
   }
@@ -47,19 +58,21 @@
     }
 </style>
 @section('container')
-<div class="container-fluid row bg justify-content-center opacity-75 overflow-auto">
+<div class="container-fluid row bg justify-content-center overflow-auto">
     <!-- Logo ditambahkan di dalam div bg -->
-    <div class="container content-row p-4">
-        <div class="container rounded-lg shadow p-4" style="border-radius:4px;">
-            <h2 class="text-centerku"></h2>
-            <div class="row justify-content-center">
-                <div class="col-8 g-4 d-flex justify-content-center align-items-center text-center">
-                    <div class="logo">
-                    <img src="{{ asset('gambar/299385752_397934109147635_7327667729942218094_n.jpg') }}" class="rounded-img" style="width: 200px; height:200px; display: block; margin: 0 auto;">
-                    <p style="color: white;font-family:Arial, Helvetica, sans-serif;">
-                        Toraja Kawaa Roastery merupakan pelaku usaha mikro dimana Kopi Specialty yang dijual pada kemasan kopi Toraja Kawaa Roastery yaitu Kopi Arabika dan Kopi Robusta.
-                    </p>
-                    <h2 class="text-center welcome-heading" style="color: white">Selamat Datang di Website Toraja Kawaa Roastery</h2>
+    <div class="black-overlay container-fluid row justify-content-center overflow-auto">
+        <div class="container content-row">
+            <div class="container rounded-lg shadow " style="border-radius:4px;">
+                <h2 class="text-centerku"></h2>
+                <div class="row justify-content-center">
+                    <div class="col-8 g-4 d-flex justify-content-center align-items-center text-center">
+                        <div class="logo">
+                        <img src="{{ asset('gambar/299385752_397934109147635_7327667729942218094_n.jpg') }}" class="rounded-img" style="width: 200px; height:200px; display: block; margin: 0 auto;">
+                        <p style="color: white;font-family:Arial, Helvetica, sans-serif; font-size:16pt;">
+                            Toraja Kawaa Roastery merupakan pelaku usaha mikro dimana Kopi Specialty yang dijual pada kemasan kopi Toraja Kawaa Roastery yaitu Kopi Arabika dan Kopi Robusta.
+                        </p>
+                        <h2 class="text-center welcome-heading" style="color: white">Selamat Datang di Website Toraja Kawaa Roastery</h2>
+                        </div>
                     </div>
                 </div>
             </div>
