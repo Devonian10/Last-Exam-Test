@@ -15,21 +15,21 @@
         background-position:center; 
         position:fixed;
         z-index: 2;
-        /* padding: 0 !important;
-        margin: !important;
-         */
+            /* padding: 0 !important;
+            margin: !important;
+            */
     
     }
     .black-overlay {
-            position: relative;
-            height: 100vh;
+        position: relative;
+        height: 100vh;
         width: 100vw;
         background-size: cover;
         background-position:center; 
         position:fixed;
-            background-color: rgba(0, 0, 0, 0.8);
-            z-index: 1;
-            backdrop-filter: blur(5px);
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 1;
+        backdrop-filter: blur(5px);
         }
     .content-row {
     position: relative; /* Establish context for .content layering */
