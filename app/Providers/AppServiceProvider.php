@@ -31,8 +31,6 @@ class AppServiceProvider extends ServiceProvider
         // #untuk Ubah Force Laravel HTTPS menggunakan Production APP_ENV = production dan diubah ke APP_URL 
         // tetapi tidak ada HTTPS 
         if ($this->app->environment('production')) {
-            URL::forceScheme('https');
-        } else {
             URL::forceScheme('http');
         }
     }

@@ -55,8 +55,9 @@ return [
     |
     */
 
-    // 'url' => env('APP_URL', 'http://localhost'),
+    //url untuk production ada disini 
     'url' => env('APP_URL', 'http://torajakawaaroastery.online/login'),
+    // 'url' => env('APP_URL', 'http://localhost'),
     'asset_url' => env('ASSET_URL'),
 
     /*
