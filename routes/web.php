@@ -7,6 +7,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\LandingPageController;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
@@ -73,6 +74,9 @@ Route::middleware(['auth'])->group(function () {
 
 // Routes for guests (not logged in)
 Route::middleware(['guest'])->group(function () {
+    // Landing page 
+    //Route::get('/landing-page', [LandingPageController::class, 'index'])->name('landing-page');
+
     // Registration
     Route::get('/registration', function () {
         return view('registration');
