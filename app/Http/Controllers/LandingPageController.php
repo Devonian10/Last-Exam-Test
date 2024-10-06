@@ -18,6 +18,9 @@ class LandingPageController extends Controller {
 
     }
     public function show(){
-
+        return view('landing-page/landing-shop');
+    }
+    public function about(){
+        return view('landing-page/landing-about');
     }
 }
