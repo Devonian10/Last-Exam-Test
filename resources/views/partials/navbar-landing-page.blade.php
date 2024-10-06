@@ -10,7 +10,7 @@
         @if(Auth::user()->status==='admin')
         <a href="{{ url('/') }}" class="right">{{Auth::user()->status}}</a>
         @endif
-        <a href="{{ url('/login') }}" class="right"><img src="{{ '' }}" alt=""><i class="fa-solid fa-user"></i></a>
+        <a href="{{ route('login') }}" class="right"><img src="{{ '' }}" alt=""><i class="fa-solid fa-user"></i></a>
         <a href="{{ url('/') }}" class="right">logout</a>
         @endauth
         <a href=""></a>

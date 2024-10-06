@@ -159,7 +159,7 @@
                                 <a href="{{ url('/') }}" type="submit" class="btn align-items-center justify-content-center mb-4 btn-warning">Back to Home</a>
                             </div>
                             <div class="col-6">
-                                <button type="submit" class="btn btn-success align-items-center justify-content-center mb-4 text-center" st>Register</button>
+                                <button type="submit" class="btn btn-success align-items-center justify-content-center mb-4 text-center">Register</button>
                             </div>
                         </div>
 
