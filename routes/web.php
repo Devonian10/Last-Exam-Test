@@ -75,9 +75,10 @@ Route::middleware(['auth'])->group(function () {
 // Routes for guests (not logged in)
 Route::middleware(['guest'])->group(function () {
     // Landing page 
-    // Route::get('/landing-page', [LandingPageController::class, 'index'])->name('landing-page');
-    // Route::get('/landing-about', [LandingPageController::class, 'show'])->name('landing-shop');
-    // Route::get('/landing-about', [LandingPageController::class, 'about'])->name('landing-about');
+    Route::get('/landing-page/{id}', [LandingPageController::class, 'index'])->name('landing-page.index');
+    Route::get('/landing-about/{id}', [LandingPageController::class, 'show'])->name('landing-shop.show');
+    Route::get('/landing-about/{id}', [LandingPageController::class, 'about'])->name('landing-about.about');
+    
     // Registration
     Route::get('/registration', function () {
         return view('registration');

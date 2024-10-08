@@ -10,17 +10,17 @@ class LandingPageController extends Controller {
 
     *@return \Iluuminate\Http\Response    
     */
-    public function index(){
+    public function index($id){
         //Landing page
-        return view('landing-page/landing-page');
+        return view('landing-page/landing-page', ['pageId' => $id]);
     }
     public function store(Request $request){
 
     }
-    public function show(){
-        return view('landing-page/landing-shop');
+    public function show($id){
+        return view('landing-page/landing-shop', ['shopId'=> $id]);
     }
-    public function about(){
-        return view('landing-page/landing-about');
+    public function about($id){
+        return view('landing-page/landing-about', ['aboutId'=> $id]);
     }
 }

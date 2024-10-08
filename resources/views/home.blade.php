@@ -82,4 +82,4 @@
 <script>
     
 </script>
-    @endsection
+@endsection
