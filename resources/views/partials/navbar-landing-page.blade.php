@@ -13,6 +13,11 @@
         <a href="{{ route('login') }}" class="right"><img src="{{ '' }}" alt=""><i class="fa-solid fa-user"></i></a>
         <a href="{{ url('/') }}" class="right">logout</a>
         @endauth
+        @auth
+        @auth
+          <a href="{{ route('login') }}">Login</a>
+          <a href="{{ route('registration') }}">Sign Up</a>  
+        @endauth
         <a href=""></a>
     </div>
 </nav>
