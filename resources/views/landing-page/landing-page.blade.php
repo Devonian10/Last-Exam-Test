@@ -1,86 +1,88 @@
 @extends('layout.landing')
-@section('title','landing page')
+
+@section('title', 'Landing Page')
+
+@section('container')
 <style>
-    /* * {
-        padding: 0 !important;
-        margin: 0 !important;
-        
-    } */
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
     .bg {
-        display: inline;
         height: 100vh;
         width: 100vw;
         background-image: url("{{ asset('gambar/20230826_105056.jpg') }}");
         background-size: cover;
-        background-position:center; 
-        position:fixed;
-        z-index: 2;
-            /* padding: 0 !important;
-            margin: !important;
-            */
-    
+        background-position: center;
+        position: fixed;
+        z-index: -1;
     }
+
     .black-overlay {
-        position: relative;
         height: 100vh;
         width: 100vw;
-        background-size: cover;
-        background-position:center; 
-        position:fixed;
         background-color: rgba(0, 0, 0, 0.8);
-        z-index: 1;
         backdrop-filter: blur(5px);
-        }
-    .content-row {
-    position: relative; /* Establish context for .content layering */
-  }
+        position: fixed;
+        z-index: 0;
+    }
 
-  .content {
-    background-color: rgba(0, 0, 0, 0.5); /* Set semi-transparent dark background */
-    padding: 3rem; /* Add some padding for content spacing */
-    border-radius: 4px;
-    color: white; /* Ensure text color is white for contrast */
-  }
-    .text-centerku {
+    .content-row {
+        position: relative;
+        z-index: 1;
+    }
+
+    .content {
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 2rem;
+        border-radius: 8px;
         color: white;
         text-align: center;
-        text-shadow: 4rem;
     }
+
+    .text-centerku {
+        color: white;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    }
+
     .logo {
-        display: flex; 
-        justify-content: center; 
+        display: flex;
         flex-direction: column;
+        align-items: center;
     }
-    @media (max-width: 768px){
+
+    .logo img {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        margin-bottom: 10px;
+    }
+
+    @media (max-width: 768px) {
         .welcome-heading {
             font-size: 24px;
         }
+        .content {
+            padding: 1.5rem;
+        }
     }
 </style>
-@section('container')
-@section('container')
-<div class="container-fluid row bg justify-content-center overflow-auto">
-    <!-- Logo ditambahkan di dalam div bg -->
-    <div class="black-overlay container-fluid row justify-content-center overflow-auto">
-        <div class="container content-row">
-            <div class="container rounded-lg shadow " style="border-radius:4px;">
-                <h2 class="text-centerku"></h2>
-                <div class="row justify-content-center">
-                    <div class="col-8 g-4 d-flex justify-content-center align-items-center text-center">
-                        <div class="logo">
-                        <img src="{{ asset('gambar/299385752_397934109147635_7327667729942218094_n.jpg') }}" class="rounded-img" style="width: 200px; height:200px; display: block; margin: 0 auto;">
-                        <p style="color: white;font-family:Arial, Helvetica, sans-serif; font-size:16pt;">
-                            Toraja Kawaa Roastery merupakan pelaku usaha mikro dimana Kopi Specialty yang dijual pada kemasan kopi Toraja Kawaa Roastery yaitu Kopi Arabika dan Kopi Robusta.
-                        </p>
-                        <h2 class="text-center welcome-heading" style="color: white">Selamat Datang di Website Toraja Kawaa Roastery</h2>
-                        </div>
-                    </div>
-                </div>
+
+<div class="container-fluid d-flex justify-content-center align-items-center bg">
+    <div class="black-overlay"></div>
+    <div class="container content-row">
+        <div class="content shadow-lg">
+            <div class="logo">
+                <img src="{{ asset('gambar/299385752_397934109147635_7327667729942218094_n.jpg') }}" alt="Toraja Kawaa Roastery Logo">
+                <p>
+                    Toraja Kawaa Roastery merupakan pelaku usaha mikro yang menjual Kopi Specialty dalam kemasan, 
+                    termasuk Kopi Arabika dan Kopi Robusta.
+                </p>
+                <h2 class="welcome-heading">Selamat Datang di Website Toraja Kawaa Roastery</h2>
             </div>
         </div>
     </div>
 </div>
-<script>
-    
-</script>
 @endsection

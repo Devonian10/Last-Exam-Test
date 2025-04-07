@@ -155,3 +155,4 @@ Route::middleware(['admin'])->group(function () {
     //     return view([ProductController::class, 'create'])->name('produk.create');
     // });
 });
+//Landing page
