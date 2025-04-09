@@ -17,10 +17,13 @@ class LandingPageController extends Controller {
     public function store(Request $request){
 
     }
-    public function show($id){
+    public function shop($id){
         return view('landing-page/landing-shop', ['shopId'=> $id]);
     }
     public function about($id){
         return view('landing-page/landing-about', ['aboutId'=> $id]);
+    }
+    public function buy(Request $request){
+        
     }
 }

@@ -24,11 +24,16 @@ use Illuminate\Auth\Events\Login;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+// Landing page 
+Route::get('/landing-page/{id}', [LandingPageController::class, 'index'])->name('landing-page.index');
+Route::get('/landing-shop/{id}', [LandingPageController::class, 'shop'])->name('landing-shop.shop');
+Route::get('/landing-about/{id}', [LandingPageController::class, 'about'])->name('landing-about.about');
 
 Route::middleware(['auth', 'guest'])->group(function () {
     Route::get('/', function () {
         return view('home', ["title" => "Home", "Shop" => Product::all()]);
     })->name('home');
+    
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -74,10 +79,7 @@ Route::middleware(['auth'])->group(function () {
 
 // Routes for guests (not logged in)
 Route::middleware(['guest'])->group(function () {
-    // Landing page 
-    Route::get('/landing-page/{id}', [LandingPageController::class, 'index'])->name('landing-page.index');
-    Route::get('/landing-about/{id}', [LandingPageController::class, 'show'])->name('landing-shop.show');
-    Route::get('/landing-about/{id}', [LandingPageController::class, 'about'])->name('landing-about.about');
+   
     
     // Registration
     Route::get('/registration', function () {

@@ -7,9 +7,11 @@ use Illuminate\Http\Request;
 
 class Authenticate extends Middleware
 {
+    
     /**
      * Get the path the user should be redirected to when they are not authenticated.
      */
+    
     protected function redirectTo(Request $request): ?string
     {
         if ($request->expectsJson()) {
@@ -27,9 +29,9 @@ class Authenticate extends Middleware
             return route ('login');
         }
 
-        //return $request->expectsJson() ? null : route('login');
-        // return $request->expectsJson() ? null : route('landing-shop');
-        // return $request->expectsJson() ? null : route('landing-page');
-        // return $request->expectsJson() ? null : route('landing-about');
+        return $request->expectsJson() ? null : route('login');
+        return $request->expectsJson() ? null : route('landing-shop');
+        return $request->expectsJson() ? null : route('landing-page');
+        return $request->expectsJson() ? null : route('landing-about');
     }
 }

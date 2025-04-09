@@ -17,6 +17,20 @@
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
 </div>
 @endif
+@if(Auth::check())
+    <form action="{{ route('order.coffee') }}" method="POST">
+        @csrf
+        <input type="hidden" name="coffee_id" value="{{ $shopId }}">
+        <button type="submit" class="btn btn-primary">Pesan Sekarang</button>
+    </form>
+@else
+    <a href="{{ route('login') }}" class="btn btn-warning">Login untuk Pesan</a>
+@endif
+@if (Auth::check())
+    <form action="{{ route('order.index') }}" method="POST">
+      @csrf
+      <input type="hidden" name = 'productId' value="{{ $kopiku }}">
+      <button type="submit" class="btn btn-primary"></button>
 @foreach ($Shop as $index => $kopiku)
 <div class="row" style="width:18rem;">
     <div class="card card border-success h-100 text-center">
@@ -30,14 +44,15 @@
           <button class="btn btn-primary" onclick="totalClick({{$index}}, 1, {{ $kopiku->stock }})"><i class="fa-solid fa-plus"></i></button>
         </p>
         <p class="card-text text-center">
-        <form id="addToCartForm{{$index}}" action="{{ route('addToCart') }}" method="post">
+        <form action="{{ route('order.show') }}" method="POST">
           @csrf
           <input type="hidden" name="productId" value="{{ $kopiku->id }}">
           <input type="hidden" name="quantity" id="quantity{{$index}}" value="0"> <!-- Hidden input for quantity -->
-          <button type="submit" class="btn btn-primary text-lg-center" id="addToCartBtn{{$index}}" disabled>
-            <i class="fa-solid fa-cart-plus" style="color: #FFFFFF "></i> Tambah keranjang
+          <button type="" class="btn btn-primary text-lg-center" id="addToCartBtn{{$index}}" disabled>
+            <i class="fa-solid fa-cart-plus" style="color: #FFFFFF "></i> Pesan sekarang
           </button>
         </form>
+   @endif
         </p>
         <p class="card-text text-center" onclick="">
           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalDetail{{ $index }}">
@@ -66,6 +81,26 @@
       </div>
     </div>
 </div>
+<!---Modal Pemesanan Untuk mengarah Login / sign up--->
+<div class="modal fade" id="modalLogin{{ $Login }}" tabindex="-1" aria-labelledby="modalLogin" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="modalLogin">Alert</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Silahkan Login atau Registrasi Terlebih dahulu untuk proses pemesanan lebih lanjut
+      </div>
+      <div class="modal-footer">
+        <a href="{{ route('registration.authenticate') }}" class="btn btn-success" data-bs-dismiss="modal">Login</a>
+        <a href="{{ route('registration.store') }}" class="btn btn-warning" data-bs-dismiss="modal">Sign Up</a>
+      </div>
+    </div>
+  </div>
+</div>
 @endforeach
+
+
 </div>
 @endsection
